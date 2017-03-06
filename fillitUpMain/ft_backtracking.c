@@ -6,19 +6,31 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 22:52:04 by snedir            #+#    #+#             */
-/*   Updated: 2017/02/09 08:29:15 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/06 23:40:41 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
+typedef struct v_list
+{
+	char *data;
+	char piece;
+	struct v_list *prev;
+	struct v_list *next;
+}x_list;
+
+typedef struct head
+{
+	struct v_list *first_element;
+	int lenght;
+}head;
+
 void print_grid(char **grid);
-
 int ft_searchletter(char **grid, char lettre);
-
 int ft_removepoints(char **grid, char lettre);
-
+int	ft_lenline(x_list *piece, int i);
 
 int dv_p(int pos, int taille)
 {
@@ -30,25 +42,49 @@ int md_p(int pos, int taille)
 	return (pos % taille);
 }
 
+void ft_points(x_list *piece, int *pos, int *k, int size)
+{
+	while (piece->data[*k] && piece->data[*k] == '.')
+	{
+		if (*k == 0 || *k == 1)
+		{
+			if (md_p(*pos, size) == *k)
+			{
+				*k += 1;
+				*pos += 1;
+			}
+			else
+				*k += 1;
+		}
+		else
+		{
+			*k += 1;
+			*pos += 1;
+		}
+	}
+}
 int ft_place(char **grid, x_list *piece, int pos, int k, int count)
 {
 	int size;
-	
+
 	size = ft_strlen(*grid);
 	if (count == 4)
 		return (1);
-	while (piece->data[k] && piece->data[k] == '.')
+	/*if (piece->data[k] && piece->data[k] == '.')
 	{
-		//ft_putchar('h');
-		//ft_putchar('\n');
-		k++;
-		pos++;
-	}
+		if ((k < 2 && md_p(pos, size) != k))
+			return (ft_place(grid, piece, pos, k + 1, count));
+		else
+			return (ft_place(grid, piece, pos + 1, k + 1, count));
+	}*/
+	ft_points(piece, &pos, &k, size);
 	if (pos > (size * size) - 1)
 		return (0);
 	if (piece->data[k] == '\n')
 	{
 		pos = pos + size - ft_lenline(piece, k);
+		/*if ((pos < size * size) && ft_isalpha(grid[dv_p(pos, size)][md_p(pos, size)]) && piece->data[k] == '.')
+		  return (ft_place(grid, piece, pos + 1, k + 1, count));*/
 		if ((pos < size * size) && grid[dv_p(pos, size)][md_p(pos, size)] == '.')
 			return (ft_place(grid, piece, pos, k + 1, count));
 		return (0);
@@ -56,7 +92,7 @@ int ft_place(char **grid, x_list *piece, int pos, int k, int count)
 	if (piece->data[k] && grid[dv_p(pos, size)][md_p(pos, size)] == '.')
 	{
 		grid[dv_p(pos, size)][md_p(pos, size)] = piece->data[k];
-		//print_grid(grid);
+		print_grid(grid);
 		if (md_p(pos, size) == size - 1 && (piece->data[k + 1] != '\n'))
 		{
 			grid[dv_p(pos, size)][md_p(pos, size)] = '.';
@@ -82,12 +118,11 @@ int ft_rabbit_hole(char **grid, x_list *piece, int *pos)
 	//printf("salut\n");
 	while (grid[dv_p(*pos, size)] != 0 && *pos < (size * size))
 	{
-		while (grid[dv_p(*pos, size)][md_p(*pos, size)] != '.' && ((k == 1 || k == 0) && (piece->data[k] == '.')))
-		{
-			//ft_putchar('k');
-			//ft_putchar('\n');
-			k++;
-		}
+		/*while (grid[dv_p(*pos, size)][md_p(*pos, size)] != '.' && ((k == 1 || k == 0) && (piece->data[k] == '.')))
+		  {
+		//printf("k = %d | piece = %c\n", k, piece->data[k]);
+		k++;
+		}*/
 		if (grid[dv_p(*pos, size)][md_p(*pos, size)] == '.')
 		{
 			if ((ret = ft_place(grid, piece, *pos, k, 0)))
