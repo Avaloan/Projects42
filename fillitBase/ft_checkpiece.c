@@ -6,12 +6,11 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/14 02:28:06 by gquerre           #+#    #+#             */
-/*   Updated: 2017/03/08 21:14:57 by snedir           ###   ########.fr       */
+/*   Updated: 2017/01/31 13:27:12 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include "libft.h"
+#include <stdio.h>
 
 int	ft_checklinksreverse(char *str)
 {
@@ -20,28 +19,27 @@ int	ft_checklinksreverse(char *str)
 
 	k = '1';
 	i = 0;
-	while (i != 20)
+	while (str[i] != '\0')
 	{
 		while (str[i] != '\n')
 			i++;
 		while (--i > 0 && str[i] != '\n')
 		{
 			if (str[i] == '#')
-				if ((i > 4 && (str[i - 5] == k - 1 || k == '1' || str[i - 5] ==
-						k - 2)) || ((i - 3) % 5 != 0 && (str[i + 1] == k - 1 ||
-						k == '1' || str[i + 1] == k - 2)) || (i < 14 && (str
-						[i + 5] == k - 1 || k == '1' || str[i + 5] == k - 2)))
+				if ((i > 4 && (str[i - 5] == k - 1 || k == '1' || str[i - 5] == k - 2)) ||
+						((i - 3) % 5 != 0 && (str [i + 1] == k - 1 || k == '1' || str[i + 1] == k - 2)) ||
+						(i < 14 && (str[i + 5] == k - 1 || k == '1' || str[i + 5] == k - 2)))
 					str[i] = k++;
 		}
-		i = (i < 4) ? i - 1 : i;
-		i = (i <= 14) ? i + 6 : i;
+		i = (i <  4) ? i - 1 : i;
+		i = (i <= 14) ? i + 6 : i;		
 	}
-	while (--i >= 0)
+	while (--i <= 0)
 		str[i] = (str[i] <= '9' && str[i] >= '0') ? '#' : str[i];
 	return ((k == '5') ? 1 : 0);
 }
 
-int	ft_checklinks(char *str)
+int ft_checklinks(char *str)
 {
 	int		i;
 	char	k;
@@ -55,9 +53,9 @@ int	ft_checklinks(char *str)
 		if (str[i] == '#')
 		{
 			count++;
-			if ((i > 4 && (str[i - 5] >= '1' && str[i] <= '3')) || (i % 5 != 0
-						&& (str[i - 1] == k - 1 || str[i - 1] == k - 2)) ||
-					(k == '1'))
+	if ((i > 4 && (str[i - 5] == k - 1 || k == '1' || str[i - 5] == k - 2)) ||
+					(i % 5 != 0 && (str [i - 1] == k - 1 || k == '1' || str[i - 1] == k - 2)) ||
+					(i < 14 && (str[i + 5] == k - 1 || k == '1' || str[i + 5] == k - 2)))
 				str[i] = k++;
 		}
 	}

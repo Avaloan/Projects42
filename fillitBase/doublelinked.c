@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/23 09:57:30 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/06 20:40:51 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/06 18:36:53 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "libft.h"
+#include "fillit.h"
 
 typedef struct v_list
 {
@@ -143,23 +144,21 @@ x_list *read_and_copy(char *argv, head *sentinel, x_list *elem)
 	char buf[21];
 	char *str;
 	char *str2;
-	char c = 'a';
+	int	v = 0;
 
 	if((fd = open(argv, O_RDONLY)) != -1)
 	{
 		while ((ret = read(fd, buf, 21)))
 		{
-			//printf("%s\n", buf);
 			//printf("checksquare = %d | checkpiece = %d\n",ft_checksquare(buf), ft_checkpiece(buf));
-			if (ft_checksquare(buf) == 1 && ft_checkpiece(buf) == 1)
+			if (ft_checksquare(buf) == 1/* && ft_checkpiece(buf) == 1*/)
 			{
 				str = ft_checkemptyline(buf);
 				str2 = modify_piece(str);
 				free(str);
 				elem = add_node(elem, str2, sentinel);
 				elem->piece = (sentinel->lenght + 64);
-				c = buf[20];
-				ft_strclr(buf);
+				v++;
 			}
 			else
 			{
@@ -167,11 +166,6 @@ x_list *read_and_copy(char *argv, head *sentinel, x_list *elem)
 				return (NULL);
 			}
 		}
-	}
-	if (c != '\0')
-	{
-		ft_putstr("error\n");
-		return (NULL);
 	}
 	close(fd);
 	return (sentinel->first_element);

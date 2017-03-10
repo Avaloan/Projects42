@@ -6,11 +6,10 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 20:13:16 by gquerre           #+#    #+#             */
-/*   Updated: 2017/03/08 18:09:59 by snedir           ###   ########.fr       */
+/*   Updated: 2017/01/19 08:40:36 by gquerre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
 #include "libft.h"
 
 void	ft_checkemptycolumn(char **str, int i)

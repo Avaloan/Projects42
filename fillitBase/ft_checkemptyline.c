@@ -6,43 +6,52 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/14 19:08:32 by gquerre           #+#    #+#             */
-/*   Updated: 2017/03/08 18:17:23 by snedir           ###   ########.fr       */
+/*   Updated: 2017/01/19 11:16:30 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "fillit.h"
+#include <stdio.h>
 
-char	*ft_checkemptyline(char *str, t_iter *var)
+void ft_checkemptycolumn(char **str, int i);
+int  ft_checkcount(int count, int start);
+char *ft_readlines(char *str);
+
+char	*ft_checkemptyline(char *str)
 {
-	var->count = 0;
-	var->end = 0;
-	var->start = 0;
-	var->i = 0;
-	while (var->end < 4)
+	int start;
+	int i;
+	int count;
+	int end;
+
+	count = 0;
+	end = 0;
+	start = 0;
+	i = 0;
+	while (end < 4)
 	{
-		while (str[var->i] != '\n')
+		while (str[i] != '\n')
 		{
-			if (str[var->i] == '#')
-				var->end += 1;
-			if (str[var->i] == '.' || str[var->i] == '0')
+			if (str[i] == '#')
+				end++;
+			if (str[i] == '.' || str[i] == '0')
 			{
-				var->count += 1;
-				if (var->i < 4)
-					ft_checkemptycolumn(&str, var->i);
+				count++;
+				if (i < 4)
+					ft_checkemptycolumn(&str, i);
 			}
-			var->i += 1;
+			i++;
 		}
-		var->start = ft_checkcount(var->count, var->start);
-		var->count = 0;
-		var->i += 1;
+		start = ft_checkcount(count, start);
+		count = 0;
+		i++;
 	}
-	return (ft_readlines(ft_strsub(str, var->start, var->i - var->start)));
+	return (ft_readlines(ft_strsub(str, start, i - start)));
 }
 
-char	*ft_readlines(char *str)
+char *ft_readlines(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (str[i] != '\0')
