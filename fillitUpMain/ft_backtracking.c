@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 22:52:04 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/08 21:43:38 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/11 00:52:17 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,42 @@ void	ft_points(t_tetr *piece, int *pos, int *k, int size)
 	}
 }
 
-int		ft_place(char **grid, t_tetr *piece, int pos, t_iter *cmp)
+int		ft_place(char **grid, t_tetr *piece, int pos, int k, int count)
 {
-	cmp->start = ft_strlen(*grid);
-	if (cmp->count == 4)
+	int SIZE;
+
+	SIZE = ft_strlen(*grid);
+	//printf("taille %d\n", SIZE);
+	if (count == 4)
 		return (1);
-	ft_points(piece, &pos, &cmp->i, SIZE);
+	ft_points(piece, &pos, &k, SIZE);
 	if (pos > (SIZE * SIZE) - 1)
 		return (0);
-	if (piece->data[cmp->i] == '\n')
+	if (piece->data[k] == '\n')
 	{
-		pos = pos + SIZE - ft_lenline(piece, cmp->i);
+		pos = pos + SIZE - ft_lenline(piece, k);
 		if (pos < SIZE * SIZE)
-			return (ft_place(grid, piece, pos, f1(cmp)));
+		{
+			/*printf("i = %d\n", cmp->i);
+			ui = ft_place(grid, piece, pos, f1(cmp));
+			printf("i = %d\n", cmp->i);*/
+			return (ft_place(grid, piece, pos, k + 1, count));
+			//return (ui);
+		}
 		return (0);
 	}
-	if (piece->data[cmp->i] && grid[dv_p(pos, SIZE)][md_p(pos, SIZE)] == '.')
+	if (piece->data[k] && grid[dv_p(pos, SIZE)][md_p(pos, SIZE)] == '.')
 	{
-		grid[dv_p(pos, SIZE)][md_p(pos, SIZE)] = piece->data[cmp->i];
-		if (md_p(pos, SIZE) == SIZE - 1 && (piece->data[cmp->i + 1] != '\n'))
+		//print_grid(grid);
+		grid[dv_p(pos, SIZE)][md_p(pos, SIZE)] = piece->data[k];
+		if (md_p(pos, SIZE) == SIZE - 1 && (piece->data[k + 1] != '\n'))
 		{
 			grid[dv_p(pos, SIZE)][md_p(pos, SIZE)] = '.';
 			return (0);
 		}
-		if (ft_place(grid, piece, pos + 1, f3(cmp)))
+		if (ft_place(grid, piece, pos + 1, k + 1, count + 1))
 			return (1);
+
 	}
 	if (grid[dv_p(pos, SIZE)][md_p(pos, SIZE)] == piece->piece)
 		grid[dv_p(pos, SIZE)][md_p(pos, SIZE)] = '.';
@@ -68,19 +79,18 @@ int		ft_place(char **grid, t_tetr *piece, int pos, t_iter *cmp)
 
 int		ft_rabbit_hole(char **grid, t_tetr *piece, int *pos)
 {
-	t_iter cmp;
+	int k;
 	int	size;
 	int	ret;
 
-	cmp.count = 0;
+	k =  0;
 	ret = 0;
-	cmp.i = 0;
 	size = ft_strlen(*grid);
 	while (grid[dv_p(*pos, size)] != 0 && *pos < (size * size))
 	{
 		if (grid[dv_p(*pos, size)][md_p(*pos, size)] == '.')
 		{
-			if ((ret = ft_place(grid, piece, *pos, &cmp)))
+			if ((ret = ft_place(grid, piece, *pos, k, 0)))
 				return (1);
 		}
 		*pos += 1;

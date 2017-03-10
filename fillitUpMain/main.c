@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 17:40:08 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/08 21:31:36 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/11 00:53:44 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,21 @@ t_tetr		*read_and_copy(char *argv, t_head *sentinel, t_tetr *elem, t_iter *var)
 	char	*str;
 	char	*str2;
 	char	c;
+	//t_iter var;
 
 	c = 'a';
 	if ((fd = open(argv, O_RDONLY)) != -1)
 	{
 		while ((ret = read(fd, buf, 21)))
 		{
-			printf("piece = %d || square = %d\n", ft_checkpiece(buf), ft_checksquare(buf));
-			printf("%s\n", buf);
-			if (/*ft_checksquare(buf) == 1 &&*/ ft_checkpiece(buf) == 1)
+			//printf("len = %d\n", ret);
+			buf[ret] = '\0';
+		//	printf("piece = %d || square = %d\n", ft_checkpiece(buf), ft_checksquare(buf));
+			if (ft_checksquare(buf) == 1 && ft_checkpiece(buf) == 1)
 			{
 				str = ft_checkemptyline(buf, var);
 				str2 = modify_piece(str);
+				//printf("%s", str2);
 				free(str);
 				elem = add_node(elem, str2, sentinel);
 				elem->piece = (sentinel->lenght + 64);
@@ -93,7 +96,7 @@ t_tetr		*read_and_copy(char *argv, t_head *sentinel, t_tetr *elem, t_iter *var)
 	}
 	if (c != '\0')
 	{
-		ft_putstr("error1\n");
+		ft_putstr("error\n");
 		return (NULL);
 	}
 	close(fd);
@@ -129,6 +132,10 @@ int			main(int argc, char **argv)
 
 	elem = NULL;
 	i = 0;
+	var.i = 0;
+	var.count = 0;
+	var.start = 0;
+	var.end = 0;
 	if ((elem = read_and_copy(argv[1], &sentinel, elem, &var)))
 	{
 		grid = create_grid(ft_size(sentinel.lenght));

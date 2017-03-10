@@ -6,7 +6,7 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/14 03:22:16 by gquerre           #+#    #+#             */
-/*   Updated: 2017/03/08 21:39:33 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/11 00:47:31 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_checksquare(char *str)
 	int i;
 
 	i = 0;
-	if (ft_strlen(str) > 22)
+	if (ft_strlen(str) > 21)
 		return (0);
 	while (i < 20 && str[i] != '\0')
 	{

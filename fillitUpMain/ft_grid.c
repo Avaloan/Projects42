@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 18:25:26 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/08 18:24:10 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/10 22:09:40 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,8 @@ void		print_grid(char **grid)
 char		**ft_upgrid(int taille, char **grid, int i)
 {
 	int		w;
-	int		j;
 
 	w = 0;
-	j = 0;
 	while (w < taille - i)
 	{
 		free(grid[w]);

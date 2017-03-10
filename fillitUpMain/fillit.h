@@ -6,13 +6,13 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 19:56:47 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/08 21:02:28 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/11 00:36:57 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# define SIZE cmp->start
+//# define SIZE cmp->start
 typedef struct		s_tetr
 {
 	char			*data;
@@ -40,7 +40,7 @@ int					ft_searchletter(char **grid, char lettre);
 void				ft_removepoints(char **grid, char lettre);
 int					dv_p(int pos, int taille);
 int					md_p(int pos, int taille);
-int					ft_place(char **grid, t_tetr *piece, int pos, t_iter *cmp);
+int					ft_place(char **grid, t_tetr *piece, int pos, int k, int count);
 int					ft_rabbithole(char **grid, t_tetr *piece, int *pos);
 int					ft_grid(char **grid, t_tetr *piece, int count,
 					int nbpieces);

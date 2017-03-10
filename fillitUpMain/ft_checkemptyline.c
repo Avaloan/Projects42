@@ -6,7 +6,7 @@
 /*   By: gquerre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/14 19:08:32 by gquerre           #+#    #+#             */
-/*   Updated: 2017/03/08 18:17:23 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/11 00:47:58 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char	*ft_checkemptyline(char *str, t_iter *var)
 		var->start = ft_checkcount(var->count, var->start);
 		var->count = 0;
 		var->i += 1;
+		//printf("end = %d, count = %d, start = %d, i = %d\n", var->end, var->count, var->start, var->i);
 	}
 	return (ft_readlines(ft_strsub(str, var->start, var->i - var->start)));
 }
