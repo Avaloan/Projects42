@@ -6,13 +6,18 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 19:56:47 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/11 00:36:57 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/11 01:56:29 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-//# define SIZE cmp->start
+# define ELEM map.node
+# define GRID map.grid
+# define ELEMP map->node
+# define GRIDP map->grid
+# define PIECE ELEMP->piece
+# define EDATA ELEMP->data
 typedef struct		s_tetr
 {
 	char			*data;
@@ -23,9 +28,15 @@ typedef struct		s_tetr
 
 typedef struct		s_head
 {
-	struct s_tetr	*first_element;
+	t_tetr	*first_element;
 	int				lenght;
 }					t_head;
+
+typedef struct		s_map
+{
+	t_tetr			*node;
+	char			**grid;
+}					t_map;
 
 typedef struct		s_iter
 {
@@ -35,6 +46,7 @@ typedef struct		s_iter
 	int				end;
 }					t_iter;
 
+
 int					ft_lenline(t_tetr *piece, int i);
 int					ft_searchletter(char **grid, char lettre);
 void				ft_removepoints(char **grid, char lettre);
@@ -42,8 +54,7 @@ int					dv_p(int pos, int taille);
 int					md_p(int pos, int taille);
 int					ft_place(char **grid, t_tetr *piece, int pos, int k, int count);
 int					ft_rabbithole(char **grid, t_tetr *piece, int *pos);
-int					ft_grid(char **grid, t_tetr *piece, int count,
-					int nbpieces);
+int					ft_grid(t_map *map, int count, int nbpieces);
 int					ft_checkcount(int count, int start);
 void				ft_checkemptycolumn(char **str, int i);
 char				*ft_checkemptyline (char *str, t_iter *var);

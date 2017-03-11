@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 22:52:04 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/11 00:52:17 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/11 01:56:09 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,17 @@ int		ft_rabbit_hole(char **grid, t_tetr *piece, int *pos)
 	return (0);
 }
 
-int		ft_grid(char **grid, t_tetr *piece, int count, int nbpieces)
+int		ft_grid(t_map *map, int count, int nbpieces)
 {
 	int	pos;
 
 	pos = 0;
-	while (piece && count < nbpieces)
+	while (ELEMP && count < nbpieces)
 	{
-		if (ft_rabbit_hole(grid, piece, &pos))
+		if (ft_rabbit_hole(GRIDP, ELEMP, &pos))
 		{
 			count++;
-			piece = piece->prev;
+			ELEMP = ELEMP->prev;
 			pos = 0;
 		}
 		else
@@ -116,9 +116,9 @@ int		ft_grid(char **grid, t_tetr *piece, int count, int nbpieces)
 			count--;
 			if (count < 0)
 				return (0);
-			piece = piece->next;
-			pos = ft_searchletter(grid, piece->piece) + 1;
-			ft_removepoints(grid, piece->piece);
+			ELEMP = ELEMP->next;
+			pos = ft_searchletter(GRIDP, PIECE) + 1;
+			ft_removepoints(GRIDP, PIECE);
 		}
 	}
 	if (count == nbpieces)

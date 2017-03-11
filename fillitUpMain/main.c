@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 17:40:08 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/11 00:53:44 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/11 01:55:40 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,17 @@ t_tetr		*read_and_copy(char *argv, t_head *sentinel, t_tetr *elem, t_iter *var)
 	char	*str;
 	char	*str2;
 	char	c;
-	//t_iter var;
 
-	c = 'a';
+	c = '\0';
 	if ((fd = open(argv, O_RDONLY)) != -1)
 	{
 		while ((ret = read(fd, buf, 21)))
 		{
-			//printf("len = %d\n", ret);
 			buf[ret] = '\0';
-		//	printf("piece = %d || square = %d\n", ft_checkpiece(buf), ft_checksquare(buf));
 			if (ft_checksquare(buf) == 1 && ft_checkpiece(buf) == 1)
 			{
 				str = ft_checkemptyline(buf, var);
 				str2 = modify_piece(str);
-				//printf("%s", str2);
 				free(str);
 				elem = add_node(elem, str2, sentinel);
 				elem->piece = (sentinel->lenght + 64);
@@ -124,28 +120,26 @@ void		hashtag_to_alpha(t_tetr *elem)
 int			main(int argc, char **argv)
 {
 	(void)argc;
+	t_map	map;
 	t_tetr	*elem;
 	t_head	sentinel;
-	char	**grid;
+//	char	**grid;
 	int		i;
 	t_iter	var;
 
 	elem = NULL;
+	ELEM = elem;
 	i = 0;
-	var.i = 0;
-	var.count = 0;
-	var.start = 0;
-	var.end = 0;
-	if ((elem = read_and_copy(argv[1], &sentinel, elem, &var)))
+	if ((ELEM = read_and_copy(argv[1], &sentinel, ELEM, &var)))
 	{
-		grid = create_grid(ft_size(sentinel.lenght));
-		hashtag_to_alpha(elem);
-		while (ft_grid(grid, elem, 0, sentinel.lenght) == 0)
+		GRID = create_grid(ft_size(sentinel.lenght));
+		hashtag_to_alpha(ELEM);
+		while (ft_grid(&map, 0, sentinel.lenght) == 0)
 		{
 			i++;
-			grid = ft_upgrid((ft_size(sentinel.lenght)), grid, i);
+			GRID = ft_upgrid((ft_size(sentinel.lenght)), GRID, i);
 		}
-		print_grid(grid);
+		print_grid(GRID);
 	}
 	return (0);
 }
