@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 17:40:08 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/11 01:55:40 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/11 06:39:48 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,12 @@ char		*modify_piece(char *piece)
 	char	*str;
 	int		j;
 
-	i = 0;
+	i = -1;
 	size = 0;
 	j = 0;
-	while (piece[i])
-	{
+	while (piece[++i])
 		if (piece[i] == '\n' || piece[i] == '#' || piece[i] == '.')
 			size++;
-		i++;
-	}
 	str = (char*)malloc(sizeof(char) * size + 1);
 	i = 0;
 	while (piece[i])
@@ -58,45 +55,32 @@ char		*modify_piece(char *piece)
 	return (str);
 }
 
-t_tetr		*read_and_copy(char *argv, t_head *sentinel, t_tetr *elem, t_iter *var)
+t_tetr		*read_and_copy(char *argv, t_head *sent, t_tetr *elem, t_iter *var)
 {
-	int		fd;
-	int		ret;
-	char	buf[21];
-	char	*str;
-	char	*str2;
+	t_buf	stock;
 	char	c;
 
-	c = '\0';
-	if ((fd = open(argv, O_RDONLY)) != -1)
+	c = 'a';
+	if ((FD = open(argv, O_RDONLY)) != -1)
 	{
-		while ((ret = read(fd, buf, 21)))
+		while ((RET = read(FD, BUF, 21)))
 		{
-			buf[ret] = '\0';
-			if (ft_checksquare(buf) == 1 && ft_checkpiece(buf) == 1)
+			BUF[RET] = '\0';
+			if (ft_checksquare(BUF) == 1 && ft_checkpiece(BUF) == 1)
 			{
-				str = ft_checkemptyline(buf, var);
-				str2 = modify_piece(str);
-				free(str);
-				elem = add_node(elem, str2, sentinel);
-				elem->piece = (sentinel->lenght + 64);
-				c = buf[20];
-				ft_strclr(buf);
+				ft_final(&STR, &STR2, BUF, var);
+				elem = add_node(elem, STR2, sent);
+				ft_multi(&c, BUF, sent, elem);
+				ft_strclr(BUF);
 			}
 			else
-			{
-				ft_putstr("error\n");
 				return (NULL);
-			}
 		}
+		if (c == '\0')
+			return (sent->first_element);
 	}
-	if (c != '\0')
-	{
-		ft_putstr("error\n");
-		return (NULL);
-	}
-	close(fd);
-	return (sentinel->first_element);
+	close(FD);
+	return (NULL);
 }
 
 void		hashtag_to_alpha(t_tetr *elem)
@@ -119,17 +103,17 @@ void		hashtag_to_alpha(t_tetr *elem)
 
 int			main(int argc, char **argv)
 {
-	(void)argc;
 	t_map	map;
 	t_tetr	*elem;
 	t_head	sentinel;
-//	char	**grid;
 	int		i;
 	t_iter	var;
 
 	elem = NULL;
 	ELEM = elem;
 	i = 0;
+	if (ft_argc(argc))
+		return (0);
 	if ((ELEM = read_and_copy(argv[1], &sentinel, ELEM, &var)))
 	{
 		GRID = create_grid(ft_size(sentinel.lenght));
@@ -141,5 +125,7 @@ int			main(int argc, char **argv)
 		}
 		print_grid(GRID);
 	}
+	else
+		ft_putstr("error\n");
 	return (0);
 }
