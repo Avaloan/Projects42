@@ -6,112 +6,194 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 14:29:40 by snedir            #+#    #+#             */
-/*   Updated: 2017/02/12 16:56:40 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/17 04:29:45 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
-#include <stdio.h>
-#define BUFF_SIZE 32
-#include <unistd.h>
-#include <sys/types.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include "libft.h"
+/*void		**ultrafcntl(char *buf, char **line, t_buf *control)
+  {
+  int		i;
+  int		j;
+  int		less;
+  char	*sub;
+
+  i = 0;
+  j = 0;
+  less = 0;
+  while (buf[i])
+  {
+  if (buf[i] == '\n')
+  {
+  if (j > 0)
+  add_node(buf, FD); 
+  sub = ft_strsub(buf, i - less, i - less);
+  if (PENDING)
+ *line = ft_strjoin(STOCK, sub); //attention au free
+ PENDING = 0;
+ if (!less)
+ less += i;
+ free(sub);
+ j++;
+ }
+ i++;
+ }
+ if (!j)
+ STOCK = ft_strdup(buf);*/ /*ici cela peut etre un join faire attention
+							 a bien free puis faire strjoin(STOCK, BUF)
+							 */
+/*if (RET != 0)
+  PENDING = 1;
+  }
 
 
-typedef struct s_buf
-{
-	size_t len_buf;
-	int iter;
-	int *pos_array;
-	int len_array;
-}				t_buf;
+  int				fonctionRead()
+  {
+//la fonction read si il n'ya pas de '\n' relancer l'ultrafcntl recursif
+int i = -1;
+int ret = 0;
+ret = read(fd, buf, BUFF_SIZE);
+buf[ret] = '\0';
+static t_buf *control = add_node;
+ultrafcntl(des bonnes choses);
+if (PENDING == 1)
+ultrafcntl(des bonnes choses)//completer le maillon
 
-t_buf *new(char *buf)
-{
-	t_buf *elem;
-	int j;
-	int i;
-	
-	j = 0;
-	i = 0;
-	if (!(elem = (t_buf*)malloc(sizeof(*elem))))
-		return (0);
-	elem->len_buf = ft_strlen(buf);
-	elem->iter = -1;
-	while (buf[++elem->iter])
-		if (buf[elem->iter] == '\n')
-			j++;
-	if (!(elem->pos_array = (int*)malloc(sizeof(int) * j)))
-		return (0);
-	elem->len_array = j;
-	elem->iter = -1;
-	while (buf[++elem->iter])
-		if (buf[elem->iter] == '\n')
-		{
-			elem->pos_array[i] = elem->iter;
-			i++;
-		}
-	return (elem);
 }
-/*
-int parse_buf(char *buf)
-{
-	int i;
-	int nb_nl;
-	size_t len;
-	int pos_nl;
 
-	i = 0;
-	nb_nl = 0;
-	len = strlen(buf);
-	while (buf[i])&& buf[i] != '\n')
-	{
-		if (buf[i] == '\n')
-		{
-			nb_nl++;
-			pos_nl = i;
-		}
-		i++;
-	}
-	if (nb_nl == 1 && i == len)
-		ft_strcpy(buf, stockage);
-	if (
-			}
+static t_buf		*new(char *buf, int fd, int ret)
+{
+static t_buf	*control;
+
+if (!(control = (t_buf*)malloc(sizeof(t_buf))))
+return (NULL);
+NEXT = NULL;
+STOCK = NULL;
+FD = fd;
+PENDING = 0;
+RET = ret;
+}
 */
+//int get_next_line(int fd, char **line)
+//{
+/*char buf[BUFF_SIZE + 1];
+  static t_buf *control;
+  int ret;
 
-
-
-
-
-
-
+  while (buf[ret] != '\n'
+  control = add_node;
+  ultrafcntl(control);*/
+//}
 
 /*
-int get_next_line(const int fd, char **line)
+   int main(int argc, char **argv)
+   {
+   int fd = open(argv[1], O_RDONLY);
+   printf("fd = %d\n", fd);
+   char buf[BUFF_SIZE + 1];
+   int ret = 0;
+   ret = read(fd, buf, BUFF_SIZE);
+   printf("fd after read %d ret = %d\n", fd, ret);
+   buf[ret] = '\0';
+   printf("%s", buf);
+   */
+//int ret = 0;
+//ret = read(fd, buf2, BUFF_SIZE);
+//t_buf *elem = new(buf);
+//int i = 0;
+//char **grid = ft_strsplit(buf, '\n');
+//ft_free_2d(grid, ft_strlen(*grid));
+//ft_print_grid(grid);
+/*printf("taille buf = {%zu}\n", elem->len_buf);
+  printf("taille tableau = {%d}\n", elem->len_array);
+  while (i < elem->len_array)
+  {
+  printf("position NL : {%d}\n", (elem->pos_array)[i]);
+  printf("i = %d\n", i);
+  i++;
+  }
+  }*/
+#include "get_next_line.h"
+/
+static int check_stock(t_buf *control, char **line)
 {
-	int		ret;
-	char	buf[BUFF_SIZE];
-
-	while ((ret = read(fd, buf, BUFF_SIZE)))
-		buf[ret] = '\0';
-}*/
-
-int main(int argc, char **argv)
-{
-	int fd = open(argv[1], O_RDONLY);
-	char buf[4];
-	int ret = 0;
-	ret = read(fd, buf, BUFF_SIZE);
-	buf[ret] = '\0';
-	t_buf *elem = new(buf);
-	int i = 0;
-	printf("taille buf = {%zu}\n", elem->len_buf);
-	printf("taille tableau = {%d}\n", elem->len_array);
-	while (i < elem->len_array)
+	char *tmp;
+	if ((tmp = ft_strchr(STOCK, '\n')))
 	{
-		printf("position NL : {%d}\n", (elem->pos_array)[i]);
-		i++;
+		tmp = '\0';
+		*line = ft_strdup(STOCK);
+		STOCK = ft_strdup(tmp + 1);
+		tmp = NULL;
+		return (1);
+	}
+	return (0);
+}
+
+
+static int check_read(char *buffer, char **stock, char **line)
+{
+	char*tmp;
+	//implementer la liste chainee
+	if ((tmp = ft_strchr(buffer, '\n')))
+	{
+		*tmp = '\0';
+		*line = ft_strjoin(*stock, buffer);
+		free(*stock);
+		*stock = ft_strdup(tmp + 1);
+		tmp = NULL;
+		free(buffer);
+		return (1);
+	}
+	return (0);
+}
+
+static int chec_read(char *buf, t_buf *control, char **line)
+{
+	char *tmp;
+
+	if ((tmp = ft_strchr(buf, '\n')))
+	{
+		*tmp = '\0';
+		*line = ft_strjoin(STOCK, buf);
+		free(STOCK);
+		STOCK = ft_strdup(tmp + 1);
+		tmp = NULL;
+		return (1);
 	}
 }
+
+
+
+int get_next_line(int const fd, char **line)
+{
+	static t_buf *control = NULL;
+	char buffer[BUFF_SIZE + 1];
+	int ret;
+
+	//checker ici si le fd est different du dernier appel
+	/*si le fd est different faire un autre maillon ou si il appartient a
+	 un maillon en particulier afin de reprendre la lecture*/
+	//donc parcours de liste pour rechercher le fd
+	add_node;
+	if (stock) //voir PENDING
+		if (check_stock(&stock, line))
+			return (1);
+	//buffer = ft_strnew(BUFF_SIZE);
+	while ((ret = read(fd, buffer, BUFF_SIZE)) > 0)
+	{
+		buffer[ret] = '\0';
+		if (check_read(buffer, &stock, line))
+			return (1);
+		stock = ft_strjoin(stock, buffer);
+	}
+	free(buffer);
+	buffer = NULL;
+	if (ret == -1)
+		return (-1);
+	if (stock == NULL)
+		return (0);
+	*line = ft_strdup(stock);
+	free(stock); //bien delete le stock
+	stock = NULL;
+	return (1);
+}
+
