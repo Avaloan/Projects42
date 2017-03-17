@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 14:29:40 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/17 04:29:45 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/17 04:56:04 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,40 +113,28 @@ RET = ret;
   }
   }*/
 #include "get_next_line.h"
-/
+
 static int check_stock(t_buf *control, char **line)
 {
 	char *tmp;
 	if ((tmp = ft_strchr(STOCK, '\n')))
 	{
-		tmp = '\0';
+		*tmp = '\0';
 		*line = ft_strdup(STOCK);
 		STOCK = ft_strdup(tmp + 1);
 		tmp = NULL;
 		return (1);
 	}
+	PENDING = 1;
 	return (0);
 }
+/*
+**	probleme structurel soit faire une liste de t_buf avec des fd diff
+***	soit une liste chainee avec le stock dans la liste et non dans le t_buf
+**	contourner la norme fonction ajout et creation de node
+*/
 
-
-static int check_read(char *buffer, char **stock, char **line)
-{
-	char*tmp;
-	//implementer la liste chainee
-	if ((tmp = ft_strchr(buffer, '\n')))
-	{
-		*tmp = '\0';
-		*line = ft_strjoin(*stock, buffer);
-		free(*stock);
-		*stock = ft_strdup(tmp + 1);
-		tmp = NULL;
-		free(buffer);
-		return (1);
-	}
-	return (0);
-}
-
-static int chec_read(char *buf, t_buf *control, char **line)
+static int check_read(char *buf, t_buf *control, char **line)
 {
 	char *tmp;
 
@@ -159,41 +147,40 @@ static int chec_read(char *buf, t_buf *control, char **line)
 		tmp = NULL;
 		return (1);
 	}
+	PENDING = 1;
+	return (0);
 }
-
-
 
 int get_next_line(int const fd, char **line)
 {
 	static t_buf *control = NULL;
-	char buffer[BUFF_SIZE + 1];
+	char buf[BUFF_SIZE + 1];
 	int ret;
 
-	//checker ici si le fd est different du dernier appel
-	/*si le fd est different faire un autre maillon ou si il appartient a
-	 un maillon en particulier afin de reprendre la lecture*/
-	//donc parcours de liste pour rechercher le fd
-	add_node;
-	if (stock) //voir PENDING
-		if (check_stock(&stock, line))
+	if (control)
+		if (fd != FD)
+			faire le parcours/*le simple new et faire le chainage maison en
+								cas de nouveau fd*/
+	/*parcours liste si fd existe suivre sinon creer nouveau maillon*/
+	//add_node;
+	if (PENDING) //voir PENDING
+		if (check_stock(control, line))
 			return (1);
 	//buffer = ft_strnew(BUFF_SIZE);
-	while ((ret = read(fd, buffer, BUFF_SIZE)) > 0)
+	while ((ret = read(fd, control, BUFF_SIZE)) > 0)
 	{
-		buffer[ret] = '\0';
-		if (check_read(buffer, &stock, line))
+		buf[ret] = '\0';
+		if (check_read(buf, control, line))
 			return (1);
-		stock = ft_strjoin(stock, buffer);
+		STOCK = ft_strjoin(STOCK, buf);
 	}
-	free(buffer);
-	buffer = NULL;
 	if (ret == -1)
 		return (-1);
-	if (stock == NULL)
+	if (STOCK == NULL)
 		return (0);
-	*line = ft_strdup(stock);
-	free(stock); //bien delete le stock
-	stock = NULL;
+	*line = ft_strdup(STOCK);
+	free(STOCK); //bien delete le stock
+	STOCK = NULL;
 	return (1);
 }
 
