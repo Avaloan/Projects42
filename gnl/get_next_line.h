@@ -6,14 +6,14 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 00:18:00 by snedir            #+#    #+#             */
-/*   Updated: 2017/03/17 03:23:38 by snedir           ###   ########.fr       */
+/*   Updated: 2017/03/25 14:58:52 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # include <stdio.h>
-# define BUFF_SIZE 4
+# define BUFF_SIZE 600
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -23,8 +23,6 @@
 # define STOCK control->stock
 # define FD control->fd
 # define PENDING control->pending
-# define POSNL control->buf_analyse
-# define RET control->ret
 
 /*
 ** STRUCTS
@@ -37,11 +35,6 @@ typedef struct		s_buf
 	char			*stock;
 	int				fd;
 	int				pending;
-	int				*buf_analyse;
-	int				ret;
-	struct s_buf	*first_elem;
-	int				printed;
-	//var de control savoir si le maillon a ete lu
 }					t_buf;
 
 /*
