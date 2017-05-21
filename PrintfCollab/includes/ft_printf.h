@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 00:37:00 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/05/16 09:14:32 by snedir           ###   ########.fr       */
+/*   Updated: 2017/05/21 04:05:07 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,8 @@ int					flags(char format, t_print *elem);
 char				specifier(t_print *elem, char format);
 t_print				*init();
 int					print_list(t_print *elem, char *format);
+int					wide_string(t_print *elem, va_list ap);
+int					apply_hash(t_print *elem);
+char				*get_pointer(t_print *elem, va_list ap);
 
 #endif

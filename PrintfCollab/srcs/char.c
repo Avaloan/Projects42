@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 08:33:59 by snedir            #+#    #+#             */
-/*   Updated: 2017/05/18 13:35:27 by snedir           ###   ########.fr       */
+/*   Updated: 2017/05/21 02:40:40 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ char			*wide_char(t_print *elem, va_list ap)
 	char	*mask;
 	char	*fill;
 	wint_t	c;
-	
+
 	c = (wchar_t)va_arg(ap, wint_t);
 	str = ft_itoa_base(c, 2);
 	len = ft_strlen(str);
@@ -162,6 +162,40 @@ char			*arg_char(t_print *elem, va_list ap)
 	return (STOCK);
 }
 
+char *wide_str_trans(t_print *elem, wchar_t wide)
+{
+	char*str;
+	size_t len;
+	char*mask;
+	char*fill;
+	char*tmp;
 
+	if (!STOCK)
+		STOCK = malloc(1);
+	str = ft_itoa_base(wide, 2);
+	len = ft_strlen(str);
+	mask = create_mask(len);
+	fill = fill_mask(mask, str);
+	tmp = binary_to_dec(ft_strsplit(fill, ' '), countspace(mask));
+	STOCK = ft_strjoin_free(STOCK, tmp, 2);
+	SIZE += ft_strlen(STOCK);
+	return (STOCK);
+}
+
+int wide_string(t_print *elem, va_list ap)
+{
+	char*str;
+	wchar_t *data;
+	int i;
+
+	i = -1;
+	data = va_arg(ap, wchar_t*);
+	while (*data)
+	{
+		wide_str_trans(elem, *data);
+		data++;
+	}
+	return (1);
+}
 
 

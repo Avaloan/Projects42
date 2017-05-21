@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/01 01:09:20 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/05/19 00:29:52 by snedir           ###   ########.fr       */
+/*   Updated: 2017/05/21 04:39:09 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,17 @@ void print_grid(char **grid)
 	ft_putchar('\n');
 }
 
-int print(char *format, ...)
+int print(const char *format, ...)
 	{
 		va_list ap;
 		t_print *elem = NULL;
 		t_print *start;
+		char *str = ft_strdup(format);
 		
 		va_start(ap, format);
-		start = analyse(format, elem);
+		start = analyse(str, elem);
 		parcours_liste(start, ap);
-		int count = print_list(start, format);
+		int count = print_list(start, str);
 		return (count);
 	}
 
@@ -72,8 +73,8 @@ int main()
 	size_t jj = 18;
 
 	//int rere = printf("%d\n",&i);
-	print("%C %c %x %X %o %u %d\n%s\n", 0x1234, 'g', 15, 14, 8, 0, 1645, "salut les fils de putes");
-	//printf("\n\n");
+	//print("%C %c %x %X %o %u%d\n%.2s\n", 0x1234, 'g', 15, 14, 8, 0, 1645, "salut les fils de putes");
+	int hah = 12458;
 	//print("%d", ret);
 	//printf("%C %c %x %X %o %u %d\n", 0x1234, 'f', 15, 14, 8, 15, -1645);
 	//print("%d%u", 1645, 15);

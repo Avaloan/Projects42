@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 10:26:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/05/16 09:33:31 by snedir           ###   ########.fr       */
+/*   Updated: 2017/05/21 04:38:58 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,15 @@ void	parcours_liste(t_print *elem, va_list ap)
 			STOCK = get_signed_number(elem, ap);
 		if (SPEC == 's')
 			STOCK = string(elem, ap);
+		if (SPEC == 'S' || (SPEC == 's' && LEN == 'l'))
+			/*STOCK = */wide_string(elem, ap);
+		if (SPEC == 'p')
+		{
+			STOCK = get_pointer(elem, ap);
+			apply_hash(elem);
+		}
 		elem = NEXT;
+
 	}
 }
 
@@ -50,9 +58,11 @@ int		print_list(t_print *elem, char *format)
 				elem = NEXT;
 			}
 		}
-		write(1, format + i, 1);
 		if (format[i] != '%')
+		{
+			write(1, format + i, 1);
 			i++;
+		}
 	}
 	return (couunt);
 }

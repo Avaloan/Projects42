@@ -6,13 +6,14 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 05:26:10 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/05/13 23:46:17 by snedir           ###   ########.fr       */
+/*   Updated: 2017/05/21 02:37:38 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char		*ft_itoa_base(int nb, int base)
+char		*ft_itoa_base(wchar_t nb, int base)
 {
 	char	*str;
 	int		i;
