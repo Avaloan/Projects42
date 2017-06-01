@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 05:54:24 by snedir            #+#    #+#             */
-/*   Updated: 2017/05/30 08:47:10 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/01 01:42:28 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ char	*apply_width_string(t_print *elem)
 	int	i;
 	int	j;
 
-	if (NACC < 0)
+	if (NACC < 0 || STARAC < 0)
 		return (STOCK);
-	i = NACC;
+	if (STARAC)
+		i = STARAC;
+	else
+		i = NACC;
 	j = 0;
 	while (STOCK[i])
 	{
@@ -70,7 +73,7 @@ int wide_str_trans(t_print *elem, wchar_t wide)
 	fill = fill_mask(mask, str);
 	tmp = binary_to_dec(ft_strsplit(fill, ' '), countspace(mask));
 	SIZE += ft_strlen(tmp);
-	if (NACC < (int)SIZE && ACC)
+	if ((NACC < (int)SIZE && ACC))// || (STARAC < (int)SIZE && ACC))
 	{
 		SIZE -= ft_strlen(tmp);
 		return (0);

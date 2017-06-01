@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 10:26:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/05/27 05:35:50 by fdidelot         ###   ########.fr       */
+/*   Updated: 2017/06/01 04:08:41 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,45 @@
 
 void	apply_flags(t_print *elem)
 {
-	field(elem);
+	if (ZERO && !MINUS)
+	  field(elem);
+	if (PLUS && ft_atoi(STOCK) > 0 && SPEC != '%')
+		add_plus_space(elem, 0);
+	else if (SPACE && SPEC != '%')
+		add_plus_space(elem, 1);
+	if (HASH && ft_atoi(STOCK) != 0)
+	  apply_hash(elem);
+	if (!ZERO || (ZERO && MINUS))
+	  field(elem);
 }
+
+char	*place_zero(char *final, char *str, int size, int sizebuf)
+{
+	int i;
+	int j;
+	int k;
+	char *filled;
+
+	filled = ft_strnew(size);
+	i = 0;
+	j = 0;
+	k = 0;
+	while (k < sizebuf)
+	{
+		if (str[j] && i + '0' == str[j])
+		{
+			filled[i] = '\0';
+			j++;
+			i++;
+		}
+		filled[i] = final[k];
+		k++;
+		i++;
+	}
+	return (filled);
+}
+
+
 
 t_print	*create_stock(t_print *elem, va_list ap)
 {
@@ -29,7 +66,7 @@ t_print	*create_stock(t_print *elem, va_list ap)
 		if (STARAC)
 			STARAC = va_arg(ap, int);
 		get_arg(elem, ap);
-//		apply_flags(elem);
+		apply_flags(elem);
 		elem = NEXT;
 	}
 	return (start);
@@ -43,11 +80,11 @@ void	get_arg(t_print *elem, va_list ap)
 		arg_char(elem, ap);
 	else if (SPEC == 'x' || SPEC == 'X')
 		STOCK = get_hexa_args(elem, ap);
-	else if (SPEC == 'o' || SPEC == 'u')
+	else if (SPEC == 'o' || SPEC == 'u' || SPEC == 'U' || SPEC == 'O')
 		STOCK = get_o_u_args(elem, ap);
-	else if (SPEC == 'd' || SPEC == 'i')
+	else if (SPEC == 'd' || SPEC == 'i' || SPEC == 'D')
 		STOCK = get_signed_number(elem, ap);
-	else if (SPEC == 's')
+	else if (SPEC == 's' && LEN != 'l')
 		STOCK = string(elem, ap);
 	else if (SPEC == 'S' || (SPEC == 's' && LEN == 'l'))
 		/*STOCK = */wide_string(elem, ap);
@@ -63,31 +100,6 @@ void	get_arg(t_print *elem, va_list ap)
 	}
 }
 
-int		print_list(t_print *elem, char *format)
-{
-	int couunt = 0;
-	int i = 0;
-	while (elem)
-	{
-		if (format[i] == '%')
-		{
-			if (STOCK)
-			{
-				write(1, STOCK, SIZE);
-				couunt += SIZE;
-				while (format[i] && format[i] != SPEC)
-					i++;
-				i++;
-				elem = NEXT;
-			}
-		}
-		write(1, format + i, 1);
-		if (format[i] != '%')
-			i++;
-	}
-	return (couunt);
-}
-
 size_t		da_print(t_print *elem, char *format)
 {
 	size_t	size_print;
@@ -95,11 +107,13 @@ size_t		da_print(t_print *elem, char *format)
 	int		j;
 	unsigned int		start;
 	char	*final_buff;
+	char	*str;
 
 	i = 0;
 	j = 0;
 	size_print = 0;
 	final_buff = ft_strnew(1);
+	str = ft_strnew(1);
 	while (format[i])
 	{
 		start = (unsigned int)i;
@@ -109,7 +123,9 @@ size_t		da_print(t_print *elem, char *format)
 		{
 			if (i - start  > 0)
 				final_buff = ft_strjoin_free(final_buff, ft_strsub(format, start, i - start), 2);
-			final_buff = ft_strjoin_free(final_buff, STOCK, 2);				
+			if (*STOCK == '\0')
+				str = ft_strjoin_free(str, ft_itoa_base(i, 10), 2);
+			final_buff = ft_strjoin_free(final_buff, STOCK, 2);
 			size_print += (size_t)i + SIZE - start;
 			i += SIZEF;
 			elem = NEXT;
@@ -120,8 +136,13 @@ size_t		da_print(t_print *elem, char *format)
 			size_print += (size_t)i - (size_t)start;
 		}
 	}
-	if (size_print > 0)
-		write(1, final_buff, size_print);
+	if (size_print != ft_strlen(final_buff))
+	{
+		write(1, place_zero(final_buff, str, size_print, ft_strlen(final_buff)), size_print);
+		free(str);
+	}
+	else if (size_print > 0)
+		write(1, final_buff, ft_strlen(final_buff));
 	free(final_buff);
 	return (size_print);
 }

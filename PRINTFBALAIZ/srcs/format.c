@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 10:26:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/05/30 07:19:04 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/01 05:47:04 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,28 @@
 
 void	apply_flags(t_print *elem)
 {
-	field(elem);
+	if (ZERO && !MINUS)
+		field(elem);
+	if (ft_atoi(STOCK) == 0 && ACC && NACC == 0 && (SPEC == 'o' || SPEC == 'u'
+				|| SPEC == 'U' || SPEC == 'O' ||SPEC == 'd' || SPEC == 'i' 
+				|| SPEC == 'D' || SPEC == 'x' || SPEC == 'X'))
+	{
+		free(STOCK);
+		STOCK = ft_strnew(1);
+		SIZE = 0;
+	}
+	if (PLUS && ft_atoi(STOCK) > 0 && SPEC != '%')
+		add_plus_space(elem, 0);
+	else if (SPACE && SPEC != '%')
+		add_plus_space(elem, 1);
+	if (HASH && ft_atoi(STOCK) != 0)
+		apply_hash(elem);
+	if (!ZERO || (ZERO && MINUS))
+	{
+		printf("B4 = %c|| SIZE B4 = %zu\n", *STOCK, SIZE);
+		field(elem);
+		printf("STOCK = %s|| SIZE = %zu\n", STOCK, SIZE);
+	}
 }
 
 char	*place_zero(char *final, char *str, int size, int sizebuf)
@@ -42,8 +63,6 @@ char	*place_zero(char *final, char *str, int size, int sizebuf)
 	}
 	return (filled);
 }
-
-
 
 t_print	*create_stock(t_print *elem, va_list ap)
 {
@@ -114,8 +133,11 @@ size_t		da_print(t_print *elem, char *format)
 		{
 			if (i - start  > 0)
 				final_buff = ft_strjoin_free(final_buff, ft_strsub(format, start, i - start), 2);
-			if (*STOCK == '\0')
-				str = ft_strjoin_free(str, ft_itoa_base(i, 10), 2);
+			if (*STOCK == '\0' || STOCK[SIZE - 1] == '\0')
+			{
+				str = ft_strjoin_free(str, ft_itoa_base(i, 10), 2); //ft_intjoin_free a faire;
+				printf("STR = %s\n", str);
+			}
 			final_buff = ft_strjoin_free(final_buff, STOCK, 2);
 			size_print += (size_t)i + SIZE - start;
 			i += SIZEF;

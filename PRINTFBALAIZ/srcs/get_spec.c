@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 05:44:42 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/05/30 07:39:04 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/01 01:43:49 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char    *string(t_print *elem, va_list ap)
 	}
 	STOCK = ft_strdup(str);
     SIZE = ft_strlen(STOCK);
-    if ((NACC < (int)SIZE && ACC))
+    if ((NACC < (int)SIZE && ACC))// || (STARAC < (int)SIZE && ACC))
         apply_width_string(elem);
     return (STOCK);
 }
