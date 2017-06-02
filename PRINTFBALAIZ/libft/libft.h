@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 15:43:49 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/05/28 00:20:43 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/02 01:03:25 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ char				*ft_strsub_free(const char *s,
 									unsigned int start, size_t len);
 char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strjoin_free(const char *s1, const char *s2, int i);
+char				*ft_strjoin_size_free(const char *s1, const char *s2,
+											int size_buf, int size_stock);
 char				*ft_strtrim(const char *s);
 char				*ft_itoa(int n);
 char				*ft_strrev(char *str);
@@ -101,5 +103,7 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					*ft_range(int min, int max);
+
+long long			ft_atoi_u(char *str);
 
 #endif

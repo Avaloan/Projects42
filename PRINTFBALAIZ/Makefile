@@ -6,7 +6,7 @@
 #    By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/25 04:13:00 by fdidelot          #+#    #+#              #
-#    Updated: 2017/05/28 00:31:06 by snedir           ###   ########.fr        #
+#    Updated: 2017/06/02 01:07:28 by snedir           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,8 @@ PRINTFSRC =	ft_printf.c \
 			parser.c \
 			struct.c
 
-LFTSRC =	ft_atoi.c \
+LFTSRC =		ft_atoi_u.c \
+			ft_atoi.c \
 			ft_itoa.c \
 			ft_itoa_base.c \
 			ft_itoa_base_maj.c \
@@ -43,6 +44,7 @@ LFTSRC =	ft_atoi.c \
 			ft_itoa_base_maj_signed.c \
 			ft_strrev.c \
 			ft_strsplit.c \
+			ft_strjoin_size_free.c \
 
 OBJS1 = $(LFTSRC:.c=.o)
 	OBJS2 = $(PRINTFSRC:.c=.o)

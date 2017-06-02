@@ -6,36 +6,37 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 10:26:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/01 05:47:04 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/02 06:24:22 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include <string.h>
 
 void	apply_flags(t_print *elem)
 {
-	if (ZERO && !MINUS)
+	if (ACC && SPEC != 'c' && SPEC != 's' && SPEC != 'C' && SPEC != 'S')
+		precision(elem);
+	if (ZERO && !MINUS && *STOCK != '\0')
 		field(elem);
-	if (ft_atoi(STOCK) == 0 && ACC && NACC == 0 && (SPEC == 'o' || SPEC == 'u'
-				|| SPEC == 'U' || SPEC == 'O' ||SPEC == 'd' || SPEC == 'i' 
-				|| SPEC == 'D' || SPEC == 'x' || SPEC == 'X'))
+	else if (SPEC == 'c' && *STOCK == '\0')
+		field_zero(elem);
+	if (ft_atoi(STOCK) == 0 && /*!HASH &&*/ ACC && NACC == 0 && (SPEC == 'o'
+				|| SPEC == 'u'|| SPEC == 'U' || SPEC == 'O' ||SPEC == 'd'
+				|| SPEC == 'i' || SPEC == 'D' || SPEC == 'x' || SPEC == 'X'))
 	{
 		free(STOCK);
 		STOCK = ft_strnew(1);
 		SIZE = 0;
 	}
-	if (PLUS && ft_atoi(STOCK) > 0 && SPEC != '%')
+	if (PLUS && ft_atoi(STOCK) > -1 && SPEC != '%')
 		add_plus_space(elem, 0);
-	else if (SPACE && SPEC != '%')
+	else if (ft_atoi(STOCK) > 0 && SPACE && SPEC != '%' && (SIZE != 1 && *STOCK != '\0'))
 		add_plus_space(elem, 1);
 	if (HASH && ft_atoi(STOCK) != 0)
 		apply_hash(elem);
-	if (!ZERO || (ZERO && MINUS))
-	{
-		printf("B4 = %c|| SIZE B4 = %zu\n", *STOCK, SIZE);
+	if ((!ZERO || (ZERO && MINUS)) && RUSTINE != 989)
 		field(elem);
-		printf("STOCK = %s|| SIZE = %zu\n", STOCK, SIZE);
-	}
 }
 
 char	*place_zero(char *final, char *str, int size, int sizebuf)
@@ -117,13 +118,11 @@ size_t		da_print(t_print *elem, char *format)
 	int		j;
 	unsigned int		start;
 	char	*final_buff;
-	char	*str;
 
 	i = 0;
 	j = 0;
 	size_print = 0;
 	final_buff = ft_strnew(1);
-	str = ft_strnew(1);
 	while (format[i])
 	{
 		start = (unsigned int)i;
@@ -132,30 +131,21 @@ size_t		da_print(t_print *elem, char *format)
 		if (format[i] == '%')
 		{
 			if (i - start  > 0)
-				final_buff = ft_strjoin_free(final_buff, ft_strsub(format, start, i - start), 2);
-			if (*STOCK == '\0' || STOCK[SIZE - 1] == '\0')
-			{
-				str = ft_strjoin_free(str, ft_itoa_base(i, 10), 2); //ft_intjoin_free a faire;
-				printf("STR = %s\n", str);
-			}
-			final_buff = ft_strjoin_free(final_buff, STOCK, 2);
-			size_print += (size_t)i + SIZE - start;
+				final_buff = ft_strjoin_size_free(final_buff, ft_strsub(format, start, i - start), size_print, i - start);
+			size_print += (size_t)i - start;
+			final_buff = ft_strjoin_size_free(final_buff, STOCK, size_print, SIZE);
+			size_print += SIZE;
 			i += SIZEF;
 			elem = NEXT;
 		}
 		else if (!format[i])
 		{
-			final_buff = ft_strjoin_free(final_buff, ft_strsub(format, start, i - start), 2);
+			final_buff = ft_strjoin_size_free(final_buff, ft_strsub(format, start, i - start), size_print, i - start);
 			size_print += (size_t)i - (size_t)start;
 		}
 	}
-	if (size_print != ft_strlen(final_buff))
-	{
-		write(1, place_zero(final_buff, str, size_print, ft_strlen(final_buff)), size_print);
-		free(str);
-	}
-	else if (size_print > 0)
-		write(1, final_buff, ft_strlen(final_buff));
+	if (size_print > 0)
+		write(1, final_buff, size_print);//ft_strlen(final_buff));
 	free(final_buff);
 	return (size_print);
 }

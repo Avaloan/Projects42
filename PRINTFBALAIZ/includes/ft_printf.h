@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 00:37:00 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/05/30 08:33:18 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/02 04:40:45 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define SIZE elem->content_size
 # define SIZEF elem->size_flags
 # define SIZEW elem->wide_size
+# define RUSTINE elem->rustine
 
 /* LIST */
 # define LST elem->list
@@ -68,6 +69,7 @@ typedef	struct		s_print
 	int				priority; //RAJOUT INIT
 	int				size_flags;
 	int				wide_size;
+	int				rustine;
 	char			specifier;
 	char			lenght;
 	char			*stock;
@@ -102,6 +104,10 @@ int					wide_str_trans(t_print *elem, wchar_t wide);
 /* apply_flags.c */
 void				add_plus_space(t_print *elem, int id);
 void				field(t_print *elem);
+void   				field_p(t_print *elem, char c, int size);
+void   				field_neg(t_print *elem, char c, int size);
+void				field_zero(t_print *elem);
+void				precision(t_print *elem);
 int					apply_hash(t_print *elem);
 
 /* char.c */

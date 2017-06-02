@@ -6,26 +6,17 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 01:04:12 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/01 04:35:00 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/02 06:24:18 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void    field(t_print *elem)
+void	field_p(t_print *elem, char c, int size)
 {
-	char	*space;
 	int		i;
-	int		size;
-	char	c;
-
-	c = ' ';
-	if (HASH && NUM > (int)SIZE + 1 && ZERO && !MINUS)
-		NUM -= 2;
-	if ((size = NUM - ft_strlen(STOCK)) < 1)
-		return ;
-	if (ZERO && !MINUS)
-		c = '0';
+	char	*space;
+	
 	i = 0;
 	space = malloc(sizeof(char) * size);
 	space[size] = '\0';
@@ -40,6 +31,24 @@ void    field(t_print *elem)
 		SIZE = NUM;
 		NUM = -1;
 	}
+}
+
+void    field(t_print *elem)
+{
+	int		size;
+	char	c;
+
+	c = ' ';
+	if (HASH && NUM > (int)SIZE + 1 && ZERO && !MINUS)
+		NUM -= 2;
+	if ((size = NUM - ft_strlen(STOCK)) < 1)
+		return ;
+	if (ZERO && !MINUS && !ACC)
+		c = '0';
+	if (ft_atoi_u(STOCK) < 0 && ZERO)
+		field_neg(elem, c, size);
+	else
+		field_p(elem, c, size);
 }
 
 void	add_plus_space(t_print *elem, int id)
@@ -87,4 +96,98 @@ int		apply_hash(t_print *elem)
 	if (str)
 		STOCK = ft_strjoin_free(str, STOCK, 2);
 	return (1);
+}
+
+void    field_zero(t_print *elem)
+{
+	char    c;
+	int     size;
+	int     i;
+	char    *space;
+
+	c = ' ';
+	if ((size = NUM - SIZE) < 1)
+		return ;
+	if (ZERO && !MINUS)
+		c = '0';
+	i = 0;
+	space = malloc(sizeof(char) * size);
+	if (MINUS)
+	{
+		space[i++] = '\0';
+		while (i <= size)
+			space[i++] = c;
+	}
+	else
+	{
+		while (i < size)
+			space[i++] = c;
+		space[size] = '\0';
+	}
+	if ((int)SIZE < NUM)
+		SIZE = NUM;
+	free(STOCK);
+	STOCK = space;
+	RUSTINE = 989;
+}
+
+void	precision(t_print *elem)
+{
+	char	*space;
+	int		i;
+	int		size;
+	char	c;
+	int		rust;
+
+	rust = 0;
+	i = 0;
+	if ((size = NACC - ft_strlen(STOCK)) < 1)
+		return ;
+	if (ft_atoi(STOCK) < 0)
+	{
+		STOCK = ft_strdup(STOCK + 1);
+		rust = 1;
+		size += 2;
+		i++;
+	}
+	c = '0';
+	space = malloc(sizeof(char) * size);
+	if (rust)
+		space[0] = '-';
+	space[size] = '\0';
+	while (i < size)
+		space[i++] = c;
+	STOCK = ft_strjoin_free(space, STOCK, 2);
+	if ((int)SIZE < NACC)
+		SIZE = NACC;
+	if (rust)
+		SIZE++;
+}
+
+void	field_neg(t_print *elem, char c, int size)
+{
+	char	*space;
+	int		i;
+	
+	i = 0;
+	size++;
+	STOCK = ft_strdup(STOCK + 1);
+	space = malloc(sizeof(char) * size);
+	space[size] = '\0';
+	if (!MINUS)
+		space[i++] = '-';
+	while (i < size)
+		space[i++] = c;
+	if (MINUS)
+	{
+		STOCK = ft_strjoin_free(ft_strdup("-"), STOCK, 2);
+		STOCK = ft_strjoin_free(STOCK, space, 2);
+	}
+	else
+		STOCK = ft_strjoin_free(space, STOCK, 2);
+	if ((int)SIZE < NUM)
+	{
+		SIZE = NUM;
+		NUM = -1;
+	}
 }
