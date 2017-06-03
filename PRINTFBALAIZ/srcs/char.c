@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 08:33:59 by snedir            #+#    #+#             */
-/*   Updated: 2017/05/29 04:41:09 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/03 03:07:11 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ char			*arg_char(t_print *elem, va_list ap)
 {
 	int		data;
 
+	free(STOCK);
 	data = (char)va_arg(ap, int);
 	STOCK = (char*)malloc(sizeof(char));
 	if (data == 0)

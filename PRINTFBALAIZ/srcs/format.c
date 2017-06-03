@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 10:26:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/02 06:24:22 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/03 06:05:01 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	apply_flags(t_print *elem)
 		add_plus_space(elem, 0);
 	else if (ft_atoi(STOCK) > 0 && SPACE && SPEC != '%' && (SIZE != 1 && *STOCK != '\0'))
 		add_plus_space(elem, 1);
-	if (HASH && ft_atoi(STOCK) != 0)
+	if ((HASH && ft_atoi(STOCK) != 0) || (HASH && (SPEC == 'o' || SPEC == 'O')) || SPEC == 'p')
 		apply_hash(elem);
-	if ((!ZERO || (ZERO && MINUS)) && RUSTINE != 989)
-		field(elem);
+ 	if ((!ZERO || (ZERO && MINUS)) && RUSTINE != 989)
+ 		field(elem);
 }
 
 char	*place_zero(char *final, char *str, int size, int sizebuf)
@@ -73,9 +73,14 @@ t_print	*create_stock(t_print *elem, va_list ap)
 	while (elem)
 	{
 		if (STAR)
-			STAR = va_arg(ap, int);
+			NUM = va_arg(ap, int);
+		if (NUM < 0)
+		{
+			NUM *= -1;
+			MINUS = 1;
+		}
 		if (STARAC)
-			STARAC = va_arg(ap, int);
+			NACC = va_arg(ap, int);
 		get_arg(elem, ap);
 		apply_flags(elem);
 		elem = NEXT;
@@ -105,10 +110,7 @@ void	get_arg(t_print *elem, va_list ap)
 		SIZE = 1;
 	}
 	else if (SPEC == 'p')
-	{
 		STOCK = get_pointer(elem, ap);
-		apply_hash(elem);
-	}
 }
 
 size_t		da_print(t_print *elem, char *format)

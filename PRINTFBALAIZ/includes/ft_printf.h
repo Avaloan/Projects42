@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 00:37:00 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/02 04:40:45 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/03 02:29:35 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ t_print				*analyse(char *format, t_print *elem);
 char				specifier(t_print *elem, char format);
 int					flags(char format, t_print *elem);
 int					length(char *format, t_print *elem);
+int					da_check(char format);
 
 /* struct.c */
 t_print				*init();

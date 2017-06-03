@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 00:12:21 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/02 03:32:33 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/03 03:09:29 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_print	*init()
 	STARAC = 0;
 	LEN = '0';
 	SPEC = '1';
-	STOCK = NULL;
+	STOCK = ft_strnew(0);
 	NEXT = NULL;
 	DOLL = 0;
 	SIZE = 0;

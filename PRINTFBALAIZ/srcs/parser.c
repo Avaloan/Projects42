@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +7,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 00:03:13 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/05/30 08:53:53 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/03 04:33:58 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +84,14 @@ int		create_elem(t_print *elem, char *format)
 		}
 		if ((i += length(format + i, elem)) > j)
 			return (0);
-		specifier(elem, format[i]);
+		if (specifier(elem, format[i]) == 0 && !da_check(format[i]))
+		{
+			free(STOCK);
+			STOCK = malloc(sizeof(char));
+			*STOCK = format[i];
+			SIZE += 1;
+			return (i + 1);
+		}
 		i++;
 	}
 	return (i);

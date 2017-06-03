@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 01:04:12 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/02 06:24:18 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/03 06:06:05 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void    field(t_print *elem)
 	char	c;
 
 	c = ' ';
-	if (HASH && NUM > (int)SIZE + 1 && ZERO && !MINUS)
+	if ((SPEC == 'p' && ZERO) || (SPEC == 'p' && MINUS && ZERO))
+		NUM -= 2;
+	if ((HASH && NUM > (int)SIZE + 1 && ZERO && !MINUS))
 		NUM -= 2;
 	if ((size = NUM - ft_strlen(STOCK)) < 1)
 		return ;
@@ -55,6 +57,9 @@ void	add_plus_space(t_print *elem, int id)
 {
 	char *str;
 
+	if ((SPEC == '1') || (PLUS && (SPEC == 'o' || SPEC == 'O' || SPEC == 'c' || SPEC == 'C' || SPEC == 's'))
+		|| (SPACE && SPEC == 'u'))
+		return ;
 	if (NUM != -1)
 	{
 		if (id < 1)
@@ -88,7 +93,7 @@ int		apply_hash(t_print *elem)
 		str = ft_strdup("0x");
 		SIZE += 2;
 	}
-	else if (SPEC == 'O' || (SPEC == 'o' && LEN == 'l') || SPEC == 'o')
+	else if ((ACC || ft_atoi(STOCK) > 0) && ((SPEC == 'O' || (SPEC == 'o' && LEN == 'l') || SPEC == 'o')))
 	{
 		str = ft_strdup("0");
 		SIZE += 1;
@@ -141,7 +146,7 @@ void	precision(t_print *elem)
 
 	rust = 0;
 	i = 0;
-	if ((size = NACC - ft_strlen(STOCK)) < 1)
+	if ((size = NACC - ft_strlen(STOCK)) < 0)
 		return ;
 	if (ft_atoi(STOCK) < 0)
 	{

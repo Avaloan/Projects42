@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 02:42:19 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/02 06:24:16 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/03 06:01:06 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int main()
 	//printf("ft : %d || printf : %d", ret1, ret2);
 	//ret2 = ft_printf("%sbabubububu%cytol\n", "salsalsiali", 0);
 	//ft_printf("%.10d", -42);
-	ft_printf("%d",ft_atoi("4294967295"));
-	//printf("%-10s is a string", "");
+	ret1 = ft_printf("1 % 03d\n", 0);
+	ret2 = printf("2 % 03d\n", 0);
+	ret1 = ft_printf("1 %#.O\n", 0);
+	ret2 = printf("2 %#.O\n", 0);
+	printf("ret1 = %d\nret2 = %d\n", ret1, ret2);
 	return (42);
 }
