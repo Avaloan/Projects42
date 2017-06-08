@@ -6,7 +6,7 @@
 #    By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 15:41:11 by fdidelot          #+#    #+#              #
-#    Updated: 2017/06/02 01:02:30 by snedir           ###   ########.fr        #
+#    Updated: 2017/06/08 02:44:56 by snedir           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,8 @@ PATH_SRC = ./
 PATH_OBJ = ./
 PATH_INC = ./
 
-SRCC =		ft_atoi_u.c \
+SRCC =	ft_strwdup.c \
+		ft_atoi_u.c \
 		ft_strjoin_size_free.c \
 		ft_itoa_base_maj_signed.c \
 		ft_itoa_base_maj.c \

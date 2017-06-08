@@ -6,13 +6,13 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 01:09:12 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/03 02:29:17 by fdidelot         ###   ########.fr       */
+/*   Updated: 2017/06/08 05:57:20 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int length(char *format, t_print *elem)
+int		length(char *format, t_print *elem)
 {
 	if (*format == 'h')
 	{
@@ -47,7 +47,7 @@ int length(char *format, t_print *elem)
 	return (0);
 }
 
-char specifier(t_print *elem, char format)
+char	specifier(t_print *elem, char format)
 {
 	if (format == 's')
 		return (SPEC = 's');
@@ -82,7 +82,7 @@ char specifier(t_print *elem, char format)
 	return (0);
 }
 
-int	flags(char format, t_print *elem)
+int		flags(char format, t_print *elem)
 {
 	if (format == '-')
 		return (MINUS = 1);
@@ -121,7 +121,7 @@ int	da_check(char format)
 		return (1);
 	if (format == 'z')
 		return (1);
-	if(ft_isdigit(format))
+	if (ft_isdigit(format))
 		return (1);
 	return (0);
 }

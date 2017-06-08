@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 15:43:49 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/02 01:03:25 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/08 02:44:10 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ char				*ft_strrev(char *str);
 char				*ft_itoa_base(int nb, int base);
 char				*ft_itoa_base_maj(uintmax_t nb, int base, int flag);
 char				*ft_itoa_base_maj_signed(intmax_t nb, int base);
+
+wchar_t				*ft_strwdup(wchar_t *elem);
 
 char				**ft_strsplit(const char *s, char c);
 

@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 05:54:24 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/01 01:42:28 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/08 05:40:29 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ char	*get_pointer(t_print *elem, va_list ap)
 	return (str);
 }
 
-int wide_str_trans(t_print *elem, wchar_t wide)
+int		wide_str_trans(t_print *elem, wchar_t wide)
 {
-	char    *str;
-	size_t  len;
-	char    *mask;
-	char    *fill;
-	char    *tmp;
+	char	*str;
+	size_t	len;
+	char	*mask;
+	char	*fill;
+	char	*tmp;
 
 	if (!STOCK)
 		STOCK = ft_memalloc(1);
@@ -82,10 +82,10 @@ int wide_str_trans(t_print *elem, wchar_t wide)
 	return (1);
 }
 
-int wide_string(t_print *elem, va_list ap)
+int		wide_string(t_print *elem, va_list ap)
 {
-	wchar_t *data;
-	int     i;
+	wchar_t	*data;
+	int		i;
 
 	i = 0;
 	data = va_arg(ap, wchar_t*);

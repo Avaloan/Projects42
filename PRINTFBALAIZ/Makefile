@@ -6,7 +6,7 @@
 #    By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/25 04:13:00 by fdidelot          #+#    #+#              #
-#    Updated: 2017/06/02 01:07:28 by snedir           ###   ########.fr        #
+#    Updated: 2017/06/08 02:45:12 by snedir           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,8 @@ PRINTFSRC =	ft_printf.c \
 			parser.c \
 			struct.c
 
-LFTSRC =		ft_atoi_u.c \
+LFTSRC =	ft_strwdup.c \
+			ft_atoi_u.c \
 			ft_atoi.c \
 			ft_itoa.c \
 			ft_itoa_base.c \

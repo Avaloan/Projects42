@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 01:04:12 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/03 06:06:05 by fdidelot         ###   ########.fr       */
+/*   Updated: 2017/06/08 05:37:06 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@ void	field_p(t_print *elem, char c, int size)
 {
 	int		i;
 	char	*space;
-	
+
 	i = 0;
-	space = malloc(sizeof(char) * size);
+	space = (char*)malloc(sizeof(char) * size);
+	if (SPACE)
+	{
+		space[0] = ' ';
+		i++;
+	}
 	space[size] = '\0';
 	while (i < size)
 		space[i++] = c;
@@ -33,7 +38,7 @@ void	field_p(t_print *elem, char c, int size)
 	}
 }
 
-void    field(t_print *elem)
+void	field(t_print *elem)
 {
 	int		size;
 	char	c;
@@ -57,8 +62,8 @@ void	add_plus_space(t_print *elem, int id)
 {
 	char *str;
 
-	if ((SPEC == '1') || (PLUS && (SPEC == 'o' || SPEC == 'O' || SPEC == 'c' || SPEC == 'C' || SPEC == 's'))
-		|| (SPACE && SPEC == 'u'))
+	if ((SPEC == '1') || (PLUS && (SPEC == 'o' || SPEC == 'O' || SPEC == 'c'
+					|| SPEC == 'C' || SPEC == 's')) || (SPACE && SPEC == 'u'))
 		return ;
 	if (NUM != -1)
 	{
@@ -90,10 +95,16 @@ int		apply_hash(t_print *elem)
 	}
 	else if (SPEC == 'x' || SPEC == 'p')
 	{
+		if (SPEC == 'p' && ft_atoi(STOCK) == 0 && ACC && NACC == 0 && NUM == 0)
+		{
+			free(STOCK);
+			STOCK = ft_strnew(0);
+			SIZE -= 1;
+		}
 		str = ft_strdup("0x");
 		SIZE += 2;
 	}
-	else if ((ACC || ft_atoi(STOCK) > 0) && ((SPEC == 'O' || (SPEC == 'o' && LEN == 'l') || SPEC == 'o')))
+	else if ((ACC || ft_atoi(STOCK) != 0) && (SPEC == 'O' || SPEC == 'o'))
 	{
 		str = ft_strdup("0");
 		SIZE += 1;
@@ -103,12 +114,12 @@ int		apply_hash(t_print *elem)
 	return (1);
 }
 
-void    field_zero(t_print *elem)
+void	field_zero(t_print *elem)
 {
-	char    c;
-	int     size;
-	int     i;
-	char    *space;
+	char	c;
+	int		size;
+	int		i;
+	char	*space;
 
 	c = ' ';
 	if ((size = NUM - SIZE) < 1)
@@ -173,7 +184,7 @@ void	field_neg(t_print *elem, char c, int size)
 {
 	char	*space;
 	int		i;
-	
+
 	i = 0;
 	size++;
 	STOCK = ft_strdup(STOCK + 1);

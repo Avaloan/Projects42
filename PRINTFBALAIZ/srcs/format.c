@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 10:26:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/03 06:05:01 by fdidelot         ###   ########.fr       */
+/*   Updated: 2017/06/08 06:03:02 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 
 void	apply_flags(t_print *elem)
 {
-	if (ACC && SPEC != 'c' && SPEC != 's' && SPEC != 'C' && SPEC != 'S')
+	if (ACC && SPEC != 'c' && (SPEC == 'o' || SPEC == 'p' || SPEC == 'u' ||
+				SPEC == 'U' || SPEC == 'O' || SPEC == 'd'
+			|| SPEC == 'i' || SPEC == 'D' || SPEC == 'x' || SPEC == 'X'))
 		precision(elem);
 	if (ZERO && !MINUS && *STOCK != '\0')
 		field(elem);
 	else if (SPEC == 'c' && *STOCK == '\0')
 		field_zero(elem);
-	if (ft_atoi(STOCK) == 0 && /*!HASH &&*/ ACC && NACC == 0 && (SPEC == 'o'
-				|| SPEC == 'u'|| SPEC == 'U' || SPEC == 'O' ||SPEC == 'd'
+	if (ft_atoi(STOCK) == 0 && ACC && NACC == 0 && (SPEC == 'o' \
+				|| SPEC == 'u'|| SPEC == 'U' || SPEC == 'O' ||SPEC == 'd' \
 				|| SPEC == 'i' || SPEC == 'D' || SPEC == 'x' || SPEC == 'X'))
 	{
 		free(STOCK);
@@ -35,8 +37,8 @@ void	apply_flags(t_print *elem)
 		add_plus_space(elem, 1);
 	if ((HASH && ft_atoi(STOCK) != 0) || (HASH && (SPEC == 'o' || SPEC == 'O')) || SPEC == 'p')
 		apply_hash(elem);
- 	if ((!ZERO || (ZERO && MINUS)) && RUSTINE != 989)
- 		field(elem);
+	if ((!ZERO || (ZERO && MINUS)) && RUSTINE != 989)
+		field(elem);
 }
 
 char	*place_zero(char *final, char *str, int size, int sizebuf)
@@ -69,6 +71,7 @@ t_print	*create_stock(t_print *elem, va_list ap)
 {
 	t_print *start;
 
+	int		ret;
 	start = elem;
 	while (elem)
 	{
@@ -79,19 +82,26 @@ t_print	*create_stock(t_print *elem, va_list ap)
 			NUM *= -1;
 			MINUS = 1;
 		}
-		if (STARAC)
-			NACC = va_arg(ap, int);
-		get_arg(elem, ap);
+//		if (STARAC)
+//			NACC = va_arg(ap, int);
+		ret = get_arg(elem, ap);
+		if (ret == 0)
+			return (NULL);
 		apply_flags(elem);
 		elem = NEXT;
 	}
 	return (start);
 }
 
-void	get_arg(t_print *elem, va_list ap)
+int		get_arg(t_print *elem, va_list ap)
 {
 	if (SPEC == 'C' || (SPEC == 'c' && LEN == 'l'))
-		/*STOCK = */wide_char(elem, ap);
+	{
+		if (MB_CUR_MAX == 1)
+			arg_char(elem, ap);
+		else
+			/*STOCK = */wide_char(elem, ap);
+	}
 	else if (SPEC == 'c')
 		arg_char(elem, ap);
 	else if (SPEC == 'x' || SPEC == 'X')
@@ -111,6 +121,7 @@ void	get_arg(t_print *elem, va_list ap)
 	}
 	else if (SPEC == 'p')
 		STOCK = get_pointer(elem, ap);
+	return (1);
 }
 
 size_t		da_print(t_print *elem, char *format)

@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/19 23:55:07 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/03 03:13:05 by fdidelot         ###   ########.fr       */
+/*   Updated: 2017/06/08 05:52:04 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,31 @@ size_t	ft_printf(const char *format, ...)
 	{
 		elem = analyse(copy, elem);
 		elem = create_stock(elem, ap);
+		if (elem == NULL)
+			return (-1);
 	}
 	/*int i = 1;
-	while (elem)
-	{
-		printf("%d : ", i++);
-		printf("MIN = %d,", MINUS);
-		printf("PLUS = %d,", PLUS);
-		printf("SPACE = %d,", SPACE);
-		printf("HASH = %d,", HASH);
-		printf("ZERO = %d,", ZERO);
-		printf("NUM = %d,", NUM);
-		printf("STAR = %d,", STAR);
-		printf("ACC = %d,", ACC);
-		printf("NACC = %d,", NACC);
-		printf("STARAC = %d,", STARAC);
-		printf("DOLL = %d,", DOLL);
-		printf("SPEC = %c,", SPEC);
-		printf("LEN = %c,", LEN);
-		printf("STOCK = %s,", STOCK);
-		printf("SIZE = %lu,", SIZE);
-		printf("SIZEF = %d\n\n", SIZEF);
-		elem = NEXT;
-		}*/
+	  while (elem)
+	  {
+	  printf("%d : ", i++);
+	  printf("MIN = %d,", MINUS);
+	  printf("PLUS = %d,", PLUS);
+	  printf("SPACE = %d,", SPACE);
+	  printf("HASH = %d,", HASH);
+	  printf("ZERO = %d,", ZERO);
+	  printf("NUM = %d,", NUM);
+	  printf("STAR = %d,", STAR);
+	  printf("ACC = %d,", ACC);
+	  printf("NACC = %d,", NACC);
+	  printf("STARAC = %d,", STARAC);
+	  printf("DOLL = %d,", DOLL);
+	  printf("SPEC = %c,", SPEC);
+	  printf("LEN = %c,", LEN);
+	  printf("STOCK = %s,", STOCK);
+	  printf("SIZE = %lu,", SIZE);
+	  printf("SIZEF = %d\n\n", SIZEF);
+	  elem = NEXT;
+	  }*/
 	va_end(ap);
 	return (da_print(elem, copy));
 }

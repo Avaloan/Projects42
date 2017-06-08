@@ -6,17 +6,13 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 08:33:59 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/03 03:07:11 by fdidelot         ###   ########.fr       */
+/*   Updated: 2017/06/08 05:55:53 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-
-/* BEAUCOUP DE FREE A FAIRE */
-
-
-char			*create_mask(int len)
+char	*create_mask(int len)
 {
 	if (len <= 7)
 		return (ft_strdup("0xxxxxxx"));
@@ -29,7 +25,7 @@ char			*create_mask(int len)
 	return (0);
 }
 
-int				zero_fill(int len)
+int		zero_fill(int len)
 {
 	if (len <= 7)
 		return (7 - len);
@@ -42,11 +38,11 @@ int				zero_fill(int len)
 	return (0);
 }
 
-char			*fill_mask(char *mask, char *fill)
+char	*fill_mask(char *mask, char *fill)
 {
-	int i;
-	int j;
-	int zero;
+	int	i;
+	int	j;
+	int	zero;
 
 	i = 0;
 	j = 0;
@@ -64,20 +60,21 @@ char			*fill_mask(char *mask, char *fill)
 				}
 				i++;
 			}
-			mask[i] = fill[j];
-			j++;
+			mask[i] = fill[j++];
 		}
 		i++;
 	}
 	return (mask);
 }
 
-int				*tabnum()
+int		*tabnum(void)
 {
-	int *tab;
-	int i = 0;
-	int nb = 128;
+	int	*tab;
+	int	i;
+	int	nb;
 
+	i = 0;
+	nb = 128;
 	tab = (int*)malloc(sizeof(int) * 8);
 	while (i < 8)
 	{
@@ -88,9 +85,9 @@ int				*tabnum()
 	return (tab);
 }
 
-int					countspace(char *mask)
+int		countspace(char *mask)
 {
-	int				i;
+	int	i;
 
 	i = 0;
 	while (*mask)
@@ -102,13 +99,13 @@ int					countspace(char *mask)
 	return (1 + i);
 }
 
-char		*binary_to_dec(char **split, int sizetab)
+char	*binary_to_dec(char **split, int sizetab)
 {
-	char *tab;
-	int *add;
-	int nb;
-	int i;
-	int j;
+	char	*tab;
+	int		*add;
+	int		nb;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -123,23 +120,22 @@ char		*binary_to_dec(char **split, int sizetab)
 				nb += add[j];
 			j++;
 		}
-		tab[i] = nb;
+		tab[i++] = nb;
 		nb = 0;
 		j = 0;
-		i++;
 	}
 	free(add);
 	return (tab);
 }
 
-char			*wide_char(t_print *elem, va_list ap)
+char	*wide_char(t_print *elem, va_list ap)
 {
 	char	*str;
 	size_t	len;
 	char	*mask;
 	char	*fill;
 	wint_t	c;
-	
+
 	c = (wchar_t)va_arg(ap, wint_t);
 	if (c == 0)
 	{
@@ -157,9 +153,9 @@ char			*wide_char(t_print *elem, va_list ap)
 	return (STOCK);
 }
 
-char			*arg_char(t_print *elem, va_list ap)
+char	*arg_char(t_print *elem, va_list ap)
 {
-	int		data;
+	int	data;
 
 	free(STOCK);
 	data = (char)va_arg(ap, int);
