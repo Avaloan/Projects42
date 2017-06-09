@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 08:33:59 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/08 05:55:53 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/09 02:37:10 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,6 @@ char	*create_mask(int len)
 		return (ft_strdup("1110xxxx 10xxxxxx 10xxxxxx"));
 	else
 		return (ft_strdup("11110xxx 10xxxxxx 10xxxxxx 10xxxxx"));
-	return (0);
-}
-
-int		zero_fill(int len)
-{
-	if (len <= 7)
-		return (7 - len);
-	if (len > 7 && len <= 11)
-		return (11 - len);
-	if (len > 11 && len <= 16)
-		return (16 - len);
-	else
-		return (21 - len);
 	return (0);
 }
 
@@ -65,38 +52,6 @@ char	*fill_mask(char *mask, char *fill)
 		i++;
 	}
 	return (mask);
-}
-
-int		*tabnum(void)
-{
-	int	*tab;
-	int	i;
-	int	nb;
-
-	i = 0;
-	nb = 128;
-	tab = (int*)malloc(sizeof(int) * 8);
-	while (i < 8)
-	{
-		tab[i] = nb;
-		nb /= 2;
-		i++;
-	}
-	return (tab);
-}
-
-int		countspace(char *mask)
-{
-	int	i;
-
-	i = 0;
-	while (*mask)
-	{
-		if (*mask == ' ')
-			i++;
-		mask++;
-	}
-	return (1 + i);
 }
 
 char	*binary_to_dec(char **split, int sizetab)

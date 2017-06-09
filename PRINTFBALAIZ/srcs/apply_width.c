@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 05:54:24 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/08 05:40:29 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/09 02:30:25 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		wide_str_trans(t_print *elem, wchar_t wide)
 	fill = fill_mask(mask, str);
 	tmp = binary_to_dec(ft_strsplit(fill, ' '), countspace(mask));
 	SIZE += ft_strlen(tmp);
-	if ((NACC < (int)SIZE && ACC))// || (STARAC < (int)SIZE && ACC))
+	if ((NACC < (int)SIZE && ACC))
 	{
 		SIZE -= ft_strlen(tmp);
 		return (0);

@@ -6,7 +6,7 @@
 #    By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/25 04:13:00 by fdidelot          #+#    #+#              #
-#    Updated: 2017/06/08 02:45:12 by snedir           ###   ########.fr        #
+#    Updated: 2017/06/09 03:32:56 by fdidelot         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,7 +20,11 @@ PRINTFSRC =	ft_printf.c \
 			format.c \
 			get_spec.c \
 			parser.c \
-			struct.c
+			struct.c \
+			trash.c \
+			field.c \
+			trash4.c \
+			turashu.c
 
 LFTSRC =	ft_strwdup.c \
 			ft_atoi_u.c \

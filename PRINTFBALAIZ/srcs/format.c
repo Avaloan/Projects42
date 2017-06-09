@@ -6,47 +6,46 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 10:26:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/08 06:03:02 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/09 03:55:33 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <string.h>
 
-void	apply_flags(t_print *elem)
+void		apply_flags(t_print *elem)
 {
 	if (ACC && SPEC != 'c' && (SPEC == 'o' || SPEC == 'p' || SPEC == 'u' ||
-				SPEC == 'U' || SPEC == 'O' || SPEC == 'd'
-			|| SPEC == 'i' || SPEC == 'D' || SPEC == 'x' || SPEC == 'X'))
+						SPEC == 'U' || SPEC == 'O' || SPEC == 'd' ||
+						SPEC == 'i' || SPEC == 'D' || SPEC == 'x' ||
+						SPEC == 'X'))
 		precision(elem);
 	if (ZERO && !MINUS && *STOCK != '\0')
 		field(elem);
 	else if (SPEC == 'c' && *STOCK == '\0')
 		field_zero(elem);
-	if (ft_atoi(STOCK) == 0 && ACC && NACC == 0 && (SPEC == 'o' \
-				|| SPEC == 'u'|| SPEC == 'U' || SPEC == 'O' ||SPEC == 'd' \
-				|| SPEC == 'i' || SPEC == 'D' || SPEC == 'x' || SPEC == 'X'))
-	{
-		free(STOCK);
-		STOCK = ft_strnew(1);
-		SIZE = 0;
-	}
+	if (ft_atoi(STOCK) == 0 && ACC && NACC == 0 && (SPEC == 'o' ||
+				SPEC == 'u' || SPEC == 'U' || SPEC == 'O' || SPEC == 'd' ||
+				SPEC == 'i' || SPEC == 'D' || SPEC == 'x' || SPEC == 'X'))
+		ft_nether(elem);
 	if (PLUS && ft_atoi(STOCK) > -1 && SPEC != '%')
 		add_plus_space(elem, 0);
-	else if (ft_atoi(STOCK) > 0 && SPACE && SPEC != '%' && (SIZE != 1 && *STOCK != '\0'))
+	else if (ft_atoi(STOCK) > 0 && SPACE && SPEC != '%' &&
+			(SIZE != 1 && *STOCK != '\0'))
 		add_plus_space(elem, 1);
-	if ((HASH && ft_atoi(STOCK) != 0) || (HASH && (SPEC == 'o' || SPEC == 'O')) || SPEC == 'p')
+	if ((HASH && ft_atoi(STOCK) != 0) || (HASH && (SPEC == 'o' ||
+											SPEC == 'O')) || SPEC == 'p')
 		apply_hash(elem);
 	if ((!ZERO || (ZERO && MINUS)) && RUSTINE != 989)
 		field(elem);
 }
 
-char	*place_zero(char *final, char *str, int size, int sizebuf)
+char		*place_zero(char *final, char *str, int size, int sizebuf)
 {
-	int i;
-	int j;
-	int k;
-	char *filled;
+	int		i;
+	int		j;
+	int		k;
+	char	*filled;
 
 	filled = ft_strnew(size);
 	i = 0;
@@ -67,11 +66,11 @@ char	*place_zero(char *final, char *str, int size, int sizebuf)
 	return (filled);
 }
 
-t_print	*create_stock(t_print *elem, va_list ap)
+t_print		*create_stock(t_print *elem, va_list ap)
 {
-	t_print *start;
-
+	t_print	*start;
 	int		ret;
+
 	start = elem;
 	while (elem)
 	{
@@ -82,8 +81,8 @@ t_print	*create_stock(t_print *elem, va_list ap)
 			NUM *= -1;
 			MINUS = 1;
 		}
-//		if (STARAC)
-//			NACC = va_arg(ap, int);
+		if (STARAC > 0)
+			NACC = va_arg(ap, int);
 		ret = get_arg(elem, ap);
 		if (ret == 0)
 			return (NULL);
@@ -93,15 +92,10 @@ t_print	*create_stock(t_print *elem, va_list ap)
 	return (start);
 }
 
-int		get_arg(t_print *elem, va_list ap)
+int			get_arg(t_print *elem, va_list ap)
 {
 	if (SPEC == 'C' || (SPEC == 'c' && LEN == 'l'))
-	{
-		if (MB_CUR_MAX == 1)
-			arg_char(elem, ap);
-		else
-			/*STOCK = */wide_char(elem, ap);
-	}
+		curmax(elem, ap);
 	else if (SPEC == 'c')
 		arg_char(elem, ap);
 	else if (SPEC == 'x' || SPEC == 'X')
@@ -113,7 +107,7 @@ int		get_arg(t_print *elem, va_list ap)
 	else if (SPEC == 's' && LEN != 'l')
 		STOCK = string(elem, ap);
 	else if (SPEC == 'S' || (SPEC == 's' && LEN == 'l'))
-		/*STOCK = */wide_string(elem, ap);
+		wide_string(elem, ap);
 	else if (SPEC == '%')
 	{
 		STOCK = ft_strdup("%");
@@ -124,41 +118,31 @@ int		get_arg(t_print *elem, va_list ap)
 	return (1);
 }
 
-size_t		da_print(t_print *elem, char *format)
+size_t		da_print(t_print *elem, char *fo, int i, size_t sp)
 {
-	size_t	size_print;
-	int		i;
-	int		j;
-	unsigned int		start;
-	char	*final_buff;
+	int				s;
+	char			*f;
 
-	i = 0;
-	j = 0;
-	size_print = 0;
-	final_buff = ft_strnew(1);
-	while (format[i])
+	f = ft_strnew(1);
+	while (fo[i])
 	{
-		start = (unsigned int)i;
-		while (format[i] && format[i] != '%')
+		s = i;
+		while (fo[i] && fo[i] != '%')
 			i++;
-		if (format[i] == '%')
+		if (fo[i] == '%')
 		{
-			if (i - start  > 0)
-				final_buff = ft_strjoin_size_free(final_buff, ft_strsub(format, start, i - start), size_print, i - start);
-			size_print += (size_t)i - start;
-			final_buff = ft_strjoin_size_free(final_buff, STOCK, size_print, SIZE);
-			size_print += SIZE;
-			i += SIZEF;
+			if (i - s > 0)
+				f = ft_strjoin_size_free(f, ft_strsub(fo, s, i - s), sp, i - s);
+			sp += (size_t)i - s;
+			f = ft_strjoin_size_free(f, STOCK, sp, SIZE);
+			bandaid(&sp, &i, elem);
 			elem = NEXT;
 		}
-		else if (!format[i])
+		else if (!fo[i])
 		{
-			final_buff = ft_strjoin_size_free(final_buff, ft_strsub(format, start, i - start), size_print, i - start);
-			size_print += (size_t)i - (size_t)start;
+			f = ft_strjoin_size_free(f, ft_strsub(fo, s, i - s), sp, i - s);
+			sp += (size_t)i - (size_t)s;
 		}
 	}
-	if (size_print > 0)
-		write(1, final_buff, size_print);//ft_strlen(final_buff));
-	free(final_buff);
-	return (size_print);
+	return (bandage(sp, f));
 }

@@ -6,27 +6,27 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 00:48:25 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/02 02:28:24 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/09 04:49:01 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin_size_free(char const *s1, char const *s2, int size_buf, int size_stock)
+char	*ft_strjoin_size_free(char const *s1, char const *s2, int sb, int ss)
 {
-	char*join;
-	int i;
-	int j;
+	char	*join;
+	int		i;
+	int		j;
 
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(join = ft_memalloc(size_buf + size_stock + 1)))
+	if (!(join = ft_memalloc(sb + ss + 1)))
 		return (NULL);
 	i = -1;
 	j = 0;
-	while (++i < size_buf)
+	while (++i < sb)
 		join[i] = s1[i];
-	while (j < size_stock)
+	while (j < ss)
 	{
 		join[i + j] = s2[j];
 		j++;
@@ -35,4 +35,3 @@ char	*ft_strjoin_size_free(char const *s1, char const *s2, int size_buf, int siz
 	free((void *)s2);
 	return (join);
 }
-

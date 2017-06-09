@@ -6,16 +6,16 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 05:44:42 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/08 05:32:57 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/09 03:59:55 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char            *get_hexa_args(t_print *elem, va_list ap)
+char		*get_hexa_args(t_print *elem, va_list ap)
 {
-	uintmax_t   data;
-	char        *str;
+	uintmax_t	data;
+	char		*str;
 
 	data = va_arg(ap, uintmax_t);
 	if (LEN == 'H')
@@ -41,10 +41,10 @@ char            *get_hexa_args(t_print *elem, va_list ap)
 	return (str);
 }
 
-char            *get_o_u_args(t_print *elem, va_list ap)
+char		*get_o_u_args(t_print *elem, va_list ap)
 {
-	uintmax_t   data;
-	char        *str;
+	uintmax_t	data;
+	char		*str;
 
 	data = va_arg(ap, uintmax_t);
 	if (LEN == 'H' && SPEC != 'U' && SPEC != 'O')
@@ -70,13 +70,11 @@ char            *get_o_u_args(t_print *elem, va_list ap)
 	return (str);
 }
 
-char    *string(t_print *elem, va_list ap)
+char		*string(t_print *elem, va_list ap)
 {
-	char *str;
+	char	*str;
 
 	str = va_arg(ap, char*);
-	/*if (MB_CUR_MAX == 1 && (SPEC == 'S' || (SPEC == 's' && LEN == 'l')))
-	  return (da_string(elem, str));*/
 	if (str == NULL)
 	{
 		SIZE = 6;
@@ -84,26 +82,25 @@ char    *string(t_print *elem, va_list ap)
 	}
 	STOCK = ft_strdup(str);
 	SIZE = ft_strlen(STOCK);
-	if ((NACC < (int)SIZE && ACC))// || (STARAC < (int)SIZE && ACC))
+	if ((NACC < (int)SIZE && ACC))
 		apply_width_string(elem);
 	return (STOCK);
 }
 
-char    *da_string(t_print *elem, char *str)
+char		*da_string(t_print *elem, char *str)
 {
 	while (*str)
 	{
 		STOCK = ft_strjoin_free(STOCK, str, 1);
-		printf("char %c\n", *str);
 		str++;
 	}
 	SIZE = ft_strlen(STOCK);
-	if ((NACC < (int)SIZE && ACC))// || (STARAC < (int)SIZE && ACC))
+	if ((NACC < (int)SIZE && ACC))
 		apply_width_string(elem);
 	return (STOCK);
 }
 
-char			*get_signed_number(t_print *elem, va_list ap)
+char		*get_signed_number(t_print *elem, va_list ap)
 {
 	intmax_t	data;
 	char		*str;

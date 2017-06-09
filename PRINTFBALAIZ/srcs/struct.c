@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 00:12:21 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/08 05:54:27 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/09 04:35:36 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	join(t_print *elem, t_print *new)
 	NEXT = new;
 }
 
-t_print	*init()
+t_print	*init(void)
 {
 	t_print *elem;
 

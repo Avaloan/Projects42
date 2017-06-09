@@ -6,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 01:09:12 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/08 05:57:20 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/09 02:45:10 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,25 @@ int		length(char *format, t_print *elem)
 		LEN = 'l';
 		return (1);
 	}
-	if (*format == 'j')
-	{
-		LEN = 'j';
-		return (1);
-	}
-	if (*format == 'z')
-	{
-		LEN = 'z';
-		return (1);
-	}
+	return (length2(format, elem));
+}
+
+char	spe2(t_print *elem, char format)
+{
+	if (format == 'U')
+		return (SPEC = 'U');
+	if (format == 'x')
+		return (SPEC = 'x');
+	if (format == 'X')
+		return (SPEC = 'X');
+	if (format == 'c')
+		return (SPEC = 'c');
+	if (format == 'C')
+		return (SPEC = 'C');
+	if (format == '%')
+		return (SPEC = '%');
+	if (format == '$')
+		return (SPEC = '$');
 	return (0);
 }
 
@@ -65,21 +74,7 @@ char	specifier(t_print *elem, char format)
 		return (SPEC = 'O');
 	if (format == 'u')
 		return (SPEC = 'u');
-	if (format == 'U')
-		return (SPEC = 'U');
-	if (format == 'x')
-		return (SPEC = 'x');
-	if (format == 'X')
-		return (SPEC = 'X');
-	if (format == 'c')
-		return (SPEC = 'c');
-	if (format == 'C')
-		return (SPEC = 'C');
-	if (format == '%')
-		return (SPEC = '%');
-	if (format == '$')
-		return (SPEC = '$');
-	return (0);
+	return (spe2(elem, format));
 }
 
 int		flags(char format, t_print *elem)
@@ -99,7 +94,7 @@ int		flags(char format, t_print *elem)
 	return (0);
 }
 
-int	da_check(char format)
+int		da_check(char format)
 {
 	if (format == '-')
 		return (1);

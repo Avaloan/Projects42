@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,7 +6,7 @@
 /*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 00:03:13 by fdidelot          #+#    #+#             */
-/*   Updated: 2017/06/03 04:33:58 by fdidelot         ###   ########.fr       */
+/*   Updated: 2017/06/09 04:34:57 by fdidelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,37 +66,10 @@ int		create_elem(t_print *elem, char *format)
 	j = (int)ft_strlen(format);
 	if (j == 1 && *format == '%')
 		return (i);
-	while (format[i] && SPEC == '1')
-	{
-		while (flags(format[i], elem))
-			if (++i < j)
-				;
-		if ((i += num_width(format + i, elem)) > j)
-			return (0);
-		if (format[i] == '.')
-		{
-			i++;
-			if (format[i] == '*')
-				STARAC = 1;
-			else if ((i += num_acc(format + i, elem)) > j)
-				return (0);
-		}
-		if ((i += length(format + i, elem)) > j)
-			return (0);
-		if (specifier(elem, format[i]) == 0 && !da_check(format[i]))
-		{
-			free(STOCK);
-			STOCK = malloc(sizeof(char));
-			*STOCK = format[i];
-			SIZE += 1;
-			return (i + 1);
-		}
-		i++;
-	}
-	return (i);
+	return (in_create(elem, format, i, j));
 }
 
-t_print		*analyse(char *format, t_print *elem)
+t_print	*analyse(char *format, t_print *elem)
 {
 	t_print *new;
 	t_print *start;
