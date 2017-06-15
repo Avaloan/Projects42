@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 10:26:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/08 06:03:02 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/08 06:05:02 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	apply_flags(t_print *elem)
 		field(elem);
 	else if (SPEC == 'c' && *STOCK == '\0')
 		field_zero(elem);
-	if (ft_atoi(STOCK) == 0 && ACC && NACC == 0 && (SPEC == 'o' \
+	if (ft_atoi(STOCK) == 0 && ACC && NACC == 0 && (SPEC == 'o'
 				|| SPEC == 'u'|| SPEC == 'U' || SPEC == 'O' ||SPEC == 'd' \
 				|| SPEC == 'i' || SPEC == 'D' || SPEC == 'x' || SPEC == 'X'))
 	{
