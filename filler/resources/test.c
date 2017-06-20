@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/09 06:56:53 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/15 05:31:29 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/20 09:08:55 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,31 @@ t_map *allocate(void)
 	return (map);
 }
 
+t_lst *new_elem(t_play *player, int x_pos, int y_pos)
+{
+	t_lst *elem;
+
+	elem = (t_lst*)malloc(sizeof(t_lst));
+	elem->next = NULL;
+	elem->x_pos = x_pos;
+	elem->y_pos = y_pos;
+	elem->closest = 0;
+	elem->anchored = 0;
+	return (elem);
+}
+
+void	add_list(t_play *player, int x_pos, int y_pos)
+{
+	if (ELEM == NULL)
+	{
+		ELEM = new_elem(player, x_pos, y_pos);
+		return ;
+	}
+	while (NEXT_ELEM)
+		ELEM = NEXT_ELEM;
+	NEXT_ELEM = new_elem(player, x_pos, y_pos);
+}
+
 t_play *init(void)
 {
 	t_play *player;
@@ -39,6 +64,7 @@ t_play *init(void)
 	SIZE_X = 0;
 	PIECE = '\0';
 	ITER = 0;
+	ELEM = NULL;
 	ENEMY_LAST = '\0';
 	return (player);
 }
@@ -98,7 +124,7 @@ int get_size_map(char *line, t_map *map)
 		}
 		if (size)
 		{
-			if (map->y)
+			if (Y)
 				X = ft_atoi(ft_strsub(tmp + i - size, 0, size));
 			else
 				Y = ft_atoi(ft_strsub(tmp + i - size, 0, size));
@@ -256,37 +282,41 @@ void parse_map(t_map *map, char *line)
 	while (line[i] && line[i] != '\n')
 	{
 		if (line[i] == 'O' || line[i] == 'X' ||
-				line[i] == 'o' || line[i] == 'x' )
+				line[i] == 'o' || line[i] == 'x')
 			MAP[Z][i - nb_space] = line[i];
 		i++;
 	}
 	Z++;
 }
 
-void	parser(t_play *player, t_map *map, char *line)
+int	parser(t_play *player, t_map *map, char *line)
 {
 	int i = 0;
 	get_player_number(line, player);
 	get_size_map(line, map);
 	parse_map(map, line);
 	parse_piece(player, line);
+	if (MAP && INPUT)
+		return (1);
+	return (0);
 }
 
-int		search_enemy(t_map *map, t_play *player, int pos[], int use)
-{
+/*rework search enemy : la recherche de l'ennemi se fait depuis les coordonnees */
+int		search_first_pos(t_map *map, t_play *player, int pos[], int use)
+{//0 for ENEMY_POS
 	int i = 0;
 	int j = 0;
 	char c;
 	
 	if (use == 0)
-		c = ENEMY_LAST;
+		c = ENEMY_LAST - 32;
 	else
 		c = PIECE;
 	while (i < Y)
 	{
 		while (j < X)
 		{
-			if (MAP[i][j] == c || MAP[i][j] == c - 32)
+			if (MAP[i][j] == c)
 			{
 				pos[0] = i;
 				pos[1] = j;
@@ -300,36 +330,143 @@ int		search_enemy(t_map *map, t_play *player, int pos[], int use)
 	return (0);
 }
 
-/*
-int		niklebatard(t_map *map, t_play *player)
+int abs(int a)
 {
-	int i = 0;
-	int j = 0;
+	if (a < 0)
+		return (a * -1);
+	return (a);
+}
+
+int		search_closest_enemy(t_map *map, t_play *player, int troll) // pour le -32
+{//0 for ENEMY_POS
+	int i;
+	int j;
+
+	i = Y_POS;
+	j = X_POS;
+	while (i < Y)
+	{
+		while (j < X)
+		{
+			if (MAP[i][j] == ENEMY_LAST + troll)
+			{
+				CLOSE = abs(i - Y_POS) + abs(j - X_POS);
+				printf("close the gap to the heaveeeen %d\n", CLOSE);
+				return (1);
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (0);
+}
+
+int	smallest_distance(t_play *player)
+{
+	t_lst *ret;
+	int close;
+
+	close = 0;
+	if (ELEM)
+	{
+		close = CLOSE;
+		while (ELEM)
+		{
+			if (close > CLOSE)
+				close = CLOSE;
+			ELEM = NEXT_ELEM;
+		}
+	}
+	return (close);
+}
+
+t_lst *return_closest(t_play *player, int close)
+{
+	while (ELEM)
+	{
+		if (close == CLOSE)
+			return (ELEM);
+		ELEM = NEXT_ELEM;
+	}
+	return (NULL);
+}
+
+
+int	put_piece(t_map *map, t_play *player)
+{
+	int y;
+	int x;
+	int p_y;
+	int p_x;
+
+	y = Y_POS;
+	x = X_POS;
+	p_y = 0;
+	p_x = 0;
+	while (y < Y && p_y < SIZE_Y)
+	{
+		//printf("INPUT = %c\n", INPUT[p_y][p_x]);
+		while (x < X && p_x < SIZE_X)
+		{	
+			if (INPUT[p_y][p_x] == '*' && (MAP[y][x] == PIECE ||
+						MAP[y][x] == PIECE + 32))
+				ANCHOR++;
+			if (ANCHOR > 1)
+				return (0);
+			if (INPUT[p_y][p_x] == '*' && (MAP[y][x] != '.' &&
+						MAP[y][x] != PIECE && MAP[y][x] != PIECE + 32))
+				return (0);
+			if (INPUT[p_y][p_x] == '*')
+			{
+				MAP[y][x] = INPUT[p_y][p_x];
+				add_list(player, p_y, p_x);
+			}
+			x++;
+			p_x++;
+		}
+		x = X_POS;
+		p_x = 0;
+		p_y++;
+		y++;
+	}
+	if (ANCHOR == 1)
+		return (1);
+	return (0);
+}
+
+int		first_round(t_map *map, t_play *player)
+{
 	int enemy_pos[2];
-	char player_pos[2];
-*/
-
-
-
-
+	int player_pos[2];
+	static int i = 0;
+	if (i == 0)
+	{
+		search_first_pos(map, player, player_pos, 1);
+		add_list(player, player_pos[1], player_pos[0]);
+		search_closest_enemy(map, player, -32);
+		i++;
+		return (1);
+	}
+	return (0);
+}
 
 int main(int argc, char **argv)
 {
 	char *line = NULL;
 	int i = 0;
+	int round = 0;
 	int ret = open("test2ParseMap", O_RDONLY);
 	t_map *map = allocate();
 	t_play *player = init();
 	while (get_next_line(ret, &line))
-	{
 		parser(player, map, line);
-	}
-	int pos[2];
-	search_enemy(map, player, pos, 0);
-	i = 0;
-	while (i < 2)
+	round = first_round(map, player);
+	put_piece(map, player);
+	int z = 0, h = 0;
+	while (MAP[z])
 	{
-		printf("%d\n", pos[i]);
-		i++;
+		printf("%s\n", MAP[z]);
+		z++;
 	}
 }

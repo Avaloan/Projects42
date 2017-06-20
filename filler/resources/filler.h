@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/10 02:16:43 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/15 01:05:37 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/20 08:14:16 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # define SIZE_X player->size_x
 # define SIZE_Y player->size_y
 # define ITER player->iter_piece
+# define ELEM player->elem
+
+# define NEXT_ELEM player->elem->next
+# define X_POS player->elem->x_pos
+# define Y_POS player->elem->y_pos
+# define CLOSE player->elem->closest
+# define ANCHOR player->elem->anchored
 
 # define X map->x
 # define Y map->y
@@ -42,12 +49,21 @@ typedef struct s_map
 	int size_y;*/
 }			t_map;
 
+typedef struct s_lst
+{
+	int x_pos;
+	int y_pos;
+	int closest;
+	int anchored;
+	struct s_lst *next;
+}				t_lst;
+
 typedef struct s_play
 {
 	int player_number;
 	int iter_piece;
 	char piece;
-	//char **map;
+	t_lst	*elem;
 	char **input;
 	char last_enemy_piece;
 	int check_p;
