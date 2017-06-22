@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/10 02:16:43 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/20 08:14:16 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/22 01:13:06 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,11 @@ typedef struct s_play
 	int size_x;
 	int size_y;
 }			t_play;
+
+t_map	*allocate(void);
+t_lst	*new_elem(t_play *player, int x_pos, int y_pos);
+void	add_list(t_play *player, int x_pos, int y_pos);
+t_play	*init(void);
+
+
 #endif

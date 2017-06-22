@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/09 06:56:53 by snedir            #+#    #+#             */
-/*   Updated: 2017/06/20 09:08:55 by snedir           ###   ########.fr       */
+/*   Updated: 2017/06/22 02:11:02 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ t_map *allocate(void)
 	Y = 0;
 	Z = 0;
 	CHECK = 0;
-	MAP = NULL;/*
-	map->size_x = 0;
-	map->size_y = 0;*/
+	MAP = NULL;
 	return (map);
 }
 
@@ -332,9 +330,7 @@ int		search_first_pos(t_map *map, t_play *player, int pos[], int use)
 
 int abs(int a)
 {
-	if (a < 0)
-		return (a * -1);
-	return (a);
+	return (a > 0 ? a : -a);
 }
 
 int		search_closest_enemy(t_map *map, t_play *player, int troll) // pour le -32
@@ -342,8 +338,8 @@ int		search_closest_enemy(t_map *map, t_play *player, int troll) // pour le -32
 	int i;
 	int j;
 
-	i = Y_POS;
-	j = X_POS;
+	i = Y_POS; //0
+	j = X_POS; //0
 	while (i < Y)
 	{
 		while (j < X)
@@ -399,9 +395,11 @@ int	put_piece(t_map *map, t_play *player)
 	int x;
 	int p_y;
 	int p_x;
+	int save;
 
 	y = Y_POS;
 	x = X_POS;
+	save = X_POS;
 	p_y = 0;
 	p_x = 0;
 	while (y < Y && p_y < SIZE_Y)
@@ -420,12 +418,13 @@ int	put_piece(t_map *map, t_play *player)
 			if (INPUT[p_y][p_x] == '*')
 			{
 				MAP[y][x] = INPUT[p_y][p_x];
-				add_list(player, p_y, p_x);
+				add_list(player, y, x);
 			}
 			x++;
 			p_x++;
 		}
-		x = X_POS;
+		x = save;
+		//printf("%d\n", x);
 		p_x = 0;
 		p_y++;
 		y++;
@@ -444,6 +443,7 @@ int		first_round(t_map *map, t_play *player)
 	{
 		search_first_pos(map, player, player_pos, 1);
 		add_list(player, player_pos[1], player_pos[0]);
+		printf("x_%d y_%d\n", X_POS, Y_POS);
 		search_closest_enemy(map, player, -32);
 		i++;
 		return (1);
