@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 01:38:28 by snedir            #+#    #+#             */
-/*   Updated: 2017/08/31 03:43:51 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/07 02:07:50 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct	s_fdf
 	int			bpp;
 	int			end;
 	int			zoom;
+	int			jspc;
+	int			size_x;
+	int			size_y;
+	int			total_size;
 }				t_fdf;
 
 typedef struct		s_map

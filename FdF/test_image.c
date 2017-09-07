@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 01:00:13 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/05 21:51:29 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/07 06:26:54 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,19 @@ int count_spaces(char *line)
 	return (b);
 }
 
-void	fill_tab(char *line, t_map **map, int line_number, int *j)
+void	fill_void(t_map **map, int x, int line_number, t_fdf *e)
+{
+	while (x < e->jspc)
+	{
+		map[line_number][x].x = x;
+		map[line_number][x].y = line_number;
+		map[line_number][x].z = 0;
+		x++;
+	}
+}
+
+
+void	fill_tab(char *line, t_map **map, int line_number, t_fdf *e)
 {
 	int i;
 	int nb;
@@ -78,21 +90,23 @@ void	fill_tab(char *line, t_map **map, int line_number, int *j)
 	nb = 0;
 	triche = 0;
 	x = 0;
+	//printf("jspc %d\n", e->jspc);
 	while (line[i] != '\n' && line[i] != '\0')
 	{
 		if (ft_isdigit(line[i]))
 		{
 			nb = ft_atoi(line + i);
-			(*map)[*j].x = x;
-			(*map)[*j].y = line_number;
-			(*map)[*j].z = nb;
+			map[line_number][x].x = x;
+			map[line_number][x].y = line_number;
+			map[line_number][x].z = nb;
 			triche = size_num(nb);
-			i += triche;
-			*j += 1;
 			x++;
+			i += triche;
 		}
 		i++;
 	}
+	if (x < e->jspc)
+		fill_void(map, x, line_number, e);
 }
 
 int	first_line(char *line)
@@ -116,6 +130,7 @@ int	first_line(char *line)
 		}
 		i++;
 	}
+	//printf("i = = %d\n", i);
 	return (i - ret - count_spaces(line));
 }
 
@@ -149,7 +164,7 @@ int check_file_type(char *line)
 	return (-1);
 }
 
-int pre_parser(char *av)
+int pre_parser(char *av, t_fdf *e)
 {
 	int fd;
 	char *line;
@@ -159,57 +174,77 @@ int pre_parser(char *av)
 	fd = open(av, O_RDONLY);
 	nb_line = 0;
 	size = 0;
-	
+	e->size_x = 0;
+	e->jspc = 0;
 	if (check_file_type(av) != 1)
 		return (-1);
 	while (get_next_line(fd, &line))
 	{
-		if (size == 0)
-		{
-			size = first_line(line);
+		size = first_line(line);
+			if (e->jspc == 0)
+				e->jspc = size;
+			e->size_x += size;
 			if (size == 0)
 			{
 				free(line);
 				close(fd);
 				return (-1);
 			}
-		}
 		if (check_line(line) != 1)
 		{
 			free(line);
 			close(fd);
+		//	printf("coucou\n");
 			return (-1);
 		}
 		free(line);
 		nb_line++;
 	}
 	close(fd);
-	printf("size = %d || nb_line = %d\n", size, nb_line);
-	return (size * nb_line);
+	e->size_y = nb_line;
+	//printf("size = %d || nb_line = %d\n", e->jspc, e->jspc * nb_line);
+	return (1);
 }
 
-t_map *parser(char *av)
+t_map **double_array(t_fdf *e)
+{	
+	t_map **tab;
+	int i;
+
+	i = 0;
+	//printf("%d %d\n", e->jspc, e->size_y);
+	if (!(tab = (t_map**)malloc(sizeof(t_map*) * e->jspc)))
+		return (NULL);
+	while (i < e->size_y)
+	{
+		//printf("jspc %d\n",i);
+		tab[i] = (t_map*)malloc(sizeof(t_map) * e->jspc);
+		i++;
+	}
+	return (tab);
+}
+
+t_map **parser(char *av, t_fdf *e)
 {
 	int size_array;
 	int fd;
 	char *line;
 	int line_nb;
-	t_map *tab;
+	t_map **tab;
 	int j;
 
 	line_nb = 0;
 	j = 0;
 	line = NULL;
-	size_array = pre_parser(av);
+	size_array = pre_parser(av, e);
 	if (size_array == -1)
 		return (NULL);
-	if (!(tab = (t_map*)malloc(sizeof(t_map) * size_array)))
-		return (NULL);
+	tab = double_array(e);
 	fd = open(av, O_RDONLY);
-	while (get_next_line(fd, &line))
+	while (get_next_line2(fd, &line))
 	{
-		fill_tab(line, &tab, line_nb, &j);
-		//printf("j = %d\n", j);
+		printf("j = %s\n", line);
+		fill_tab(line, tab, line_nb, e);
 		free(line);
 		line_nb++;
 	}
@@ -217,9 +252,9 @@ t_map *parser(char *av)
 	return (tab);
 }
 
-
 void bresenham(int xi, int yi, int yf, int xf, void *mlx, void *win)
 {
+	printf("xi %d -> xf %d | yi %d -> yf %d\n", xi, xf, yi, yf);
 	int dx, dy, i, xinc, yinc, cumul, x, y;
 	x = xi;
 	y = yi;
@@ -233,7 +268,7 @@ void bresenham(int xi, int yi, int yf, int xf, void *mlx, void *win)
 	if (dx > dy)
 	{
 		cumul = dx / 2;
-		for (i = 1 ; i <= dx ; i++)
+		for (i = 1 ; i <= dx + 100 ; i++)
 		{
 			x += xinc;
 			cumul += dy;
@@ -248,7 +283,7 @@ void bresenham(int xi, int yi, int yf, int xf, void *mlx, void *win)
 	else
 	{
 		cumul = dy / 2;
-		for (i = 1 ; i <= dy ; i++)
+		for (i = 1 ; i <= dy + 100 ; i++)
 		{
 			y += yinc;
 			cumul += dx;
@@ -262,16 +297,6 @@ void bresenham(int xi, int yi, int yf, int xf, void *mlx, void *win)
 	}
 }
 
-/*
-void straight_line(int xi, int yi, int yf, int xf, void *mlx, void *win)
-{
-	x = xi;
-	y = 
-*/
-
-
-
-
 int			main(int argc, char **argv)
 {
 	//t_fdf *fdf = set_struct();
@@ -282,15 +307,40 @@ int			main(int argc, char **argv)
 	/*void *mlx;
 	void *win;
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, 200, 200, "troll");
-	int xi = 100, yi = 50, xf = 44, yf = 144;
-	ligne(xi, yi, yf, xf, mlx, win);
-	mlx_loop(mlx);*/
-	t_map *parse = parser(argv[1]);
+	win = mlx_new_window(mlx, 2000, 2000, "troll");
+	*/t_fdf e;
+	t_map **parse = parser(argv[1], &e);
+	if (parse == NULL)
+		return (-1);
 	int i = 0;
-	while (i < 70)
+	int j = 0;
+	//bresenham(0, 0, 0, 100, mlx, win);
+	/*		printf("x %d y %d z %d j %d\n", parse[0][0].x, parse[0][0].y, parse[0][0].z, j);
+			printf("x %d y %d z %d j %d\n", parse[0][1].x, parse[0][1].y, parse[0][1].z, j);
+			printf("x %d y %d z %d j %d\n", parse[0][2].x, parse[0][2].y, parse[0][3].z, j);
+			printf("x %d y %d z %d j %d\n", parse[1][0].x, parse[1][0].y, parse[1][0].z, j);
+			printf("x %d y %d z %d j %d\n", parse[1][1].x, parse[1][1].y, parse[1][1].z, j);
+			printf("x %d y %d z %d j %d\n", parse[1][2].x, parse[1][2].y, parse[1][2].z, j);
+			printf("x %d y %d z %d j %d\n", parse[2][0].x, parse[2][0].y, parse[2][0].z, j);
+			printf("x %d y %d z %d j %d\n", parse[2][1].x, parse[2][1].y, parse[2][1].z, j);
+			printf("x %d y %d z %d j %d\n", parse[2][2].x, parse[2][2].y, parse[2][2].z, j);
+	*/while (i < e.size_y)
 	{
-		printf("map.x = %d | map.z = %d | map.y %d\n", parse[i].x, parse[i].z, parse[i].y);
+		while (j < e.jspc)
+		{
+			//printf("j = %d\n", e.jspc);
+			if (parse[i][j + 1].z > 9)
+				printf("%d ", parse[i][j].z);
+			else if (parse[i][j].z > 9 && parse[i][j + 1].z < 9)
+				printf("%d  ", parse[i][j].z);
+			//else if (parse[i][j].z < 9 && parse[i][j + 1].z < 9)
+			else
+				printf("%d  ", parse[i][j].z);
+			j++;
+		}
+		printf("\n");
+		j = 0;
 		i++;
 	}
+	/*mlx_loop(mlx);*/
 }
