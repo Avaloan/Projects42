@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 01:00:13 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/07 06:26:54 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/09 05:48:43 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	fill_void(t_map **map, int x, int line_number, t_fdf *e)
 		map[line_number][x].x = x;
 		map[line_number][x].y = line_number;
 		map[line_number][x].z = 0;
+		map[line_number][x].iso_y = 0;
+		map[line_number][x].iso_x = 0;
 		x++;
 	}
 }
@@ -96,9 +98,13 @@ void	fill_tab(char *line, t_map **map, int line_number, t_fdf *e)
 		if (ft_isdigit(line[i]))
 		{
 			nb = ft_atoi(line + i);
+			printf("%s\n", line);
+			printf("NB %d\n", nb);
 			map[line_number][x].x = x;
 			map[line_number][x].y = line_number;
 			map[line_number][x].z = nb;
+			map[line_number][x].iso_x = 0;
+			map[line_number][x].iso_y = 0;
 			triche = size_num(nb);
 			x++;
 			i += triche;
@@ -186,6 +192,7 @@ int pre_parser(char *av, t_fdf *e)
 			e->size_x += size;
 			if (size == 0)
 			{
+				printf("ou\n");
 				free(line);
 				close(fd);
 				return (-1);
@@ -194,13 +201,13 @@ int pre_parser(char *av, t_fdf *e)
 		{
 			free(line);
 			close(fd);
-		//	printf("coucou\n");
+			printf("coucou\n");
 			return (-1);
 		}
 		free(line);
 		nb_line++;
 	}
-	close(fd);
+	//close(fd);
 	e->size_y = nb_line;
 	//printf("size = %d || nb_line = %d\n", e->jspc, e->jspc * nb_line);
 	return (1);
@@ -243,7 +250,6 @@ t_map **parser(char *av, t_fdf *e)
 	fd = open(av, O_RDONLY);
 	while (get_next_line2(fd, &line))
 	{
-		printf("j = %s\n", line);
 		fill_tab(line, tab, line_nb, e);
 		free(line);
 		line_nb++;
@@ -254,21 +260,22 @@ t_map **parser(char *av, t_fdf *e)
 
 void bresenham(int xi, int yi, int yf, int xf, void *mlx, void *win)
 {
-	printf("xi %d -> xf %d | yi %d -> yf %d\n", xi, xf, yi, yf);
 	int dx, dy, i, xinc, yinc, cumul, x, y;
 	x = xi;
 	y = yi;
-	dx = xf - xi;
-	dy = yf - yi;
+	dx = xf  - xi;
+	dy = yf  - yi;
 	xinc = (dx > 0) ? 1 : -1;
 	yinc = (dy > 0) ? 1 : -1;
 	dx = abs(dx);
 	dy = abs(dy);
 	mlx_pixel_put(mlx, win, x, y, 0xffffff);
+	int uu = 0;
+	printf("xi %d yi %d yf %d xf %d dx %d dy %d \n", xi, yi, yf, xf, dx, dy);
 	if (dx > dy)
 	{
 		cumul = dx / 2;
-		for (i = 1 ; i <= dx + 100 ; i++)
+		for (i = 1 ; i <= dx ; i++)
 		{
 			x += xinc;
 			cumul += dy;
@@ -277,13 +284,13 @@ void bresenham(int xi, int yi, int yf, int xf, void *mlx, void *win)
 				cumul -= dx;
 				y += yinc;
 			}
-			mlx_pixel_put(mlx, win, x, y, 0xffffff);
+			//mlx_pixel_put(mlx, win, x, y, 0xffffff);
 		}
 	}
 	else
 	{
 		cumul = dy / 2;
-		for (i = 1 ; i <= dy + 100 ; i++)
+		for (i = 1 ; i <= dy ; i++)
 		{
 			y += yinc;
 			cumul += dx;
@@ -292,11 +299,32 @@ void bresenham(int xi, int yi, int yf, int xf, void *mlx, void *win)
 				cumul -= dy;
 				x += xinc;
 			}
-			mlx_pixel_put(mlx, win, x, y, 0xffffff);
+			//mlx_pixel_put(mlx, win, x, y, 0xffffff);
 		}
 	}
 }
-
+/*
+void	iso_mod(t_fdf *e, t_map **parse)
+{
+	int i;
+	int j;
+	
+	i = 0;
+	j = 0;
+	while (i < e->size_y)
+	{
+		while (j < e->jspc)
+		{
+			parse[i][j].iso_x = (i + j) * half_tile_size_x;
+			parse[i][j].iso_y = ((i - j) * half_tile_size_y) + offset)) - parse[i][j].z * relative;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+*/
+//void bresenham(int xi, int yi, int yf, int xf, void *mlx, void *win)
 int			main(int argc, char **argv)
 {
 	//t_fdf *fdf = set_struct();
@@ -304,43 +332,47 @@ int			main(int argc, char **argv)
 	//fill_image(img_str, sl, bpp, 600);
 	//mlx_put_image_to_window(mlx, win, img_ptr, 0, 0);
 
-	/*void *mlx;
+	void *mlx;
 	void *win;
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, 2000, 2000, "troll");
-	*/t_fdf e;
+	win = mlx_new_window(mlx, 900, 500, "DEMON");
+	t_fdf e;
 	t_map **parse = parser(argv[1], &e);
 	if (parse == NULL)
 		return (-1);
 	int i = 0;
 	int j = 0;
-	//bresenham(0, 0, 0, 100, mlx, win);
-	/*		printf("x %d y %d z %d j %d\n", parse[0][0].x, parse[0][0].y, parse[0][0].z, j);
-			printf("x %d y %d z %d j %d\n", parse[0][1].x, parse[0][1].y, parse[0][1].z, j);
-			printf("x %d y %d z %d j %d\n", parse[0][2].x, parse[0][2].y, parse[0][3].z, j);
-			printf("x %d y %d z %d j %d\n", parse[1][0].x, parse[1][0].y, parse[1][0].z, j);
-			printf("x %d y %d z %d j %d\n", parse[1][1].x, parse[1][1].y, parse[1][1].z, j);
-			printf("x %d y %d z %d j %d\n", parse[1][2].x, parse[1][2].y, parse[1][2].z, j);
-			printf("x %d y %d z %d j %d\n", parse[2][0].x, parse[2][0].y, parse[2][0].z, j);
-			printf("x %d y %d z %d j %d\n", parse[2][1].x, parse[2][1].y, parse[2][1].z, j);
-			printf("x %d y %d z %d j %d\n", parse[2][2].x, parse[2][2].y, parse[2][2].z, j);
-	*/while (i < e.size_y)
+	//printf("jspc %d size_y %d  taille %d\n", e.jspc, e.size_y, e.jspc * e.size_y);
+	while (i < e.size_y)
 	{
 		while (j < e.jspc)
 		{
-			//printf("j = %d\n", e.jspc);
-			if (parse[i][j + 1].z > 9)
-				printf("%d ", parse[i][j].z);
-			else if (parse[i][j].z > 9 && parse[i][j + 1].z < 9)
-				printf("%d  ", parse[i][j].z);
-			//else if (parse[i][j].z < 9 && parse[i][j + 1].z < 9)
-			else
-				printf("%d  ", parse[i][j].z);
+			parse[i][j].iso_x = (i + j) * 30;
+			printf("i %d j %d iso_x %d\n", i,j,parse[i][j].iso_x);
+			parse[i][j].iso_y = (((i - j) * 15) + 300) - parse[i][j].z * 50;
+			printf("iso_y %d z = %d\n", parse[i][j].iso_y, parse[i][j].z);
 			j++;
 		}
-		printf("\n");
+		//printf("\n");
 		j = 0;
 		i++;
 	}
-	/*mlx_loop(mlx);*/
+	i = 0;
+	while (i < e.size_y - 1)
+	{
+		while (j < e.jspc - 1)
+		{
+			//printf("[%d][%d](%d,%d,%d)\n", i, j, parse[i][j].iso_x, parse[i][j].iso_y, parse[i][j].z);
+			/*printf("[%d][%d](%d,%d)\n", i, j+1, parse[i][j+1].iso_x, parse[i][j+1].iso_y);
+			printf("[%d][%d](%d,%d)\n", i+1, j,parse[i + 1][j].iso_x, parse[i + 1][j].iso_y);
+			*///
+			bresenham(parse[i][j].iso_x, parse[i][j].iso_y, parse[i][j + 1].iso_y, parse[i][j + 1].iso_x, mlx, win);
+			bresenham(parse[i][j].iso_x, parse[i][j].iso_y, parse[i + 1][j].iso_y, parse[i + 1][j].iso_x, mlx, win);
+			j++;
+		}
+		//printf("\n");
+		j = 0;
+		i++;
+	}
+	mlx_loop(mlx);
 }

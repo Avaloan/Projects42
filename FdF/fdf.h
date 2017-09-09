@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 01:38:28 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/07 02:07:50 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/08 01:49:25 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct		s_map
 	int				x;
 	int				y;
 	int				z;
+	int				iso_x;
+	int				iso_y;
 	int				straight;
 }					t_map;
 
