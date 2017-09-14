@@ -1,5 +1,5 @@
 #!bin/bash
 
-for X in $(seq 1 20) ; do
-	./a.out mapfdp.fdf
+for X in $(seq 1 200) ; do
+	./a.out maps/mars.fdf
 done

@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 01:38:28 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/08 01:49:25 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/13 05:27:38 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,29 @@ typedef struct		s_map
 	int				z;
 	int				iso_x;
 	int				iso_y;
-	int				straight;
 }					t_map;
+
+typedef struct		s_draw
+{
+	int				xinc;
+	int				yinc;
+	int				dx;
+	int				dy;
+	int				xf;
+	int				yf;
+	int				xi;
+	int				yi;
+}					t_draw;
+
+
+int					count_spaces(char *line);
+t_map				**double_array(t_fdf *e);
+int					first_line(char *line);
+t_map				**parser(char *av, t_fdf *e);
+int					size_num(int nb);
+void				fill_void(t_map **map, int x, int line_number, t_fdf *e);
+int					check_line(char *line);
+int					size_line(char *line);
+int					check_file_type(char *line);
 
 #endif
