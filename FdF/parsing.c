@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 02:10:29 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/14 06:29:13 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/23 05:20:32 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	fill_tab(char *line, t_map **map, int line_number, t_fdf *e)
 	int nb;
 	int triche;
 	int x;
+	int size = size_line(line);
 
 	i = 0;
 	nb = 0;
 	triche = 0;
 	x = 0;
-	int size = size_line(line);
 	while (i < size)
 	{
 		if (ft_isdigit(line[i]))
@@ -41,6 +41,8 @@ void	fill_tab(char *line, t_map **map, int line_number, t_fdf *e)
 			else
 				break;
 		}
+		if (i > size)
+			break ;
 		i++;
 	}
 	if (x < e->jspc)
@@ -58,22 +60,20 @@ int pre_parser(char *av, t_fdf *e)
 		return (-1);
 	nb_line = 0;
 	size = 0;
-	e->size_x = 0;
-	e->jspc = 0;
 	if (check_file_type(av) != 1)
 		return (-1);
 	while (get_next_line(fd, &line))
 	{
 		if (size == 0)
 			size = first_line(line);
-			if (e->jspc == 0)
+		if (e->jspc == 0)
 				e->jspc = size;
-			if (size == 0)
-			{
-				free(line);
-				close(fd);
-				return (-1);
-			}
+		if (size == 0)
+		{
+			free(line);
+			close(fd);
+			return (-1);
+		}
 		if (check_line(line) != 1)
 		{
 			free(line);
@@ -100,11 +100,14 @@ t_map **parser(char *av, t_fdf *e)
 	line_nb = 0;
 	j = 0;
 	line = NULL;
+	tab = NULL;
 	size_array = pre_parser(av, e);
 	if (size_array == -1)
 		return (NULL);
-	tab = double_array(e);
-	fd = open(av, O_RDONLY);
+	if ((tab = double_array(e)) == NULL)
+		return (NULL);
+	if ((fd = open(av, O_RDONLY)) == -1)
+		return (NULL);
 	while (get_next_line2(fd, &line))
 	{
 		fill_tab(line, tab, line_nb, e);

@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 01:09:42 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/13 01:23:23 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/23 04:47:12 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,9 @@ int check_file_type(char *line)
 
 	i = -1;
 	while (line[++i])
-	{
 		if (line[i] == '.')
-		{
 			if (ft_strcmp(line + i, ".fdf") == 0)
 				return (1);
-		}
-	}
 	return (-1);
 }
 

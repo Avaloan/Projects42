@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 01:38:28 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/13 05:27:38 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/23 04:39:32 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,8 @@ void				fill_void(t_map **map, int x, int line_number, t_fdf *e);
 int					check_line(char *line);
 int					size_line(char *line);
 int					check_file_type(char *line);
+void bresenham2(t_map **parse, int i, int j, int use, void *mlx, void *win);
+void breizh_1(t_draw infos, void *mlx, void *win, int xi, int yi);
+void breizh_2(t_draw infos, void *mlx, void *win, int xi, int yi);
 
 #endif
