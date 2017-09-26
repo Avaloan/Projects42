@@ -6,7 +6,7 @@
 #    By: abassibe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/01 12:45:46 by abassibe          #+#    #+#              #
-#    Updated: 2017/09/22 00:26:13 by snedir           ###   ########.fr        #
+#    Updated: 2017/09/26 06:44:46 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,14 @@ NAME = fdf
 
 SRCS =	misc.c \
 		parsing.c \
-		test_image.c
+		test_image.c \
+		draw.c
 
 OBJS = $(SRCS:.c=.o)
 
 SRCPATH = ./
 
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -fsanitize=address -Wall -Wextra -Werror
 
 all: $(NAME)
 

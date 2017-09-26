@@ -6,13 +6,24 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 02:04:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/23 05:19:06 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/26 06:40:35 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void breizh_1(t_draw infos, void *mlx, void *win, int xi, int yi)
+void assign_img(t_fdf *e, int i, int j)
+{
+	int pos;
+
+	pos = (i * e->sl) + (j * e->sl);
+	e->img[pos] = 125;
+	e->img[pos + 1] = 6;
+	e->img[pos + 2] = 50;
+	e->img[pos + 3] = 0;
+}
+
+void breizh_1(t_draw infos, int xi, int yi, t_fdf *e)
 {
 	int cumul;
 	int x;
@@ -32,12 +43,13 @@ void breizh_1(t_draw infos, void *mlx, void *win, int xi, int yi)
 			cumul -= infos.dx;
 			y += infos.yinc;
 		}
-		mlx_pixel_put(mlx, win, x, y, 0xffffff);
+		assign_img(e, x, y);
+		//mlx_pixel_put(e->mlx, e->win, x, y, 0xffffff);
 		i++;
 	}
 }
 
-void breizh_2(t_draw infos, void *mlx, void *win, int xi, int yi)
+void breizh_2(t_draw infos, int xi, int yi, t_fdf *e)
 {
 	int cumul;
 	int x;
@@ -57,51 +69,51 @@ void breizh_2(t_draw infos, void *mlx, void *win, int xi, int yi)
 			cumul -= infos.dy;
 			x += infos.xinc;
 		}
-		mlx_pixel_put(mlx, win, x, y, 0xffffff);
+		assign_img(e, x, y);
 		i++;
 	}
 }
-/*
-void assign(t_draw *infos, int i, int j, t_map **parse)
-{
-	infos->xi = parse[i][j].iso_x;
-	infos->yi = parse[i][j].iso_y;
-	infos->xf = parse[i][j + 1].iso_x;
-	infos->yf = parse[i][j + 1].iso_y;
-	infos->dx = infos->xf - infos->xi;
-	infos->dy = infos->yf - infos->yi;
-	infos->xinc = (infos->dx > 0) ? 1 : -1;
-	infos->yinc = (infos->dy > 0) ? 1 : -1;
-	infos->dx = abs(infos->dx);
-	infos->dy = abs(infos->dy);
-}
 
-void assign2(t_draw *infos, int i, int j, t_map **parse)
+void bresenham(int xi, int yi, int yf, int xf, t_fdf *e)
 {
-	infos->xi = parse[i][j].iso_x;
-	infos->yi = parse[i][j].iso_y;
-	infos->xf = parse[i + 1][j].iso_x;
-	infos->yf = parse[i + 1][j].iso_y;
-	infos->dx = infos->xf - infos->xi;
-	infos->dy = infos->yf - infos->yi;
-	infos->xinc = (infos->dx > 0) ? 1 : -1;
-	infos->yinc = (infos->dy > 0) ? 1 : -1;
-	infos->dx = abs(infos->dx);
-	infos->dy = abs(infos->dy);
-	printf("lol\n");
-}
-
-void bresenham2(t_map **parse, int i, int j, int use, void *mlx, void *win)
-{
+	int x;
+	int	y;
 	t_draw infos;
 
-	if (use == 10)
-		assign(&infos, i, j, parse);
-	else
-		assign2(&infos, i, j, parse);
-	mlx_pixel_put(mlx, win, infos.xi, infos.yi, 0xffffff);
+	x = xi;
+	y = yi;
+	infos.dx = xf  - xi;
+	infos.dy = yf  - yi;
+	infos.xinc = (infos.dx > 0) ? 1 : -1;
+	infos.yinc = (infos.dy > 0) ? 1 : -1;
+	infos.dx = abs(infos.dx);
+	infos.dy = abs(infos.dy);
+	//mlx_pixel_put(e->mlx, e->win, x, y, 0xffffff);
+	assign_img(e, x, y);
 	if (infos.dx > infos.dy)
-		breizh_1(infos, mlx, win);
+		breizh_1(infos, xi, yi, e);
 	else
-		breizh_2(infos, mlx, win);
-}*/
+		breizh_2(infos, xi, yi, e);
+}
+
+void render(t_fdf *e, t_map **parse)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (i < e->size_y - 1)
+	{
+		while (j < e->jspc - 1)
+		{
+			bresenham(parse[i][j].iso_x, parse[i][j].iso_y, parse[i][j + 1].iso_y, parse[i][j + 1].iso_x, e);
+			bresenham(parse[i][j].iso_x, parse[i][j].iso_y, parse[i + 1][j].iso_y, parse[i + 1][j].iso_x, e);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	mlx_put_image_to_window(e->mlx, e->win, e->img_ptr, 0, 0);
+}
+

@@ -6,14 +6,14 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 01:38:28 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/23 04:39:32 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/26 06:33:38 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "mlx.h"
+# include "minilibx_macos/mlx.h"
 # include "math.h"
 # include "./gnl/libft/get_next_line.h"
 # include <stdio.h>
@@ -33,7 +33,7 @@ typedef struct	s_fdf
 	void		*win;
 	void		*img_ptr;
 	char		*img;
-	int			*sl;
+	int			sl;
 	int			bpp;
 	int			end;
 	int			zoom;
@@ -41,6 +41,14 @@ typedef struct	s_fdf
 	int			size_x;
 	int			size_y;
 	int			total_size;
+	int			tile_x;
+	int			tile_y;
+	int			z_relative;
+	int			offset_x;
+	int			offset_y;
+	int			win_x;
+	int			win_y;
+	int			opt;
 }				t_fdf;
 
 typedef struct		s_map
@@ -74,8 +82,8 @@ void				fill_void(t_map **map, int x, int line_number, t_fdf *e);
 int					check_line(char *line);
 int					size_line(char *line);
 int					check_file_type(char *line);
-void bresenham2(t_map **parse, int i, int j, int use, void *mlx, void *win);
-void breizh_1(t_draw infos, void *mlx, void *win, int xi, int yi);
-void breizh_2(t_draw infos, void *mlx, void *win, int xi, int yi);
+void breizh_1(t_draw infos, int xi, int yi, t_fdf *e);
+void breizh_2(t_draw infos, int xi, int yi, t_fdf *e);
+void render(t_fdf *e, t_map **parse);
 
 #endif

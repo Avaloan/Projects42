@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 02:10:29 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/23 05:20:32 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/26 05:19:14 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int pre_parser(char *av, t_fdf *e)
 	}
 	close(fd);
 	e->size_y = nb_line;
+	e->total_size = size * nb_line;
 	return (1);
 }
 
