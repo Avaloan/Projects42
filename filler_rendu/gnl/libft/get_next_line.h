@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 00:18:00 by snedir            #+#    #+#             */
-/*   Updated: 2017/04/11 04:28:39 by snedir           ###   ########.fr       */
+/*   Updated: 2017/09/07 06:28:15 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include "libft.h"
 # define NEXT control->next
 # define STOCK control->stock
 # define FD control->fd
@@ -34,4 +34,5 @@ typedef struct		s_buf
 }					t_buf;
 
 int					get_next_line(int fd, char **line);
+int					get_next_line2(int fd, char **line);
 #endif
