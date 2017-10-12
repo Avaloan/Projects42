@@ -6,7 +6,7 @@
 launched players/carli.filler
 $$$ exec p1 : [players/carli.filler]
 launched players/grati.filler
-$$$ exec p2 : [players/grati.filler]
+$$$ exec p2 : [players/snedir.filler]
 Plateau 15 17:
     01234567890123456
 000 .................
