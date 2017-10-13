@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 03:42:35 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/12 06:21:01 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/13 05:24:19 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_env
 	int iter_map;
 	int check_piece;
 	int check_map;
+	int opti;
 }			t_env;
 
 char **create_map(t_env *e);
@@ -53,5 +54,6 @@ int check_space(t_env *e, char *line);
 int check_if_piece(char *line);
 void print_map(t_env *e);
 int enable_check_piece(t_env *e);
+int reset_params(t_env *e, int flag);
 
 #endif

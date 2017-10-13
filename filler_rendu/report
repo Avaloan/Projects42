@@ -1,4 +1,3 @@
-ZKKK
 .................
 .................
 .................
@@ -15,58 +14,27 @@ ZKKK
 .................
 .................
 
-ZHAT
-e->chkpiece 1
-e->chkpiece 1 STAT 1 LINE Piece 2 3:
-e->chkpiece 1
-e->chkpiece 1 STAT 2 LINE *..
-e->chkpiece 1
-e->chkpiece 1 STAT 3 LINE **.
-e->chkpiece 1
-e->chkpiece 1 STAT 4 LINE <got (O): [8, 2]
-e->chkpiece 1
-e->chkpiece 1 STAT 5 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 6 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 7 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 8 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 9 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 10 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 11 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 12 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 13 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 14 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 15 LINE 008 ..o..............
-e->chkpiece 1
-e->chkpiece 1 STAT 16 LINE 009 ..oo.............
-e->chkpiece 1
-e->chkpiece 1 STAT 17 LINE 010 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 18 LINE 011 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 19 LINE 012 ..............X..
-e->chkpiece 1
-e->chkpiece 1 STAT 20 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 21 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 22 LINE Piece 1 3:
-e->chkpiece 1
-e->chkpiece 1 STAT 23 LINE .**
-PLEASE
+*..
 **.
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..o..............
+..oo.............
+.................
+.................
+..............X..
+.................
+.................
+
 .**
 
-ZKKK
 .................
 .................
 .................
@@ -83,478 +51,3352 @@ ZKKK
 .................
 .................
 
-ZHAT
-e->chkpiece 1
-e->chkpiece 1 STAT 24 LINE Piece 2 1:
-e->chkpiece 1
-e->chkpiece 1 STAT 25 LINE *
-e->chkpiece 1
-e->chkpiece 1 STAT 26 LINE *
-e->chkpiece 1
-e->chkpiece 1 STAT 27 LINE <got (O): [9, 3]
-e->chkpiece 1
-e->chkpiece 1 STAT 28 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 29 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 30 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 31 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 32 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 33 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 34 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 35 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 36 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 37 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 38 LINE 008 ..O..............
-e->chkpiece 1
-e->chkpiece 1 STAT 39 LINE 009 ..Oo.............
-e->chkpiece 1
-e->chkpiece 1 STAT 40 LINE 010 ...o.............
-e->chkpiece 1
-e->chkpiece 1 STAT 41 LINE 011 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 42 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 43 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 44 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 45 LINE Piece 2 3:
-e->chkpiece 1
-e->chkpiece 1 STAT 46 LINE *..
-e->chkpiece 1
-e->chkpiece 1 STAT 47 LINE *..
-e->chkpiece 1
-e->chkpiece 1 STAT 48 LINE <got (X): [11, 14]
-e->chkpiece 1
-e->chkpiece 1 STAT 49 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 50 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 51 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 52 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 53 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 54 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 55 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 56 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 57 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 58 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 59 LINE 008 ..O..............
-e->chkpiece 1
-e->chkpiece 1 STAT 60 LINE 009 ..OO.............
-e->chkpiece 1
-e->chkpiece 1 STAT 61 LINE 010 ...O.............
-e->chkpiece 1
-e->chkpiece 1 STAT 62 LINE 011 ..............x..
-e->chkpiece 1
-e->chkpiece 1 STAT 63 LINE 012 ..............xX.
-e->chkpiece 1
-e->chkpiece 1 STAT 64 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 65 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 66 LINE Piece 1 2:
-e->chkpiece 1
-e->chkpiece 1 STAT 67 LINE **
-e->chkpiece 1
-e->chkpiece 1 STAT 68 LINE <got (O): [9, 3]
-e->chkpiece 1
-e->chkpiece 1 STAT 69 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 70 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 71 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 72 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 73 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 74 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 75 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 76 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 77 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 78 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 79 LINE 008 ..O..............
-e->chkpiece 1
-e->chkpiece 1 STAT 80 LINE 009 ..Ooo............
-e->chkpiece 1
-e->chkpiece 1 STAT 81 LINE 010 ...O.............
-e->chkpiece 1
-e->chkpiece 1 STAT 82 LINE 011 ..............X..
-e->chkpiece 1
-e->chkpiece 1 STAT 83 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 84 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 85 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 86 LINE Piece 2 3:
-e->chkpiece 1
-e->chkpiece 1 STAT 87 LINE ..*
-e->chkpiece 1
-e->chkpiece 1 STAT 88 LINE .**
-e->chkpiece 1
-e->chkpiece 1 STAT 89 LINE <got (X): [10, 13]
-e->chkpiece 1
-e->chkpiece 1 STAT 90 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 91 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 92 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 93 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 94 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 95 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 96 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 97 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 98 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 99 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 100 LINE 008 ..O..............
-e->chkpiece 1
-e->chkpiece 1 STAT 101 LINE 009 ..OOO............
-e->chkpiece 1
-e->chkpiece 1 STAT 102 LINE 010 ...O...........x.
-e->chkpiece 1
-e->chkpiece 1 STAT 103 LINE 011 ..............xx.
-e->chkpiece 1
-e->chkpiece 1 STAT 104 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 105 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 106 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 107 LINE Piece 2 2:
-e->chkpiece 1
-e->chkpiece 1 STAT 108 LINE .*
-e->chkpiece 1
-e->chkpiece 1 STAT 109 LINE **
-e->chkpiece 1
-e->chkpiece 1 STAT 110 LINE <got (O): [10, 2]
-e->chkpiece 1
-e->chkpiece 1 STAT 111 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 112 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 113 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 114 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 115 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 116 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 117 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 118 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 119 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 120 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 121 LINE 008 ..O..............
-e->chkpiece 1
-e->chkpiece 1 STAT 122 LINE 009 ..OOO............
-e->chkpiece 1
-e->chkpiece 1 STAT 123 LINE 010 ...o...........X.
-e->chkpiece 1
-e->chkpiece 1 STAT 124 LINE 011 ..oo..........XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 125 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 126 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 127 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 128 LINE Piece 1 3:
-e->chkpiece 1
-e->chkpiece 1 STAT 129 LINE **.
-e->chkpiece 1
-e->chkpiece 1 STAT 130 LINE <got (X): [10, 14]
-e->chkpiece 1
-e->chkpiece 1 STAT 131 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 132 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 133 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 134 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 135 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 136 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 137 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 138 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 139 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 140 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 141 LINE 008 ..O..............
-e->chkpiece 1
-e->chkpiece 1 STAT 142 LINE 009 ..OOO............
-e->chkpiece 1
-e->chkpiece 1 STAT 143 LINE 010 ...O..........xx.
-e->chkpiece 1
-e->chkpiece 1 STAT 144 LINE 011 ..OO..........XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 145 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 146 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 147 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 148 LINE Piece 2 1:
-e->chkpiece 1
-e->chkpiece 1 STAT 149 LINE *
-e->chkpiece 1
-e->chkpiece 1 STAT 150 LINE *
-e->chkpiece 1
-e->chkpiece 1 STAT 151 LINE <got (O): [8, 4]
-e->chkpiece 1
-e->chkpiece 1 STAT 152 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 153 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 154 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 155 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 156 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 157 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 158 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 159 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 160 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 161 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 162 LINE 008 ..O.o............
-e->chkpiece 1
-e->chkpiece 1 STAT 163 LINE 009 ..OOo............
-e->chkpiece 1
-e->chkpiece 1 STAT 164 LINE 010 ...O..........XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 165 LINE 011 ..OO..........XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 166 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 167 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 168 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 169 LINE Piece 1 3:
-e->chkpiece 1
-e->chkpiece 1 STAT 170 LINE .**
-e->chkpiece 1
-e->chkpiece 1 STAT 171 LINE <got (X): [10, 14]
-e->chkpiece 1
-e->chkpiece 1 STAT 172 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 173 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 174 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 175 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 176 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 177 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 178 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 179 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 180 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 181 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 182 LINE 008 ..O.O............
-e->chkpiece 1
-e->chkpiece 1 STAT 183 LINE 009 ..OOO............
-e->chkpiece 1
-e->chkpiece 1 STAT 184 LINE 010 ...O..........Xxx
-e->chkpiece 1
-e->chkpiece 1 STAT 185 LINE 011 ..OO..........XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 186 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 187 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 188 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 189 LINE Piece 1 2:
-e->chkpiece 1
-e->chkpiece 1 STAT 190 LINE **
-e->chkpiece 1
-e->chkpiece 1 STAT 191 LINE <got (O): [11, 3]
-e->chkpiece 1
-e->chkpiece 1 STAT 192 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 193 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 194 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 195 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 196 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 197 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 198 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 199 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 200 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 201 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 202 LINE 008 ..O.O............
-e->chkpiece 1
-e->chkpiece 1 STAT 203 LINE 009 ..OOO............
-e->chkpiece 1
-e->chkpiece 1 STAT 204 LINE 010 ...O..........XXX
-e->chkpiece 1
-e->chkpiece 1 STAT 205 LINE 011 ..Ooo.........XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 206 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 207 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 208 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 209 LINE Piece 1 3:
-e->chkpiece 1
-e->chkpiece 1 STAT 210 LINE .**
-e->chkpiece 1
-e->chkpiece 1 STAT 211 LINE <got (X): [10, 12]
-e->chkpiece 1
-e->chkpiece 1 STAT 212 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 213 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 214 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 215 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 216 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 217 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 218 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 219 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 220 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 221 LINE 007 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 222 LINE 008 ..O.O............
-e->chkpiece 1
-e->chkpiece 1 STAT 223 LINE 009 ..OOO............
-e->chkpiece 1
-e->chkpiece 1 STAT 224 LINE 010 ...O.........xxXX
-e->chkpiece 1
-e->chkpiece 1 STAT 225 LINE 011 ..OOO.........XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 226 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 227 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 228 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 229 LINE Piece 2 2:
-e->chkpiece 1
-e->chkpiece 1 STAT 230 LINE *.
-e->chkpiece 1
-e->chkpiece 1 STAT 231 LINE **
-e->chkpiece 1
-e->chkpiece 1 STAT 232 LINE <got (O): [7, 4]
-e->chkpiece 1
-e->chkpiece 1 STAT 233 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 234 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 235 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 236 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 237 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 238 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 239 LINE 004 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 240 LINE 005 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 241 LINE 006 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 242 LINE 007 ....o............
-e->chkpiece 1
-e->chkpiece 1 STAT 243 LINE 008 ..O.oo...........
-e->chkpiece 1
-e->chkpiece 1 STAT 244 LINE 009 ..OOO............
-e->chkpiece 1
-e->chkpiece 1 STAT 245 LINE 010 ...O.........XXXX
-e->chkpiece 1
-e->chkpiece 1 STAT 246 LINE 011 ..OOO.........XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 247 LINE 012 ..............XX.
-e->chkpiece 1
-e->chkpiece 1 STAT 248 LINE 013 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 249 LINE 014 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 250 LINE Piece 2 2:
-e->chkpiece 1
-e->chkpiece 1 STAT 251 LINE *.
-e->chkpiece 1
-e->chkpiece 1 STAT 252 LINE *.
-e->chkpiece 1
-e->chkpiece 1 STAT 253 LINE <got (X): [9, 15]
-e->chkpiece 1
-e->chkpiece 1 STAT 254 LINE Plateau 15 17:
-e->chkpiece 1
-e->chkpiece 1 STAT 255 LINE     01234567890123456
-e->chkpiece 1
-e->chkpiece 1 STAT 256 LINE 000 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 257 LINE 001 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 258 LINE 002 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 259 LINE 003 .................
-e->chkpiece 1
-e->chkpiece 1 STAT 260 LINE 004 .
+*
+*
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O..............
+..Oo.............
+...o.............
+.................
+..............XX.
+.................
+.................
+
+*..
+*..
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O..............
+..OO.............
+...O.............
+..............x..
+..............xX.
+.................
+.................
+
+**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O..............
+..Ooo............
+...O.............
+..............X..
+..............XX.
+.................
+.................
+
+..*
+.**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O..............
+..OOO............
+...O...........x.
+..............xx.
+..............XX.
+.................
+.................
+
+.*
+**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O..............
+..OOO............
+...o...........X.
+..oo..........XX.
+..............XX.
+.................
+.................
+
+**.
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O..............
+..OOO............
+...O..........xx.
+..OO..........XX.
+..............XX.
+.................
+.................
+
+*
+*
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O.o............
+..OOo............
+...O..........XX.
+..OO..........XX.
+..............XX.
+.................
+.................
+
+.**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O.O............
+..OOO............
+...O..........Xxx
+..OO..........XX.
+..............XX.
+.................
+.................
+
+**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O.O............
+..OOO............
+...O..........XXX
+..Ooo.........XX.
+..............XX.
+.................
+.................
+
+.**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+..O.O............
+..OOO............
+...O.........xxXX
+..OOO.........XX.
+..............XX.
+.................
+.................
+
+*.
+**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....o............
+..O.oo...........
+..OOO............
+...O.........XXXX
+..OOO.........XX.
+..............XX.
+.................
+.................
+
+*.
+*.
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O............
+..O.OO...........
+..OOO..........x.
+...O.........XXxX
+..OOO.........XX.
+..............XX.
+.................
+.................
+
+**
+**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O............
+..O.OO...........
+..OOO..........X.
+...O.........XXXX
+..OOoo........XX.
+....oo........XX.
+.................
+.................
+
+***
+***
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O............
+..O.OO........xxx
+..OOO.........xxx
+...O.........XXXX
+..OOOO........XX.
+....OO........XX.
+.................
+.................
+
+**.
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O............
+..O.Ooo.......XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OO........XX.
+.................
+.................
+
+.**...
+......
+......
+......
+......
+......
+......
+......
+......
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O............
+..O.OOO.......XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....Ooo.......XX.
+.................
+.................
+
+**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O............
+..O.OOoo......XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOO.......XX.
+.................
+.................
+
+*
+*
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O............
+..O.OOOO......XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOo.......XX.
+......o..........
+.................
+
+**
+..
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O............
+..O.OOOoo.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOO.......XX.
+......O..........
+.................
+
+*
+*
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O............
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOO.......XX.
+......o..........
+......o..........
+
+*
+*
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O...o........
+..O.OOOOo.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOO.......XX.
+......O..........
+......O..........
+
+..*
+.**
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O...O........
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOO.......XX.
+......Oo.........
+......oo.........
+
+***
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O...ooo......
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOO.......XX.
+......OO.........
+......OO.........
+
+..*
+..*
+
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+....O...OOO......
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOo......XX.
+......Oo.........
+......OO.........
+
+..*
+.**
+
+.................
+.................
+.................
+.................
+.................
+.................
+...........o.....
+....O...OOoo.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OO.........
+......OO.........
+
+**
+..
+
+.................
+.................
+.................
+.................
+.................
+.................
+...........O.....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......Ooo........
+......OO.........
+
+.*
+**
+
+.................
+.................
+.................
+.................
+.................
+............o....
+...........oo....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOO........
+......OO.........
+
+...
+.**
+
+.................
+.................
+.................
+.................
+.................
+............O....
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOO........
+......Ooo........
+
+**
+
+.................
+.................
+.................
+.................
+.................
+............oo...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOO........
+......OOO........
+
+.**
+...
+
+.................
+.................
+.................
+.................
+.................
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOoo.......
+......OOO........
+
+*.
+*.
+
+.................
+.................
+.................
+.................
+.............o...
+............Oo...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOO.......
+......OOO........
+
+**
+..
+
+.................
+.................
+.................
+.................
+.............O...
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOoo......
+......OOO........
+
+**
+..
+
+.................
+.................
+.................
+.................
+.............oo..
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOO......
+......OOO........
+
+***
+**.
+
+.................
+.................
+.................
+.................
+.............OO..
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOooo....
+......OOO.oo.....
+
+**
+
+.................
+.................
+.................
+.................
+.............Ooo.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOO....
+......OOO.OO.....
+
+.**
+
+.................
+.................
+.................
+.................
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOO....
+......OOO.Ooo....
+
+.*
+.*
+
+.................
+.................
+.................
+...............o.
+.............OOo.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOO....
+......OOO.OOO....
+
+**
+
+.................
+.................
+.................
+...............O.
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOO....
+......OOO.OOoo...
+
+**
+
+.................
+.................
+.................
+...............oo
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOO....
+......OOO.OOOO...
+
+..*
+..*
+
+.................
+.................
+.................
+...............OO
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOo...
+......OOO.OOOo...
+
+*
+*
+
+.................
+.................
+................o
+...............Oo
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOO...
+......OOO.OOOO...
+
+..
+**
+
+.................
+.................
+................O
+...............OO
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOO...
+......OOO.OOOoo..
+
+.*
+**
+
+.................
+................o
+...............oo
+...............OO
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOO...
+......OOO.OOOOO..
+
+**
+..
+
+.................
+................O
+...............OO
+...............OO
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOoo..
+......OOO.OOOOO..
+
+.**
+
+.................
+...............oo
+...............OO
+...............OO
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOOO..
+......OOO.OOOOO..
+
+**
+
+.................
+...............OO
+...............OO
+...............OO
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOOO..
+......OOO.OOOOoo.
+
+**.
+.**
+
+.............oo..
+..............ooO
+...............OO
+...............OO
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOOO..
+......OOO.OOOOOO.
+
+**
+..
+
+.............OO..
+..............OOO
+...............OO
+...............OO
+.............OOO.
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOOoo.
+......OOO.OOOOOO.
+
+**
+
+.............OO..
+..............OOO
+...............OO
+...............OO
+.............OOoo
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOOOO.
+......OOO.OOOOOO.
+
+.*
+**
+
+.............OO..
+..............OOO
+...............OO
+...............OO
+.............OOOO
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOOOOo
+......OOO.OOOOOoo
+
+***
+...
+
+.............Oooo
+..............OOO
+...............OO
+...............OO
+.............OOOO
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+......OOOOOOOOOOO
+......OOO.OOOOOOO
+
+**
+..
+
+.............OOOO
+..............OOO
+...............OO
+...............OO
+.............OOOO
+............OO...
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+.....ooOOOOOOOOOO
+......OOO.OOOOOOO
+
+*
+*
+
+.............OOOO
+..............OOO
+...............OO
+...............OO
+.............OOOo
+............OO..o
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+.....OOOOOOOOOOOO
+......OOO.OOOOOOO
+
+**
+*.
+
+.............OOOO
+..............OOO
+...............OO
+...............OO
+.............OOOO
+............OO..O
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+....ooOOOOOOOOOOO
+....o.OOO.OOOOOOO
+
+*.
+*.
+
+.............OOOO
+..............OOO
+...............OO
+...............OO
+.............OOoO
+............OO.oO
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+....OOOOOOOOOOOOO
+....O.OOO.OOOOOOO
+
+**.
+
+.............OOOO
+..............OOO
+...............OO
+...............OO
+.............OOOO
+............OO.OO
+...........OO....
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+....OOOOOOOOOOOOO
+....O.OOOooOOOOOO
+
+*.
+*.
+
+.............OOOO
+..............OOO
+...............OO
+...............OO
+.............OOOO
+............OO.oO
+...........OO..o.
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+....OOOOOOOOOOOOO
+....O.OOOOOOOOOOO
+
+**
+..
+
+.............OOOO
+..............OOO
+...............OO
+...............OO
+.............OOOO
+............OO.OO
+...........OO..O.
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+...ooOOOOOOOOOOOO
+....O.OOOOOOOOOOO
+
+***
+...
+
+.............OOOO
+..............OOO
+...............OO
+...............OO
+.............OOOO
+............OO.OO
+...........OO.ooo
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+...OOOOOOOOOOOOOO
+....O.OOOOOOOOOOO
+
+**
+
+.............OOOO
+..............OOO
+...............OO
+...............OO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+...OOOOOOOOOOOOOO
+....OooOOOOOOOOOO
+
+**
+**
+
+.............OOOO
+.............ooOO
+.............ooOO
+...............OO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+...OOOOOOOOOOOOOO
+....OOOOOOOOOOOOO
+
+**
+**
+
+.............OOOO
+.............OOOO
+.............OOOO
+...............OO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+..ooOOOOOOOOOOOOO
+..ooOOOOOOOOOOOOO
+
+*..
+*..
+
+.............OOOO
+.............OOOO
+.............OoOO
+..............oOO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+..OOOOOOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+
+**
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.....
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+..OOOOOOOOOOOOOOO
+.ooOOOOOOOOOOOOOO
+
+*
+*
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OO.OO
+...........OO.OOo
+....O...OOOO....o
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+..OOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+
+..
+**
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO....O
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+..OOOOOOOOOOOOOOO
+ooOOOOOOOOOOOOOOO
+
+.*.
+***
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OO.OO
+...........OO.oOO
+....O...OOOO.oooO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+..OOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+..
+**
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XX.
+.ooOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOO......XXo
+.OOOOOOOOOOOOOOOo
+OOOOOOOOOOOOOOOOO
+
+.**
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XX.
+....OOOoo.....XXO
+.OOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXo
+....OOOOO.....XXo
+.OOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OO.OO
+...........OO.OOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOO.....XXO
+oOOOOOOOOOOOOOOOO
+oOOOOOOOOOOOOOOOO
+
+.*
+**
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OOoOO
+...........OOooOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOO.....XXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.............OOOO
+.............OOOO
+.............OOOO
+..............OOO
+.............OOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOoo....XXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**.
+**.
+
+.............OOOO
+.............OOOO
+............ooOOO
+............ooOOO
+.............OOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOOO....XXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*..
+*..
+
+.............OOOO
+.............OOOO
+............OOOOO
+............OOOOO
+.............OOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOOO...oXXO
+OOOOOOOOOOOOOoOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+............ooOOO
+.............OOOO
+............OOOOO
+............OOOOO
+.............OOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOOO...OXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+............OOOOO
+.............OOOO
+............OOOOO
+............OOOOO
+.............OOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOOO..oOXXO
+OOOOOOOOOOOOoOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+..
+
+............OOOOO
+............ooOOO
+............OOOOO
+............OOOOO
+.............OOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOOO..OOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+.............OOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO.....XXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOOO.ooOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+.............OOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.oOOO
+..O.OOOOO....oXXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOOO.OOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+.............OOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO....OXXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOOOooOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............ooOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO....OXXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+....OOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO....OXXX
+..OOO.........XXX
+...O.........XXXX
+..OOOO........XXO
+...ooOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+**
+
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO...ooXXX
+..OOO.......ooXXX
+...O.........XXXX
+..OOOO........XXO
+...OOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOO.OOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.........XXXX
+..OOOO........XXO
+..oOOOOOOOOOOOXXO
+OOoOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOooOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.........XXXX
+..OOOO........XXO
+..OOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+...
+
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.........XXXX
+..OOOO........XXO
+.ooOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+...........ooOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.........XXXX
+..OOOO........XXO
+.OOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*.
+*.
+
+...........OOOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.........XXXX
+..OOOO........XXO
+oOOOOOOOOOOOOOXXO
+oOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+...........OOOOOO
+...........ooOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.........XXXX
+..OOOO........XXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+...........OOOOOO
+...........OOOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.........XXXX
+..OOOO.......oXXO
+OOOOOOOOOOOOOoXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+...........OOOOOO
+...........OOOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......oOXXX
+...O........oXXXX
+..OOOO.......OXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+..*
+
+...........OOOOOO
+...........OOOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O........OXXXX
+..OOOO....oooOXXO
+OOOOOOOOOOOOoOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+
+...........OOOOOO
+...........OOOOOO
+..........oooOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O........OXXXX
+..OOOO....OOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+.*.
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+............OOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O........OXXXX
+..OOOO.oooOOOOXXO
+OOOOOOOOoOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*.
+*.
+
+...........OOOOOO
+...........OOOOOO
+..........OoOOOOO
+...........oOOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O........OXXXX
+..OOOO.OOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+............OOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O........OXXXX
+..OOOOooOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*.
+*.
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........oOOOOO
+...........oOOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O........OXXXX
+..OOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+.*.
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+............OOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.....oooOXXXX
+..OOOOOOOOoOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+.*
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+..........ooOOOOO
+...........oOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.....OOOOXXXX
+..OOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.......OOXXX
+...O.....OOOOXXXX
+.oOOOOOOOOOOOOXXO
+OoOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+.*
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.....ooOOXXX
+...O.....OOoOXXXX
+.OOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO...OOXXX
+..OOO.....OOOOXXX
+...O...oooOOOXXXX
+.OOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO..ooOXXX
+..OOO.....OOOOXXX
+...O...OOOOOOXXXX
+.OOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.*.
+.**
+
+...........OOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO..OOOXXX
+..OOO.o...OOOOXXX
+...O..ooOOOOOXXXX
+.OOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+...........OOOOOO
+..........oOOOOOO
+..........oOOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO..OOOXXX
+..OOO.O...OOOOXXX
+...O..OOOOOOOXXXX
+.OOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+...........OOOOOO
+..........OOOOOOO
+..........OOOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO..OOOXXX
+..OOO.O...OOOOXXX
+...O..OOOOOOOXXXX
+oOOOOOOOOOOOOOXXO
+oOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*.
+*.
+
+..........oOOOOOO
+..........oOOOOOO
+..........OOOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO..OOOXXX
+..OOO.O...OOOOXXX
+...O..OOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+.**
+
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+...........OOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO..OOOXXX
+oooOO.O...OOOOXXX
+.ooO..OOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+...
+
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.........oooOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO..OOOXXX
+OOOOO.O...OOOOXXX
+.OOO..OOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.*
+**
+
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+...........OOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO.oOOOXXX
+OOOOO.O..ooOOOXXX
+.OOO..OOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........ooOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO.OOOOXXX
+OOOOO.O..OOOOOXXX
+.OOO..OOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+...........OOOOOO
+....O...OOOOOOOOO
+..O.OOOOO.OOOOXXX
+OOOOO.O..OOOOOXXX
+.OOO.ooOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**.
+
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+..........ooOOOOO
+....O...OOOOOOOOO
+..O.OOOOO.OOOOXXX
+OOOOO.O..OOOOOXXX
+.OOO.OOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+.**
+
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.oooO...OOOOOOOOO
+..ooOOOOO.OOOOXXX
+OOOOO.O..OOOOOXXX
+.OOO.OOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+..
+
+.........ooOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+..OOOOOOO.OOOOXXX
+OOOOO.O..OOOOOXXX
+.OOO.OOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**.
+
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+..OOOOOOO.OOOOXXX
+OOOOO.O..OOOOOXXX
+.OOOooOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.........OOOOOOOO
+.........ooOOOOOO
+..........OOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+..OOOOOOO.OOOOXXX
+OOOOO.O..OOOOOXXX
+.OOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.........OOOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+..OOOOOOO.OOOOXXX
+OOOOO.O..OOOOOXXX
+ooOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**.
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........ooOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+..OOOOOOO.OOOOXXX
+OOOOO.O..OOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+...
+.**
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+..OOOOOOO.OOOOXXX
+OOOOO.O.ooOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+..*
+..*
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........oOOOOOOO
+.........oOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+..OOOOOOO.OOOOXXX
+OOOOO.O.OOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+.*
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+ooOOOOOOO.OOOOXXX
+OoOOO.O.OOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........ooOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+OOOOOOOOO.OOOOXXX
+OOOOO.O.OOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+..........OOOOOOO
+.OOOO...OOOOOOOOO
+OOOOOOOOO.OOOOXXX
+OOOOO.OooOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........oOOOOOOO
+.........oOOOOOOO
+.OOOO...OOOOOOOOO
+OOOOOOOOO.OOOOXXX
+OOOOO.OOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*..
+*..
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.OOOO...OOOOOOOOO
+OOOOOOOOO.OOOOXXX
+OOOOOoOOOOOOOOXXX
+OOOOOoOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+..
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.OOOO...OOOOOOOOO
+OOOOOOOOOooOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+..*
+.**
+
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+........oOOOOOOOO
+.OOOO..ooOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+........ooOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+........OOOOOOOOO
+.OOOO..OOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+........OOOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+........OOOOOOOOO
+.OOOO.oOOOOOOOOOO
+OOOOOOoOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+........OOOOOOOOO
+........ooOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+........OOOOOOOOO
+.OOOO.OOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+........OOOOOOOOO
+........OOOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+........OOOOOOOOO
+.OOOOoOOOOOOOOOOO
+OOOOOoOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+........OOOOOOOOO
+........oOOOOOOOO
+........oOOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+........OOOOOOOOO
+.OOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+........OOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+........OOOOOOOOO
+ooOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+........OOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+........ooOOOOOOO
+.........OOOOOOOO
+.........OOOOOOOO
+........OOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*.
+**
+
+........OOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+.........OOOOOOOO
+.......o.OOOOOOOO
+.......ooOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+**
+
+........OOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+.......ooOOOOOOOO
+.......ooOOOOOOOO
+.......O.OOOOOOOO
+.......OOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*.
+**
+
+........OOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......oO.OOOOOOOO
+......ooOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+........OOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOooOOOOOOO
+......OOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+
+........OOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+....oooOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+..
+
+.......ooOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+....OOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.......OOOOOOOOOO
+........OOOOOOOOO
+........OOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+...ooOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.......oOOOOOOOOO
+.......oOOOOOOOOO
+........OOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+...OOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+........OOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+..oOOOOOOOOOOOOOO
+OOoOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.*
+**
+
+.......OOOOOOOOOO
+.......oOOOOOOOOO
+......ooOOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+.ooOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+***
+
+.....oooOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.....OOOOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+ooOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.....OoOOOOOOOOOO
+......oOOOOOOOOOO
+......OOOOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+......OOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*.
+*.
+
+.....OOOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+.......OOOOOOOOOO
+.......OOOOOOOOOO
+.....oOOOOOOOOOOO
+OOOOOoOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.....OOOOOOOOOOOO
+......OOOOOOOOOOO
+......oOOOOOOOOOO
+......oOOOOOOOOOO
+.......OOOOOOOOOO
+.....OOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**.
+.*.
+
+.....OOOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+.......OOOOOOOOOO
+...ooOOOOOOOOOOOO
+OOOOoOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.....OOOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+......oOOOOOOOOOO
+......oOOOOOOOOOO
+...OOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.....OOOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+..oOOOOOOOOOOOOOO
+OOoOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.....OOOOOOOOOOOO
+.....ooOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+.ooOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+.....ooOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+......OOOOOOOOOOO
+......OOOOOOOOOOO
+ooOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+.....oOOOOOOOOOOO
+.....oOOOOOOOOOOO
+......OOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+.....oOOOOOOOOOOO
+OOOOOoOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**.
+***
+
+...ooOOOOOOOOOOOO
+...oooOOOOOOOOOOO
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+.....OOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*..
+**.
+
+...OOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+.....OOOOOOOOOOOO
+....oOOOOOOOOOOOO
+....ooOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+...OOOOOOOOOOOOOO
+...OoOOOOOOOOOOOO
+....oOOOOOOOOOOOO
+....OOOOOOOOOOOOO
+....OOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+...OOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+....OOOOOOOOOOOOO
+....OOOOOOOOOOOOO
+...oOOOOOOOOOOOOO
+OOOoOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+...OOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+...ooOOOOOOOOOOOO
+....OOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*..
+**.
+
+...OOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+..o.OOOOOOOOOOOOO
+..ooOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+...OOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+..OooOOOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*.
+*.
+
+...OOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+.oOOOOOOOOOOOOOOO
+OoOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.*.
+***
+
+..oOOOOOOOOOOOOOO
+.oooOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+..OOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+...OOOOOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+oOOOOOOOOOOOOOOOO
+oOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+.**
+
+..OOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+..ooOOOOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+..OOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+.ooOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.ooOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+..
+
+.OOOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+..OOOOOOOOOOOOOOO
+ooOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+**
+
+.OOOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+.ooOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*.
+.*
+
+.OOOOOOOOOOOOOOOO
+.OOOOOOOOOOOOOOOO
+oOOOOOOOOOOOOOOOO
+OoOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+*
+*
+
+.OOOOOOOOOOOOOOOO
+oOOOOOOOOOOOOOOOO
+oOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOOXXX
+OOOOOOOOOOOOOXXXX
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOXXO
+OOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOO
+
+...
+**.
+
