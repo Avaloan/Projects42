@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 03:42:35 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/13 05:24:19 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/17 02:43:16 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int check_if_piece(char *line);
 void print_map(t_env *e);
 int enable_check_piece(t_env *e);
 int reset_params(t_env *e, int flag);
+int try_piece(t_env *e);
+int put_piece(t_env *e, int i, int j, int anchor);
 
 #endif

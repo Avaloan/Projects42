@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 04:26:35 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/13 06:15:05 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/17 02:43:52 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int enable_check_piece(t_env *e)
 int reset_params(t_env *e, int flag)
 {
 	if (e->iter_piece == e->size_piece -1 && flag == 1)
-	{		
+	{
+		try_piece(e);
+		//printf("iter_piece %d || size_piece %d\n", e->iter_piece, e->size_piece);
 		e->size_piece = 0;
 		e->iter_piece = 0;
 		e->check_piece = 0;

@@ -6,13 +6,16 @@
 #    By: snedir <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/07 01:53:42 by snedir            #+#    #+#              #
-#    Updated: 2017/10/07 02:16:46 by snedir           ###   ########.fr        #
+#    Updated: 2017/10/17 01:41:51 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = snedir.filler
 
-SRCS = parser.c
+SRCS = parser.c \
+	   misc.c \
+	   parser.c \
+	   trash_norme.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -24,7 +27,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C gnl/libft
-	@gcc $(FLAGS) $(OBJS) gnl/libft/libft.a $(NAME)
+	@gcc $(FLAGS) $(OBJS) gnl/libft/libft.a -o $(NAME)
 
 %.o: $(SRCPATH)%.c
 	@gcc $(FLAGS) -c $< -I includes/

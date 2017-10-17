@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 01:34:43 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/13 06:13:57 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/17 05:58:23 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 int get_player_number(t_env *e, char *line)
 {
 	char *str;
-	
+
 	if (e->player_piece)
 		return (1);
 	if (!(str = ft_strchr(line, '$')))
@@ -224,22 +224,104 @@ int parser(t_env *e, char *line)
 	return (1);
 }
 
+/*
+ * Penser a changer le type de map, en une structure
+ * Pour avoir un flag qui verifie la proximite immediate de l'ennemi
+ */
 
+int put_piece(t_env *e, int i, int j, int anchor)
+{
+	int iter;
+	int i_c;
+	int j_c;
+
+	iter = 0;
+	i_c = i;
+	j_c = j;
+	if (((i + e->piece_y) > e->map_y) && ((j + e->piece_x) > e->map_x))
+		return (0);
+	//dprintf(2, "i %d + piece_y %d < map_y %d || j %d + piece_x %d < map_x %d\n", i, e->piece_y, e->map_y, j, e->piece_x, e->map_x);
+	while (iter < e->size_piece)
+	{
+		//dprintf(2, "i %d j %d i_c %d j_c %d iter %d\n", i, j, i_c, j_c, iter);
+		if (e->map[i_c][j_c] == 'O' && anchor == 0 && e->piece[iter] == '*')
+		{
+			//e->map[i_c][j_c] = 'V';
+			anchor++;
+			j_c++;
+			iter++;
+		}
+		if (e->piece[iter] == '\n')
+		{
+			i_c++;
+			j_c = j;
+		}
+		if (e->piece[iter] == '*' && e->map[i_c][j_c] == '.')
+		{
+			//e->map[i_c][j_c] = 'V';
+			iter++;
+			j_c++;
+		}
+		else if (e->piece[iter] == '*' && e->map[i_c][j_c] != '.')
+			return (0);
+		j_c++;
+		iter++;
+	}
+	if (anchor != 1)
+		return (0);
+	return (1);
+}
+
+#include <unistd.h>
+
+int try_piece(t_env *e)
+{
+	int i;
+	int j;
+	int icopy;
+	int jcopy;
+
+	i = 0;
+	j = 0;
+	while (e->map[i])
+	{
+		while (e->map[i][j])
+		{
+			if (e->map[i][j] == '.')
+			{
+				if (put_piece(e, i, j, 0))
+				{
+					//dprintf(2, "%d %d\n", i, j);
+					
+					ft_putstr(ft_itoa(i));
+					ft_putstr(" ");
+					ft_putstr(ft_itoa(j));
+					ft_putstr("\n");
+					return (1);
+				}
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (0);
+}
 
 int main()
 {
 	t_env *e = (t_env*)ft_memalloc(sizeof(t_env));
 	char *line = NULL;
-	int fd = open("resources/report", O_RDONLY);
-	while (get_next_line(fd, &line))
+	//int fd = open("resources/report", O_RDONLY);
+	while (get_next_line(0, &line))
 	{
 		/*if (!(e->map_x && e->map_y))
-			get_size_map(e, line);
-		if (parse_map(e, line) == 1)
-		{
-			print_map(e);
-			printf("\n");
-		}*/
+		  get_size_map(e, line);
+		  if (parse_map(e, line) == 1)
+		  {
+		  print_map(e);
+		  printf("\n");
+		  }*/
 		parser(e, line);
 		free(line);
 	}
