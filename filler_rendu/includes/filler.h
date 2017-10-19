@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 03:42:35 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/17 02:43:16 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/18 01:36:55 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ typedef struct s_env
 	char **map; //pas sur
 	char *piece; //pas sur
 	char player_piece;
-	char player_last;
 	char enemy_piece;
-	char enemy_last;
 	/*
 	 * liste chainee de position possible pour placer les pieces
 	 */

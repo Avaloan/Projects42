@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 06:16:15 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/13 01:25:28 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/19 01:20:33 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char		**create_map(t_env *e)
 	char	**ptr;
 	int		i;
 
-	ptr = (char**)malloc(sizeof(char*) * e->map_y + 1);
+	ptr = (char**)ft_memalloc(sizeof(char*) * (e->map_y + 1));
 	i = 0;
-	while (i < e->map_x)
+	while (i < e->map_y)
 	{
-		ptr[i] = (char*)malloc(sizeof(char) * e->map_x + 1);
+		ptr[i] = (char*)ft_memalloc(sizeof(char) * (e->map_x + 1));
 		i++;
 	}
 	return (ptr);

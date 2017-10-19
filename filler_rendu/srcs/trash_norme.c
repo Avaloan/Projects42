@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 04:26:35 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/17 02:43:52 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/18 06:01:42 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ int reset_params(t_env *e, int flag)
 		e->piece_y = 0;
 		//printf("%s\n\n", e->piece);
 		e->check_map = 0;
+		//printf("%s\n\n", e->piece);
 		ft_strdel(&e->piece); //ce strdel est necessaire avant la nouvelle ALLOC
 		return (1);
 	}
 	if (e->iter_map == e->map_y && flag == 0)
 	{
+		//print_map(e);
 		e->iter_map = 0;
 		e->check_map = 2; //A mieux placer
 		//print_map(e);

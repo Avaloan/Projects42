@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 01:34:43 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/17 05:58:23 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/19 03:32:34 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,12 @@ int get_player_number(t_env *e, char *line)
 	if (*(str + 1) == '1' && ft_strstr(line, "snedir"))
 	{
 		e->player_piece = 'O';
-		e->player_piece = 'o';
 		e->enemy_piece = 'X';
-		e->enemy_last = 'x';
 	}
 	else if (*(str + 1) == '2' && ft_strstr(line, "snedir"))
 	{
 		e->player_piece = 'X';
-		e->player_piece = 'x';
 		e->enemy_piece = 'O';
-		e->enemy_last = 'o';
 	}
 	else
 		return (-1);
@@ -229,7 +225,9 @@ int parser(t_env *e, char *line)
  * Pour avoir un flag qui verifie la proximite immediate de l'ennemi
  */
 
-int put_piece(t_env *e, int i, int j, int anchor)
+#include <unistd.h>
+
+/*int put_piece(t_env *e, int i, int j, int anchor)
 {
 	int iter;
 	int i_c;
@@ -241,7 +239,7 @@ int put_piece(t_env *e, int i, int j, int anchor)
 	if (((i + e->piece_y) > e->map_y) && ((j + e->piece_x) > e->map_x))
 		return (0);
 	//dprintf(2, "i %d + piece_y %d < map_y %d || j %d + piece_x %d < map_x %d\n", i, e->piece_y, e->map_y, j, e->piece_x, e->map_x);
-	while (iter < e->size_piece)
+	while (iter < (e->size_piece - 1) && (j_c < e->map_x && i_c < e->map_y))
 	{
 		//dprintf(2, "i %d j %d i_c %d j_c %d iter %d\n", i, j, i_c, j_c, iter);
 		if (e->map[i_c][j_c] == 'O' && anchor == 0 && e->piece[iter] == '*')
@@ -250,11 +248,13 @@ int put_piece(t_env *e, int i, int j, int anchor)
 			anchor++;
 			j_c++;
 			iter++;
+			dprintf(2, "%c\n", e->map[i_c][j_c]);
 		}
 		if (e->piece[iter] == '\n')
 		{
 			i_c++;
 			j_c = j;
+			iter++;
 		}
 		if (e->piece[iter] == '*' && e->map[i_c][j_c] == '.')
 		{
@@ -262,44 +262,92 @@ int put_piece(t_env *e, int i, int j, int anchor)
 			iter++;
 			j_c++;
 		}
-		else if (e->piece[iter] == '*' && e->map[i_c][j_c] != '.')
+		else if (e->piece[iter] == '*' && e->map[i_c][j_c] != '.' && anchor != 0)
 			return (0);
 		j_c++;
 		iter++;
 	}
+	//dprintf(2, "%d\n", anchor);
 	if (anchor != 1)
 		return (0);
 	return (1);
-}
+}*/
 
-#include <unistd.h>
+/*
+ * attention a ne pas sortir de la map
+ */
+
+int put_piece(t_env *e, int y, int x, int anchor)
+{
+	int i;
+	int ycopy;
+	int xcopy;
+
+	ycopy = y;
+	xcopy = x;
+	i = 0;
+	if (((ycopy + e->piece_y) > e->map_y) && ((xcopy + e->piece_x) > e->map_x))
+		return (0);
+	while (i < ft_strlen(e->piece) && xcopy < e->map_x && ycopy < e->map_y)
+	{
+		if (e->piece[i] == '*' && e->map[ycopy][xcopy] == e->enemy_piece)
+			return (0);
+		if (e->piece[i] == '\n')
+		{
+			i++;
+			ycopy++;
+			xcopy = x;
+			//dprintf(2, "iii call %d\n", iii);
+		}
+		if (xcopy > e->map_x || ycopy >= e->map_y)
+			return (0);
+		if (e->map[ycopy][xcopy] == e->player_piece && e->piece[i] == '*')
+		{
+			//dprintf(2, "ycopy %d | xcopy %d | i %d | %d\n", ycopy, xcopy, i, iii);
+			anchor++;
+			xcopy++;
+			i++;
+		}
+		if (e->piece[i] == '*' && e->map[ycopy][xcopy] == '.')
+		{
+			i++;
+			xcopy++;
+			//dprintf(2, "static iii %d\n", iii);
+		}
+		if (e->piece[i] == '*' && e->map[ycopy][xcopy] != '.' && anchor != 0)
+			return (0);
+		if (e->piece[i] != '\n' && e->piece[i] != '*')
+		{
+			i++;
+			xcopy++;
+		}
+		//dprintf(2, "i %d | xcopy %d | e->size %d | e->map_x %d\n", i, xcopy, e->size_piece, e->map_x);
+	}
+	if (anchor == 1)
+		return (1);
+	return (0);
+}
 
 int try_piece(t_env *e)
 {
 	int i;
 	int j;
-	int icopy;
-	int jcopy;
 
 	i = 0;
 	j = 0;
-	while (e->map[i])
+	while (i < e->map_y)
 	{
-		while (e->map[i][j])
+		while (j < e->map_x)
 		{
-			if (e->map[i][j] == '.')
-			{
 				if (put_piece(e, i, j, 0))
 				{
 					//dprintf(2, "%d %d\n", i, j);
-					
 					ft_putstr(ft_itoa(i));
 					ft_putstr(" ");
 					ft_putstr(ft_itoa(j));
 					ft_putstr("\n");
 					return (1);
 				}
-			}
 			j++;
 		}
 		j = 0;
@@ -312,16 +360,11 @@ int main()
 {
 	t_env *e = (t_env*)ft_memalloc(sizeof(t_env));
 	char *line = NULL;
-	//int fd = open("resources/report", O_RDONLY);
+	//int fd = open("resources/report", O_RDWR);
+	//dprintf(2,"%d\n", fd);
 	while (get_next_line(0, &line))
 	{
-		/*if (!(e->map_x && e->map_y))
-		  get_size_map(e, line);
-		  if (parse_map(e, line) == 1)
-		  {
-		  print_map(e);
-		  printf("\n");
-		  }*/
+		//dprintf(fd, "%s\n", line);
 		parser(e, line);
 		free(line);
 	}
