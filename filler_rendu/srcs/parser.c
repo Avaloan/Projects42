@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 01:34:43 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/19 03:32:34 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/31 05:31:13 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,52 +227,6 @@ int parser(t_env *e, char *line)
 
 #include <unistd.h>
 
-/*int put_piece(t_env *e, int i, int j, int anchor)
-{
-	int iter;
-	int i_c;
-	int j_c;
-
-	iter = 0;
-	i_c = i;
-	j_c = j;
-	if (((i + e->piece_y) > e->map_y) && ((j + e->piece_x) > e->map_x))
-		return (0);
-	//dprintf(2, "i %d + piece_y %d < map_y %d || j %d + piece_x %d < map_x %d\n", i, e->piece_y, e->map_y, j, e->piece_x, e->map_x);
-	while (iter < (e->size_piece - 1) && (j_c < e->map_x && i_c < e->map_y))
-	{
-		//dprintf(2, "i %d j %d i_c %d j_c %d iter %d\n", i, j, i_c, j_c, iter);
-		if (e->map[i_c][j_c] == 'O' && anchor == 0 && e->piece[iter] == '*')
-		{
-			//e->map[i_c][j_c] = 'V';
-			anchor++;
-			j_c++;
-			iter++;
-			dprintf(2, "%c\n", e->map[i_c][j_c]);
-		}
-		if (e->piece[iter] == '\n')
-		{
-			i_c++;
-			j_c = j;
-			iter++;
-		}
-		if (e->piece[iter] == '*' && e->map[i_c][j_c] == '.')
-		{
-			//e->map[i_c][j_c] = 'V';
-			iter++;
-			j_c++;
-		}
-		else if (e->piece[iter] == '*' && e->map[i_c][j_c] != '.' && anchor != 0)
-			return (0);
-		j_c++;
-		iter++;
-	}
-	//dprintf(2, "%d\n", anchor);
-	if (anchor != 1)
-		return (0);
-	return (1);
-}*/
-
 /*
  * attention a ne pas sortir de la map
  */
@@ -297,13 +251,11 @@ int put_piece(t_env *e, int y, int x, int anchor)
 			i++;
 			ycopy++;
 			xcopy = x;
-			//dprintf(2, "iii call %d\n", iii);
 		}
 		if (xcopy > e->map_x || ycopy >= e->map_y)
 			return (0);
 		if (e->map[ycopy][xcopy] == e->player_piece && e->piece[i] == '*')
 		{
-			//dprintf(2, "ycopy %d | xcopy %d | i %d | %d\n", ycopy, xcopy, i, iii);
 			anchor++;
 			xcopy++;
 			i++;
@@ -312,7 +264,6 @@ int put_piece(t_env *e, int y, int x, int anchor)
 		{
 			i++;
 			xcopy++;
-			//dprintf(2, "static iii %d\n", iii);
 		}
 		if (e->piece[i] == '*' && e->map[ycopy][xcopy] != '.' && anchor != 0)
 			return (0);
@@ -321,11 +272,103 @@ int put_piece(t_env *e, int y, int x, int anchor)
 			i++;
 			xcopy++;
 		}
-		//dprintf(2, "i %d | xcopy %d | e->size %d | e->map_x %d\n", i, xcopy, e->size_piece, e->map_x);
 	}
 	if (anchor == 1)
 		return (1);
 	return (0);
+}
+
+/*
+ * RAISONNEMENT
+ * prendre la position la plus proche de l'ennemi
+ * si une position est collee a l'ennemi priorite
+ */
+
+
+/*
+ * avoir un tableau statique a mettre a jour qui contient les possibilites
+ */
+
+#include <stdlib.h>
+#include <time.h>
+
+int abs(int a)
+{
+	return (a > 0 ? a : -a);
+}
+
+void affich_possib(t_env *e)
+{
+	int i = 0;
+	int mem = 0;
+	int seed = 0;
+	
+	while (i < e->nb_possib)
+	{
+		if (seed == 0)
+			seed = e->algo[i].nearest_enemy;
+		if (seed > e->algo[i].nearest_enemy)
+		{
+			mem = i;
+			seed = e->algo[i].nearest_enemy;
+		}
+		i++;
+	}
+	ft_putnbr(e->algo[mem].valid_y);
+	write(1, " ", 1);
+	ft_putnbr(e->algo[mem].valid_x);
+	write(1, "\n", 1);
+	i = 0;
+	while (i < e->nb_possib)
+	{
+		e->algo[i].valid_x = 0;
+		e->algo[i].valid_y = 0;
+		i++;
+	}
+	e->nb_possib = 0;
+}
+
+void analyse_map(t_env *e, int pos)
+{
+	int i;
+	int j;
+	int dist;
+
+	i = 0;
+	j = 0;
+	dist = 0;
+	while (i < e->map_y)
+	{
+		while (j < e->map_x)
+		{
+			if (e->map[i][j] == e->enemy_piece)
+			{
+				dist = abs(j - e->algo[pos].valid_x) + abs(i -
+						e->algo[pos].valid_y);
+				if (e->algo[pos].nearest_enemy == 0)
+					e->algo[pos].nearest_enemy = dist;
+				if (dist < e->algo[pos].nearest_enemy)
+					e->algo[pos].nearest_enemy = dist;
+				if (dist == 1)
+
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+
+void analyse_algo(t_env *e)
+{
+	int i;
+
+	i = 0;
+	while (i < e->nb_possib)
+	{
+		analyse_map(e, i);
+		i++;
+	}
 }
 
 int try_piece(t_env *e)
@@ -341,18 +384,21 @@ int try_piece(t_env *e)
 		{
 				if (put_piece(e, i, j, 0))
 				{
-					//dprintf(2, "%d %d\n", i, j);
-					ft_putstr(ft_itoa(i));
-					ft_putstr(" ");
-					ft_putstr(ft_itoa(j));
-					ft_putstr("\n");
-					return (1);
+				/*	ft_putnbr(i);
+					write(1, " ", 1);
+					ft_putnbr(j);
+					write(1, "\n", 1);*/
+					e->algo[e->nb_possib].valid_x = j;
+					e->algo[e->nb_possib].valid_y = i;
+					e->nb_possib++;
 				}
 			j++;
 		}
 		j = 0;
 		i++;
 	}
+	analyse_algo(e);
+	affich_possib(e);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 03:42:35 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/18 01:36:55 by snedir           ###   ########.fr       */
+/*   Updated: 2017/10/31 03:52:12 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,22 @@ typedef struct s_lpos
 	struct s_lpos *next;
 }			t_lpos;
 
+typedef struct s_algo
+{
+	int valid_x;
+	int valid_y;
+	int nearest_enemy;
+	int near_enemy;
+}				t_algo;
+
 typedef struct s_env
 {
 	char **map; //pas sur
 	char *piece; //pas sur
 	char player_piece;
 	char enemy_piece;
-	/*
-	 * liste chainee de position possible pour placer les pieces
-	 */
+	int nb_possib;
+	t_algo algo[50000];
 	t_lpos *head;
 	int piece_x;
 	int piece_y;
