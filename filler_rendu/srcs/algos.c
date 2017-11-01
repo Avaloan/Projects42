@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/01 01:32:29 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/01 04:36:59 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/01 05:04:55 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,96 +43,6 @@ void clean_algo(t_env *e)
 	e->nb_possib = 0;
 }
 
-void carli_ripoff(t_env *e)
-{
-	int i = -1;
-	int mem = 0;
-	int seed = 0;
-
-	while (++i < e->nb_possib)
-	{
-		if (e->carli == 0)
-		{
-			//printf_possible(e, i);
-			if (seed == 0)
-				seed = e->algo[i].valid_x;
-			if (seed < e->algo[i].valid_x)
-			{
-				mem = i;
-				seed = e->algo[i].valid_x;
-			}
-		}
-		if (e->carli == 1)
-		{
-		//	printf_possible(e, i);
-			if (seed == 0)
-				seed = e->algo[i].valid_y;
-			if (seed < e->algo[i].valid_x)
-			{
-				mem = i;
-				seed = e->algo[i].valid_y;
-			}
-		}
-	}
-	ft_putnbr(e->algo[mem].valid_y);
-	write(1, " ", 1);
-	ft_putnbr(e->algo[mem].valid_x);
-	write(1, "\n", 1);
-	clean_algo(e);
-	if (e->carli == 1)
-		e->carli = 0;
-	else
-		e->carli++;
-}
-
-void carli_ripoff2(t_env *e)
-{
-	int i = -1;
-	int mem = 0;
-	int seed = 0;
-	int lowest = 0;
-
-	while (++i < e->nb_possib)
-	{
-		if (e->carli == 0)
-		{
-//			printf_possible(e, i);
-			if (lowest == 0)
-				lowest = e->algo[i].valid_y;
-			if (seed == 0)
-				seed = e->algo[i].valid_x;
-			if (seed > e->algo[i].valid_x && lowest <= e->algo[i].valid_y)
-			{
-				mem = i;
-				seed = e->algo[i].valid_x;
-				lowest = e->algo[i].valid_y;
-			}
-		}
-		if (e->carli == 1)
-		{
-//			printf_possible(e, i);
-			if (lowest == 0)
-				lowest = e->algo[i].valid_x;
-			if (seed == 0)
-				seed = e->algo[i].valid_y;
-			if (seed > e->algo[i].valid_y)
-			{
-				mem = i;
-				seed = e->algo[i].valid_y;
-			}
-		}
-	}
-	ft_putnbr(e->algo[mem].valid_y);
-	write(1, " ", 1);
-	ft_putnbr(e->algo[mem].valid_x);
-	write(1, "\n", 1);
-	clean_algo(e);
-	if (e->carli == 1)
-		e->carli = 0;
-	else
-		e->carli++;
-}
-
 void affich_possib(t_env *e)
 {
 	int i = 0;
@@ -148,6 +58,8 @@ void affich_possib(t_env *e)
 			mem = i;
 			seed = e->algo[i].nearest_enemy;
 		}
+		if (seed == 1)
+			break ;
 		i++;
 	}
 	ft_putnbr(e->algo[mem].valid_y);
@@ -227,12 +139,12 @@ int try_piece(t_env *e)
 		i++;
 	}
 	analyse_algo(e);
-	/*affich_possib(e);*/
+	affich_possib(e);/*
 	if (e->player_piece == 'X')
 		carli_ripoff2(e);
 	else
-		carli_ripoff(e);
-	usleep(200000);
+		carli_ripoff(e);*/
+	usleep(100000);
 	return (0);
 }
 
