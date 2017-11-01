@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 01:34:43 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/31 05:31:13 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/01 03:59:09 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,10 +240,13 @@ int put_piece(t_env *e, int y, int x, int anchor)
 	ycopy = y;
 	xcopy = x;
 	i = 0;
-	if (((ycopy + e->piece_y) > e->map_y) && ((xcopy + e->piece_x) > e->map_x))
+	if ((ycopy + e->piece_y) >= e->map_y)
+		return (0);
+	if ((xcopy + e->piece_x) >= e->map_x)
 		return (0);
 	while (i < ft_strlen(e->piece) && xcopy < e->map_x && ycopy < e->map_y)
 	{
+		//dprintf(2, "%c %c\n\n", e->piece[i], e->map[ycopy][xcopy]);
 		if (e->piece[i] == '*' && e->map[ycopy][xcopy] == e->enemy_piece)
 			return (0);
 		if (e->piece[i] == '\n')
@@ -291,117 +294,6 @@ int put_piece(t_env *e, int y, int x, int anchor)
 
 #include <stdlib.h>
 #include <time.h>
-
-int abs(int a)
-{
-	return (a > 0 ? a : -a);
-}
-
-void affich_possib(t_env *e)
-{
-	int i = 0;
-	int mem = 0;
-	int seed = 0;
-	
-	while (i < e->nb_possib)
-	{
-		if (seed == 0)
-			seed = e->algo[i].nearest_enemy;
-		if (seed > e->algo[i].nearest_enemy)
-		{
-			mem = i;
-			seed = e->algo[i].nearest_enemy;
-		}
-		i++;
-	}
-	ft_putnbr(e->algo[mem].valid_y);
-	write(1, " ", 1);
-	ft_putnbr(e->algo[mem].valid_x);
-	write(1, "\n", 1);
-	i = 0;
-	while (i < e->nb_possib)
-	{
-		e->algo[i].valid_x = 0;
-		e->algo[i].valid_y = 0;
-		i++;
-	}
-	e->nb_possib = 0;
-}
-
-void analyse_map(t_env *e, int pos)
-{
-	int i;
-	int j;
-	int dist;
-
-	i = 0;
-	j = 0;
-	dist = 0;
-	while (i < e->map_y)
-	{
-		while (j < e->map_x)
-		{
-			if (e->map[i][j] == e->enemy_piece)
-			{
-				dist = abs(j - e->algo[pos].valid_x) + abs(i -
-						e->algo[pos].valid_y);
-				if (e->algo[pos].nearest_enemy == 0)
-					e->algo[pos].nearest_enemy = dist;
-				if (dist < e->algo[pos].nearest_enemy)
-					e->algo[pos].nearest_enemy = dist;
-				if (dist == 1)
-
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
-void analyse_algo(t_env *e)
-{
-	int i;
-
-	i = 0;
-	while (i < e->nb_possib)
-	{
-		analyse_map(e, i);
-		i++;
-	}
-}
-
-int try_piece(t_env *e)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (i < e->map_y)
-	{
-		while (j < e->map_x)
-		{
-				if (put_piece(e, i, j, 0))
-				{
-				/*	ft_putnbr(i);
-					write(1, " ", 1);
-					ft_putnbr(j);
-					write(1, "\n", 1);*/
-					e->algo[e->nb_possib].valid_x = j;
-					e->algo[e->nb_possib].valid_y = i;
-					e->nb_possib++;
-				}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	analyse_algo(e);
-	affich_possib(e);
-	return (0);
-}
-
 int main()
 {
 	t_env *e = (t_env*)ft_memalloc(sizeof(t_env));

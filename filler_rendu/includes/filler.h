@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 03:42:35 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/31 03:52:12 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/01 01:12:08 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_env
 	int nb_possib;
 	t_algo algo[50000];
 	t_lpos *head;
+	int carli;
 	int piece_x;
 	int piece_y;
 	int map_y;
