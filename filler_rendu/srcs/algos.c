@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/01 01:32:29 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/01 05:04:55 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/03 02:27:43 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,56 @@ void affich_possib(t_env *e)
 	int i = 0;
 	int mem = 0;
 	int seed = 0;
-
-	while (i < e->nb_possib)
+	int cpy = e->nb_possib - 1;
+	int lowest_y = 0;
+	int highest_y = 0;
+	while (cpy >= 0)
 	{
-		if (seed == 0)
-			seed = e->algo[i].nearest_enemy;
-		if (seed > e->algo[i].nearest_enemy)
+		if (e->ferme == 1)
 		{
-			mem = i;
-			seed = e->algo[i].nearest_enemy;
+			highest_y = e->algo[cpy].valid_y;
+			if (highest_y == e->map_y)
+				dprintf(2,"mapppp_y %d\n", e->map_y);
 		}
-		if (seed == 1)
-			break ;
-		i++;
+		if (e->fuite == 1 && e->ferme == 0)
+		{
+			lowest_y = e->algo[cpy].valid_x;
+				dprintf(2,"lowest_y %d\n", lowest_y);
+			if (lowest_y == 0)
+			{
+				e->ferme = 1;
+				break ;
+			}
+			//dprintf(2, "valid_y %d | valid_x %d | seed %d | lowest %d\n", e->algo[cpy].valid_y, e->algo[cpy].valid_x, seed, lowest_y);
+			/*if (seed < e->algo[cpy].valid_x && lowest_y >= e->algo[cpy].valid_y)
+			{
+				mem = cpy;
+				seed = e->algo[cpy].valid_x;
+				lowest_y = e->algo[cpy].valid_y;
+			dprintf(2, "valid_y %d | valid_x %d | seed %d | lowest %d HUSS\n", e->algo[cpy].valid_y, e->algo[cpy].valid_x, seed, lowest_y);
+				if (lowest_y == 0)
+				{
+					dprintf(2, "YAY\n");
+					e->ferme = 1;
+				}
+			}*/
+		}
+		else
+		{
+			if (seed == 0)
+				seed = e->algo[cpy].nearest_enemy;
+			if (seed >= e->algo[cpy].nearest_enemy && e->fuite == 0)
+			{
+				mem = cpy;
+				seed = e->algo[cpy].nearest_enemy;
+				if (seed == 1)
+				{
+					e->fuite = 1;
+					break ;
+				}
+			}
+		}
+		cpy--;
 	}
 	ft_putnbr(e->algo[mem].valid_y);
 	write(1, " ", 1);
@@ -97,7 +134,6 @@ void analyse_map(t_env *e, int pos)
 		j = 0;
 		i++;
 	}
-	printf_possible(e, pos);
 }
 
 void analyse_algo(t_env *e)
@@ -125,10 +161,6 @@ int try_piece(t_env *e)
 		{
 				if (put_piece(e, i, j, 0))
 				{
-				/*	ft_putnbr(i);
-					write(1, " ", 1);
-					ft_putnbr(j);
-					write(1, "\n", 1);*/
 					e->algo[e->nb_possib].valid_x = j;
 					e->algo[e->nb_possib].valid_y = i;
 					e->nb_possib++;
@@ -139,12 +171,8 @@ int try_piece(t_env *e)
 		i++;
 	}
 	analyse_algo(e);
-	affich_possib(e);/*
-	if (e->player_piece == 'X')
-		carli_ripoff2(e);
-	else
-		carli_ripoff(e);*/
-	usleep(100000);
+	affich_possib(e);
+	usleep(250000);
 	return (0);
 }
 

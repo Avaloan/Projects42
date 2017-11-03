@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 03:42:35 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/01 01:12:08 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/03 02:07:43 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_env
 	int check_piece;
 	int check_map;
 	int opti;
+	int fuite;
+	int ferme;
 }			t_env;
 
 char **create_map(t_env *e);
