@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 03:42:35 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/03 02:07:43 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/03 04:46:55 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define FILLER_H
 # include "../gnl/libft/get_next_line.h"
 
-
+# define REACHED e->reached
+# define CLOSED e->closed
+# define LOW_CLOSED e->low_closed
 
 typedef struct s_lpos
 {
@@ -39,7 +41,7 @@ typedef struct s_env
 	char player_piece;
 	char enemy_piece;
 	int nb_possib;
-	t_algo algo[50000];
+	t_algo algo[10000];
 	t_lpos *head;
 	int carli;
 	int piece_x;
@@ -54,6 +56,11 @@ typedef struct s_env
 	int opti;
 	int fuite;
 	int ferme;
+	int remonte;
+	int reached;
+	int input;
+	int closed;
+	int low_closed;
 }			t_env;
 
 char **create_map(t_env *e);

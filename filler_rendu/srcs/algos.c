@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/01 01:32:29 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/03 02:27:43 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/03 05:06:11 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,91 @@ void clean_algo(t_env *e)
 	e->nb_possib = 0;
 }
 
-void affich_possib(t_env *e)
+/*
+ * Atteindre enemy
+ * Fermer le bas
+ * jouer sur la position en x la plus petite
+ */
+void output(t_env *e)
+{
+	ft_putnbr(e->algo[e->input].valid_y);
+	write(1, " ", 1);
+	ft_putnbr(e->algo[e->input].valid_x);
+	write(1, "\n", 1);
+	clean_algo(e);
+}
+
+void reach_enemy(t_env *e, int cpy, int *near)
+{
+	if (*near == -1)
+		*near = e->algo[cpy].nearest_enemy;
+	if (*near == 1)
+	{
+		e->input = cpy;
+		REACHED = 1;
+		return ;
+	}
+	if (*near >= e->algo[cpy].nearest_enemy)
+	{
+		e->input = cpy;
+		*near = e->algo[cpy].nearest_enemy;
+	}
+}
+
+void close_highest_side(t_env *e, int cpy)
+{
+	if (e->algo[cpy].valid_y == 0)
+	{
+		e->input = cpy;
+		CLOSED = 1;
+		return ;
+	}
+	e->input = 0;
+}
+
+void close_lowest_side(t_env *e, int cpy, int *lowest)
+{
+	if (*lowest == -1)
+		*lowest = e->algo[cpy].valid_y;
+	/*if (*lowest == 1)
+	{
+		e->input = cpy;
+		LOW_CLOSED = 1;
+		return ;
+	}*/
+	if (*lowest <= e->algo[cpy].valid_y)
+	{
+		e->input = cpy;
+		*lowest = e->algo[cpy].valid_y;
+	}
+}
+
+
+void algo(t_env *e)
+{
+	int cpy;
+	int lowest;
+	int near;
+
+	cpy = e->nb_possib - 1;
+	lowest = -1;
+	near = -1;
+	while (cpy >= 0)
+	{
+		if (REACHED == 0)
+			reach_enemy(e, cpy, &near);
+		if (CLOSED == 0)
+			close_highest_side(e, cpy);
+		if (LOW_CLOSED == 0)
+			close_lowest_side(e, cpy, &lowest);
+		cpy--;
+	}
+	output(e);
+}
+
+
+
+/*void affich_possib(t_env *e)
 {
 	int i = 0;
 	int mem = 0;
@@ -55,33 +139,50 @@ void affich_possib(t_env *e)
 	{
 		if (e->ferme == 1)
 		{
-			highest_y = e->algo[cpy].valid_y;
-			if (highest_y == e->map_y)
-				dprintf(2,"mapppp_y %d\n", e->map_y);
+			if (highest_y == 0)
+				highest_y = e->algo[cpy].valid_y;
+			dprintf(2,"mapppp_y %d %d\n", highest_y, e->map_y);
+			if (highest_y <= e->algo[cpy].valid_y)
+			{
+				mem = cpy;
+				highest_y = e->algo[cpy].valid_y;
+				if (e->algo[cpy].valid_x >= e->map_x / 4)
+				{
+					dprintf(2,"HEEEEEEEEEEEEEEEEEYA %d\n", highest_y);
+					e->remonte = 1;
+					e->fuite = 1;
+					e->ferme = 0;
+					break ;
+				}
+			}
 		}
 		if (e->fuite == 1 && e->ferme == 0)
 		{
-			lowest_y = e->algo[cpy].valid_x;
-				dprintf(2,"lowest_y %d\n", lowest_y);
+			lowest_y = e->algo[cpy].valid_y;
+			//dprintf(2,"lowest_y %d\n", lowest_y);
 			if (lowest_y == 0)
 			{
-				e->ferme = 1;
-				break ;
-			}
-			//dprintf(2, "valid_y %d | valid_x %d | seed %d | lowest %d\n", e->algo[cpy].valid_y, e->algo[cpy].valid_x, seed, lowest_y);
+				mem = cpy;
+				dprintf(2,"JUSTICEEEEEEEEEEEEEEEEE %d\n", lowest_y);
+				if (e->remonte == 0)
+				{
+					e->ferme = 1;
+					e->fuite = 0;
+					break ;
+				}
+			}*/
 			/*if (seed < e->algo[cpy].valid_x && lowest_y >= e->algo[cpy].valid_y)
 			{
 				mem = cpy;
 				seed = e->algo[cpy].valid_x;
 				lowest_y = e->algo[cpy].valid_y;
-			dprintf(2, "valid_y %d | valid_x %d | seed %d | lowest %d HUSS\n", e->algo[cpy].valid_y, e->algo[cpy].valid_x, seed, lowest_y);
 				if (lowest_y == 0)
 				{
 					dprintf(2, "YAY\n");
 					e->ferme = 1;
 				}
 			}*/
-		}
+		/*}
 		else
 		{
 			if (seed == 0)
@@ -104,7 +205,7 @@ void affich_possib(t_env *e)
 	ft_putnbr(e->algo[mem].valid_x);
 	write(1, "\n", 1);
 	clean_algo(e);
-}
+}*/
 
 
 void analyse_map(t_env *e, int pos)
@@ -171,8 +272,9 @@ int try_piece(t_env *e)
 		i++;
 	}
 	analyse_algo(e);
-	affich_possib(e);
-	usleep(250000);
+	algo(e);
+	//affich_possib(e);
+	usleep(1000000);
 	return (0);
 }
 

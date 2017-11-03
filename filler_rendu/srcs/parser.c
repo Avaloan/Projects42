@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 01:34:43 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/01 03:59:09 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/03 04:59:50 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,9 +240,9 @@ int put_piece(t_env *e, int y, int x, int anchor)
 	ycopy = y;
 	xcopy = x;
 	i = 0;
-	if ((ycopy + e->piece_y) >= e->map_y)
+	if ((ycopy + e->piece_y) > e->map_y)
 		return (0);
-	if ((xcopy + e->piece_x) >= e->map_x)
+	if ((xcopy + e->piece_x) > e->map_x)
 		return (0);
 	while (i < ft_strlen(e->piece) && xcopy < e->map_x && ycopy < e->map_y)
 	{
@@ -255,7 +255,7 @@ int put_piece(t_env *e, int y, int x, int anchor)
 			ycopy++;
 			xcopy = x;
 		}
-		if (xcopy > e->map_x || ycopy >= e->map_y)
+		if (xcopy > e->map_x || ycopy > e->map_y)
 			return (0);
 		if (e->map[ycopy][xcopy] == e->player_piece && e->piece[i] == '*')
 		{
