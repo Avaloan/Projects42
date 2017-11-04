@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 01:34:43 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/03 04:59:50 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/04 02:09:13 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ int parser(t_env *e, char *line)
 /*
  * attention a ne pas sortir de la map
  */
-
+/*
 int put_piece(t_env *e, int y, int x, int anchor)
 {
 	int i;
@@ -240,9 +240,9 @@ int put_piece(t_env *e, int y, int x, int anchor)
 	ycopy = y;
 	xcopy = x;
 	i = 0;
-	if ((ycopy + e->piece_y) > e->map_y)
+	if ((ycopy + e->piece_y) >= e->map_y)
 		return (0);
-	if ((xcopy + e->piece_x) > e->map_x)
+	if ((xcopy + e->piece_x) >= e->map_x)
 		return (0);
 	while (i < ft_strlen(e->piece) && xcopy < e->map_x && ycopy < e->map_y)
 	{
@@ -279,18 +279,42 @@ int put_piece(t_env *e, int y, int x, int anchor)
 	if (anchor == 1)
 		return (1);
 	return (0);
+}*/
+
+int put_piece(t_env *e, int y, int x, int anchor)
+{
+	int i;
+	int j;
+	int iter_piece;
+
+	i = -1;
+	j = -1;
+	iter_piece = 0;
+	while (++i < e->piece_y)
+	{
+		while (++j < e->piece_x)
+		{
+			if (e->piece[iter_piece] == '*' && e->map[y + i][x + j] == e->enemy_piece)
+				return (0);
+			if (e->piece[iter_piece] == '*' && e->map[y + i][x + j] == e->player_piece)
+			{
+				anchor++;
+				if (anchor > 1)
+					return (0);
+			}
+			if (iter_piece < e->size_piece - 1)
+				iter_piece++;
+		}
+		if (iter_piece < e->size_piece - 1)
+			iter_piece++;
+		j = -1;
+	}
+	if (anchor == 1)
+		return (1);
+	return (0);
 }
 
-/*
- * RAISONNEMENT
- * prendre la position la plus proche de l'ennemi
- * si une position est collee a l'ennemi priorite
- */
 
-
-/*
- * avoir un tableau statique a mettre a jour qui contient les possibilites
- */
 
 #include <stdlib.h>
 #include <time.h>

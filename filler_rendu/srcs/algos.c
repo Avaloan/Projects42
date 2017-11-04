@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/01 01:32:29 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/03 05:06:11 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/04 03:38:00 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ void clean_algo(t_env *e)
  * Fermer le bas
  * jouer sur la position en x la plus petite
  */
+
+/*
+ * Lancer Algo analyse dist seulement necessaire
+ */
+
+
+
 void output(t_env *e)
 {
 	ft_putnbr(e->algo[e->input].valid_y);
@@ -63,12 +70,15 @@ void reach_enemy(t_env *e, int cpy, int *near)
 		*near = e->algo[cpy].nearest_enemy;
 	if (*near == 1)
 	{
+		//dprintf(2, "MDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDR\n");
 		e->input = cpy;
 		REACHED = 1;
+		printf_possible(e, cpy);
 		return ;
 	}
 	if (*near >= e->algo[cpy].nearest_enemy)
 	{
+		//dprintf(2, "MDDUUUUUUUUUUUUUUUUUUUUUDJJDJDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDR\n");
 		e->input = cpy;
 		*near = e->algo[cpy].nearest_enemy;
 	}
@@ -82,26 +92,30 @@ void close_highest_side(t_env *e, int cpy)
 		CLOSED = 1;
 		return ;
 	}
+	//dprintf(2, "lolwut\n");
 	e->input = 0;
 }
 
 void close_lowest_side(t_env *e, int cpy, int *lowest)
 {
+	//dprintf(2, "lolZER\n");
 	if (*lowest == -1)
 		*lowest = e->algo[cpy].valid_y;
-	/*if (*lowest == 1)
+	if (*lowest == e->map_y - 1)
 	{
 		e->input = cpy;
 		LOW_CLOSED = 1;
 		return ;
-	}*/
+	}
 	if (*lowest <= e->algo[cpy].valid_y)
 	{
+		//dprintf(2, "lolZERMAAAAAAAAAAAAAAX\n");
 		e->input = cpy;
 		*lowest = e->algo[cpy].valid_y;
 	}
 }
 
+//void reach_lowest_side
 
 void algo(t_env *e)
 {
@@ -116,9 +130,9 @@ void algo(t_env *e)
 	{
 		if (REACHED == 0)
 			reach_enemy(e, cpy, &near);
-		if (CLOSED == 0)
+		if (CLOSED == 0 && REACHED == 1 && LOW_CLOSED == 1)
 			close_highest_side(e, cpy);
-		if (LOW_CLOSED == 0)
+		if (LOW_CLOSED == 0 && REACHED == 1)
 			close_lowest_side(e, cpy, &lowest);
 		cpy--;
 	}
@@ -260,7 +274,7 @@ int try_piece(t_env *e)
 	{
 		while (j < e->map_x)
 		{
-				if (put_piece(e, i, j, 0))
+				if ((i + e->piece_y <= e->map_y && j + e->piece_x <= e->map_x) && put_piece(e, i, j, 0))
 				{
 					e->algo[e->nb_possib].valid_x = j;
 					e->algo[e->nb_possib].valid_y = i;
@@ -271,10 +285,12 @@ int try_piece(t_env *e)
 		j = 0;
 		i++;
 	}
-	analyse_algo(e);
+	if (REACHED == 0)
+		analyse_algo(e);
 	algo(e);
 	//affich_possib(e);
-	usleep(1000000);
+	usleep(500000);
+	//sleep(3);
 	return (0);
 }
 
