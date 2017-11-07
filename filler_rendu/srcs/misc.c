@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 06:16:15 by snedir            #+#    #+#             */
-/*   Updated: 2017/10/19 01:20:33 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/07 05:18:52 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void		fill_map(t_env *e)
 	e->map[i] = NULL;
 }
 
-
 int			check_space(t_env *e, char *line)
 {
 	int		i;
@@ -60,7 +59,6 @@ int			check_space(t_env *e, char *line)
 	e->check_map = 1;
 	return (1);
 }
-
 
 int			check_if_piece(char *line)
 {
@@ -74,15 +72,4 @@ int			check_if_piece(char *line)
 		i++;
 	}
 	return (1);
-}
-
-void		print_map(t_env *e)
-{
-	int		i = 0;
-	while (i < e->map_y)
-	{
-		printf("%s\n", e->map[i]);
-		i++;
-	}
-	printf("\n");
 }

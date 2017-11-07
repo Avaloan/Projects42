@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 14:29:40 by snedir            #+#    #+#             */
-/*   Updated: 2017/09/29 03:33:11 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/07 03:07:55 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int					god_like(char *buf, t_buf *control, char **line, int way)
 	{
 		*tmp = '\0';
 		*line = ft_strjoin(STOCK, buf);
+		free(STOCK);
 		STOCK = ft_strdup(tmp + 1);
 		return (1);
 	}
@@ -69,6 +70,7 @@ int					god_like(char *buf, t_buf *control, char **line, int way)
 		tmp2 = ft_strdup(tmp + 1);
 		*tmp = '\0';
 		*line = ft_strdup(STOCK);
+		free(STOCK);
 		STOCK = ft_strdup(tmp2);
 		free(tmp2);
 		return (1);
@@ -88,7 +90,7 @@ int					read_mem(int fd, char *buf, t_buf *control, char **line)
 		buf[ret] = '\0';
 		if (god_like(buf, control, line, 1))
 			return (1);
-		STOCK = ft_strjoin(STOCK, buf);
+		STOCK = ft_strjoinf(STOCK, buf);
 	}
 	if (ret == -1)
 		return (-1);

@@ -6,7 +6,7 @@
 #    By: snedir <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/07 01:53:42 by snedir            #+#    #+#              #
-#    Updated: 2017/10/17 01:41:51 by snedir           ###   ########.fr        #
+#    Updated: 2017/11/07 05:47:34 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@ NAME = snedir.filler
 
 SRCS = parser.c \
 	   misc.c \
-	   parser.c \
 	   trash_norme.c \
+	   algos.c \
+	   filler.c
 
 OBJS = $(SRCS:.c=.o)
 
