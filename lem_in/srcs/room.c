@@ -6,13 +6,25 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:50:39 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/20 06:07:38 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/21 01:58:02 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int			check_valid_room(char *line)
+int			check_valid_pipe(t_env *e)
+{
+	if (PENDING_START != -5 && PENDING_END != -5)
+	{
+		FLAG_ROOM = 1000;
+		return (FLAG_ROOM);
+	}
+	exit_error();
+	return (0);
+}
+
+
+int			check_valid_room(char *line, t_env *e)
 {
 	int		i;
 	int		spaceballs;
@@ -23,7 +35,9 @@ int			check_valid_room(char *line)
 		return (0);
 	while (line[++i])
 	{
-		if (line[i] == '-' || line[i] < 32 || line[i] > 126)
+		if (line[i] == '-')
+			return (check_valid_pipe(e));
+		else if (line[i] < 32 || line[i] > 126)
 			return (0);
 		if (line[i] == ' ')
 		{
@@ -81,8 +95,11 @@ void		pending(t_env *e)
 int			get_room(char *line, t_env *e)
 {
 	char	*name;
+	int		check;
 	
-	if (check_valid_room(line) != 2)
+	if ((check = check_valid_room(line, e)) == FLAG_ROOM)
+		return (FLAG_ROOM);
+	if (check != 2)
 		return (STOP_FLAG);
 	if (!get_room_name(&name, line))
 		return (ERROR_MALLOC); // MALLOC ERROR

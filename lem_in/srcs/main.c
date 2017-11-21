@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/20 06:06:52 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/21 01:59:20 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int			parser(t_env *e)
 	while (get_next_line(0, &line))
 	{
 		control = get_infos(line, e);
+		if (control == FLAG_ROOM)
+			control = get_infos(line, e);
 		if (control == 1)
 			add_elem_line(e, line);
 		else if (control == ERROR_FLAG)
@@ -96,4 +98,3 @@ int			main(void)
 	print_room(e);
 	printf("start = %d | end = %d\n", e->start, e->end);
 }
-

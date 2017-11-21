@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/20 04:02:26 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/21 05:52:52 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct		s_env
 	int				pending_start;
 	int				pending_end;
 	int				count;
+	int				**matrix;
+	int				connection[2];
 	t_room			*e_room;
 	t_line			*e_line;
 }					t_env;
@@ -70,6 +72,7 @@ t_line				*new_line(char *line);
 void				add_elem_line(t_env *e, char *line);
 
 int					check_hashtag(char *line, t_env *e);
+void				exit_error(void);
 
 int					get_nb_ants(char *line, t_env *e);
 int					get_room(char *line, t_env *e);
