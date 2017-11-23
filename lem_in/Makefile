@@ -6,7 +6,7 @@
 #    By: snedir <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/07 01:53:42 by snedir            #+#    #+#              #
-#    Updated: 2017/11/20 04:15:03 by snedir           ###   ########.fr        #
+#    Updated: 2017/11/22 05:03:54 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = lem_in
 SRCS = main.c \
 	   lists.c \
 	   parsing.c \
-	   room.c
+	   room.c \
+	   pipe.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/21 05:52:52 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/23 00:34:20 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ t_line				*new_line(char *line);
 void				add_elem_line(t_env *e, char *line);
 
 int					check_hashtag(char *line, t_env *e);
-void				exit_error(void);
+void				exit_error(t_env *e);
 
 int					get_nb_ants(char *line, t_env *e);
 int					get_room(char *line, t_env *e);
-
+void				print_room(t_env *e);
 
 
 

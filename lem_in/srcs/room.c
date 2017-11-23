@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:50:39 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/21 01:58:02 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/23 04:29:07 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int			check_valid_pipe(t_env *e)
 {
-	if (PENDING_START != -5 && PENDING_END != -5)
+	if (e->start != -5 && e->end != -5)
 	{
 		FLAG_ROOM = 1000;
 		return (FLAG_ROOM);
 	}
-	exit_error();
+	exit_error(e);
 	return (0);
 }
 
@@ -96,15 +96,19 @@ int			get_room(char *line, t_env *e)
 {
 	char	*name;
 	int		check;
-	
-	if ((check = check_valid_room(line, e)) == FLAG_ROOM)
+
+	check = check_valid_room(line, e);
+	if (check == 1000)
 		return (FLAG_ROOM);
 	if (check != 2)
 		return (STOP_FLAG);
 	if (!get_room_name(&name, line))
-		return (ERROR_MALLOC); // MALLOC ERROR
+	{
+		free(name);
+		return (ERROR_MALLOC);
+	}	// MALLOC ERROR
 	if (!room_exist(e, name))
-		return (STOP_FLAG);
+		return (ERROR_FLAG);
 	if (PENDING_START == 1 && PENDING_END == 1)
 		return (ERROR_FLAG); // ERREUR SORTIE ERROR ENTREE STANDARD
 	else if (PENDING_START == 1 || PENDING_END == 1)

@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/21 01:59:20 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/23 04:25:40 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * FONCTIONS PARSER
  */
 
-int			get_pipe(char *line);
+int			get_pipe(char *line, t_env *e);
 
 int			get_infos(char *line, t_env *e)
 {
@@ -35,13 +35,16 @@ int			get_infos(char *line, t_env *e)
 			return (get_nb_ants(line, e));
 		if (!FLAG_ROOM)
 			return (get_room(line, e));
+		if (FLAG_ROOM && (get_pipe(line, e) == STOP_FLAG))
+			return (STOP_FLAG);
 	}
 	return (1);
 }
 
-void		exit_error(void)
+void		exit_error(t_env *e)
 {
 	printf("ERROR\n");
+	print_room(e);
 	exit(0);
 }
 
@@ -60,7 +63,7 @@ int			parser(t_env *e)
 		if (control == 1)
 			add_elem_line(e, line);
 		else if (control == ERROR_FLAG)
-			exit_error();
+			exit_error(e);
 		else if (control == STOP_FLAG)
 			return (STOP_FLAG);
 		free(line);
@@ -86,6 +89,32 @@ void		print_room(t_env *e)
 	}
 }
 
+void		print_matrix(t_env *e)
+{
+	int		i;
+	int		j;
+	int		z;
+
+	i = -1;
+	j = -1;
+	z = -1;
+	printf(" ");
+	while (++z < e->count)
+		printf(" \033[34;01m%d\033[00m", z);
+	printf("\n");
+	z = -1;
+	while (++i < e->count)
+	{
+		printf("\033[35;01m%d\033[00m ", i);
+		while (++j < e->count)
+			printf("%d ", e->matrix[i][j]);
+		printf("\n");
+		j = -1;
+	}
+}
+
+
+
 int			main(void)
 {
 	t_env	*e;
@@ -93,8 +122,11 @@ int			main(void)
 	e = (t_env*)ft_memalloc(sizeof(t_env));
 	e->start = -5;
 	e->end = -5;
+	e->connection[0] = -5;
+	e->connection[1] = -5;
 	parser(e);
 	print_line(e);
-	print_room(e);
+	//print_room(e);
+	//print_matrix(e);
 	printf("start = %d | end = %d\n", e->start, e->end);
 }
