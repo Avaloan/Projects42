@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/23 00:34:20 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/23 06:48:14 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@
 # define E_ROOM e->e_room
 # define E_LINE e->e_line
 
+/*
+ * GESTION FILE
+ */
+
+# define E_FILE e->e_file
+
 typedef struct		s_line
 {
 	char			*line;
@@ -47,6 +53,13 @@ typedef struct		s_room
 	struct s_room	*next;
 }					t_room;
 
+typedef struct		s_file
+{
+	int				id;
+	struct s_file	*next;
+	struct s_file	*prev;
+}					t_file;
+
 typedef struct		s_env
 {
 	int				nb_ants;
@@ -57,6 +70,7 @@ typedef struct		s_env
 	int				pending_end;
 	int				count;
 	int				**matrix;
+	t_file			*e_file;
 	int				connection[2];
 	t_room			*e_room;
 	t_line			*e_line;

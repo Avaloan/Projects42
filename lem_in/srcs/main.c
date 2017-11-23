@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/23 04:25:40 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/23 06:48:11 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int			parser(t_env *e)
 		else if (control == ERROR_FLAG)
 			exit_error(e);
 		else if (control == STOP_FLAG)
-			return (STOP_FLAG);
+			return (0);
 		free(line);
 	}
 	return (0);
@@ -113,7 +113,7 @@ void		print_matrix(t_env *e)
 	}
 }
 
-
+int			check_path(t_env *e)
 
 int			main(void)
 {
@@ -124,9 +124,11 @@ int			main(void)
 	e->end = -5;
 	e->connection[0] = -5;
 	e->connection[1] = -5;
-	parser(e);
+	if (!parser(e))
+	{
+
 	print_line(e);
 	//print_room(e);
-	//print_matrix(e);
+	print_matrix(e);
 	printf("start = %d | end = %d\n", e->start, e->end);
 }
