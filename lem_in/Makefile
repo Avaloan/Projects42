@@ -6,7 +6,7 @@
 #    By: snedir <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/07 01:53:42 by snedir            #+#    #+#              #
-#    Updated: 2017/11/22 05:03:54 by snedir           ###   ########.fr        #
+#    Updated: 2017/11/24 04:35:33 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRCS = main.c \
 	   lists.c \
 	   parsing.c \
 	   room.c \
-	   pipe.c
+	   pipe.c \
+	   file.c
 
 OBJS = $(SRCS:.c=.o)
 

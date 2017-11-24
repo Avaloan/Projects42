@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/23 06:48:14 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/24 03:57:58 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct		s_file
 	int				id;
 	struct s_file	*next;
 	struct s_file	*prev;
+	int				visited;
 }					t_file;
 
 typedef struct		s_env
@@ -84,6 +85,14 @@ t_room				*new_room(char *line, t_env *e);
 void				add_elem_room(char *line, t_env *e);
 t_line				*new_line(char *line);
 void				add_elem_line(t_env *e, char *line);
+
+/*
+ * QUEUE FUNCTIONS
+ */
+
+t_file				*new_queue_elem(int id);
+void				add_queue_elem(t_env *e, int id);
+void				dequeue(t_env *e);
 
 int					check_hashtag(char *line, t_env *e);
 void				exit_error(t_env *e);

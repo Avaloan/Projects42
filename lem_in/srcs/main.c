@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/23 06:48:11 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/24 05:27:29 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,44 @@ void		print_matrix(t_env *e)
 	}
 }
 
-int			check_path(t_env *e)
+int			bfs(t_env *e)
+{
+	int		i;
+	int		end;
+	int		stock;
+	int		iter;
+
+	i = e->start;
+	end = e->end;
+	add_queue_elem(e, i);
+	iter = 0;
+	while (E_FILE)
+	{
+		stock = E_FILE->id;
+		if (stock == end)
+		{
+			printf("%d\n", stock);
+			printf("LOOOOOL I FOUND A WAAAAAY\n");
+			return (1);
+		}
+		dequeue(e);
+		printf("%d ", stock);
+		while (iter < e->count)
+		{
+			//printf("e->matrix[%d][%d]");
+			if (e->matrix[stock][iter] == 1)
+			{
+				add_queue_elem(e, iter);
+				e->matrix[stock][iter] = 2;
+			}
+			iter++;
+		}
+		iter = 0;
+	}
+	return (1);
+}
+
+
 
 int			main(void)
 {
@@ -124,11 +161,10 @@ int			main(void)
 	e->end = -5;
 	e->connection[0] = -5;
 	e->connection[1] = -5;
-	if (!parser(e))
-	{
-
-	print_line(e);
-	//print_room(e);
-	print_matrix(e);
+	parser(e);
+	bfs(e);
+	//print_line(e);
 	printf("start = %d | end = %d\n", e->start, e->end);
+	print_room(e);
+	print_matrix(e);
 }

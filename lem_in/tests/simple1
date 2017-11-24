@@ -16,3 +16,18 @@ start-dead0
 ##end
 start-dead1
 start-end
+
+
+
+
+ParcoursLargeur(Graphe G, Sommet s):
+	f = CreerFile();
+	f.enfiler(s);
+	marquer(s);
+	tant que la file est non vide
+	s = f.defiler();
+	afficher(s);
+	pour tout voisin t de s dans G
+	si t non marqué
+	f.enfiler(t);
+	marquer(t);
