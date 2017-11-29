@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/24 03:57:58 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/28 06:06:49 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ typedef struct		s_file
 	int				visited;
 }					t_file;
 
+typedef struct		s_tab
+{
+	char			visited;
+	int				*tab;
+	int				parent;
+}					t_tab;
+
 typedef struct		s_env
 {
 	int				nb_ants;
@@ -70,7 +77,8 @@ typedef struct		s_env
 	int				pending_start;
 	int				pending_end;
 	int				count;
-	int				**matrix;
+	//int				**matrix;
+	t_tab			*matrix;
 	t_file			*e_file;
 	int				connection[2];
 	t_room			*e_room;
@@ -100,10 +108,6 @@ void				exit_error(t_env *e);
 int					get_nb_ants(char *line, t_env *e);
 int					get_room(char *line, t_env *e);
 void				print_room(t_env *e);
-
-
-
-
 
 
 

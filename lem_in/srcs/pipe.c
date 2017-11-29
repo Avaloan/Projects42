@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 01:59:15 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/23 03:45:44 by snedir           ###   ########.fr       */
+/*   Updated: 2017/11/27 05:55:25 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void		allocate_matrix(t_env *e)
 	int		i;
 
 	i = -1;
-	e->matrix = (int**)ft_memalloc(sizeof(int*) * e->count);
+	e->matrix = (t_tab*)ft_memalloc(sizeof(t_tab) * e->count);
 	while (++i < e->count)
-		e->matrix[i] = (int*)ft_memalloc(sizeof(int) * e->count);
+		e->matrix[i].tab = (int*)ft_memalloc(sizeof(int) * e->count);
 }
 
-void		free_matrix(t_env *e)
+/*void		free_matrix(t_env *e)
 {
 	int		i;
 
@@ -32,7 +32,7 @@ void		free_matrix(t_env *e)
 	while (e->matrix[++i])
 		free(e->matrix[i]);
 	free(e->matrix);
-}
+}*/
 
 void		free_map(char **pipe)
 {
@@ -93,8 +93,8 @@ int			pipe_exist(t_env *e, char **pipe)
 
 void		assign_pipe(t_env *e)
 {
-	e->matrix[e->connection[1]][e->connection[0]] = 1;
-	e->matrix[e->connection[0]][e->connection[1]] = 1;
+	e->matrix[e->connection[1]].tab[e->connection[0]] = 1;
+	e->matrix[e->connection[0]].tab[e->connection[1]] = 1;
 	e->connection[0] = -5;
 	e->connection[1] = -5;
 }
