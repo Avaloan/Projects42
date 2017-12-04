@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 01:59:15 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/27 05:55:25 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/01 01:58:52 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 void		allocate_matrix(t_env *e)
 {
 	int		i;
+	int		j;
 
 	i = -1;
+	j = -1;
 	e->matrix = (t_tab*)ft_memalloc(sizeof(t_tab) * e->count);
+	while (++j < e->count)
+		e->matrix[j].parent = -1;
 	while (++i < e->count)
 		e->matrix[i].tab = (int*)ft_memalloc(sizeof(int) * e->count);
 }

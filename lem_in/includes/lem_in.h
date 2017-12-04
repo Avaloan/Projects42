@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/28 06:06:49 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/04 06:17:45 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
  */
 
 # define E_FILE e->e_file
+# define E_FILE_TMP e->e_file_tmp
 
 typedef struct		s_line
 {
@@ -58,14 +59,18 @@ typedef struct		s_file
 	int				id;
 	struct s_file	*next;
 	struct s_file	*prev;
-	int				visited;
 }					t_file;
+
+typedef struct		s_path
+{
+	int				id;
+	struct s_path	*next;
+}					t_path;
 
 typedef struct		s_tab
 {
-	char			visited;
 	int				*tab;
-	int				parent;
+	t_path			*path_tab;
 }					t_tab;
 
 typedef struct		s_env
@@ -77,9 +82,9 @@ typedef struct		s_env
 	int				pending_start;
 	int				pending_end;
 	int				count;
-	//int				**matrix;
 	t_tab			*matrix;
 	t_file			*e_file;
+	t_file			*e_file_tmp;
 	int				connection[2];
 	t_room			*e_room;
 	t_line			*e_line;
@@ -93,6 +98,7 @@ t_room				*new_room(char *line, t_env *e);
 void				add_elem_room(char *line, t_env *e);
 t_line				*new_line(char *line);
 void				add_elem_line(t_env *e, char *line);
+void				add_elem_path(t_env *e, int i, int stock);
 
 /*
  * QUEUE FUNCTIONS
@@ -101,6 +107,7 @@ void				add_elem_line(t_env *e, char *line);
 t_file				*new_queue_elem(int id);
 void				add_queue_elem(t_env *e, int id);
 void				dequeue(t_env *e);
+void				dequeue_tmp(t_env *e);
 
 int					check_hashtag(char *line, t_env *e);
 void				exit_error(t_env *e);

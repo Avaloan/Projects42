@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:52:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/20 04:54:21 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/04 04:20:58 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_room		*new_room(char *line, t_env *e)
 {
 	t_room	*elem;
 
-	elem = (t_room*)malloc(sizeof(t_room));
+	elem = (t_room*)ft_memalloc(sizeof(t_room));
 	elem->id = e->count;
 	elem->next = NULL;
 	elem->room_name = ft_strdup(line);
@@ -51,7 +51,7 @@ t_line		*new_line(char *line)
 {
 	t_line	*elem;
 
-	elem = (t_line*)malloc(sizeof(t_line));
+	elem = (t_line*)ft_memalloc(sizeof(t_line));
 	elem->line = ft_strdup(line);
 	elem->next = NULL;
 	return (elem);
@@ -72,3 +72,30 @@ void		add_elem_line(t_env *e, char *line)
 	tmp->next = new_line(line);
 }
 
+/*
+ * GESTION PATHS
+ */
+
+t_path		*new_path(int path)
+{
+	t_path	*elem;
+	elem = (t_path*)ft_memalloc(sizeof(t_path));
+	elem->path = path;
+	elem->next = NULL;
+	return (elem);
+}
+
+void		add_elem_path(t_env *e, int to_add, int from)
+{
+	t_path	*tmp;
+
+	tmp = e->matrix[to_add].path;
+	if (!e->matrix[to_add].path)
+	{
+		e->matrix[to_add].path = new_path(from);
+		return ;
+	}
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new_path(from);
+}
