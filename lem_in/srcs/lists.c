@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:52:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/13 05:52:06 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/13 06:33:09 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ t_path		*new_node(int path)
 	return (elem);
 }
 
-void		add_elem_node(t_env *e, int path)
+void		add_elem_node(t_env *e, int path, t_path *current)
 {
 	t_path	*tmp;
 
-	tmp = e->list_path->path;
+	tmp = current;
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new_node(path);
@@ -107,6 +107,22 @@ t_path_m	*new_elem_path(int size_path, int path)
 	return (new_path);
 }
 
-void		add_elem_path(int size_path, int path)
+void		add_elem_path(t_env *e,int size_path, int path)
 {
+	t_path_m	*tmp;
+	int			i;
 
+	i = 0;
+	if (!e->list_path)
+	{
+		e->list_path = new_elem_path(size_path, path);
+		return ;
+	}
+	while (++i < e->nb_path && tmp->next_path)
+		tmp = tmp->next_path;
+	if (!tmp->next_path)
+	{
+		tmp->next_path = new_elem_path(size_path, path);
+		return ;
+	}
+	add_elem_node(
