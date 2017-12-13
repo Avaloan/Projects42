@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/04 06:17:45 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/13 04:50:54 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@
  */
 
 # define E_FILE e->e_file
-# define E_FILE_TMP e->e_file_tmp
 
 typedef struct		s_line
 {
@@ -63,14 +62,22 @@ typedef struct		s_file
 
 typedef struct		s_path
 {
-	int				id;
+	int				node;
 	struct s_path	*next;
 }					t_path;
+
+typedef struct		s_path_m
+{
+	struct s_path	*path;
+	struct s_path_m	*next_path;
+	int				size_path;
+}					t_path_m;
 
 typedef struct		s_tab
 {
 	int				*tab;
 	t_path			*path_tab;
+	int				parent;
 }					t_tab;
 
 typedef struct		s_env
@@ -82,10 +89,11 @@ typedef struct		s_env
 	int				pending_start;
 	int				pending_end;
 	int				count;
+	t_path_m		*list_path;
 	t_tab			*matrix;
 	t_file			*e_file;
-	t_file			*e_file_tmp;
 	int				connection[2];
+	int				nb_path;
 	t_room			*e_room;
 	t_line			*e_line;
 }					t_env;

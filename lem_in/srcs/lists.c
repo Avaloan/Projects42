@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:52:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/04 04:20:58 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/13 05:52:06 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,37 @@ void		add_elem_line(t_env *e, char *line)
  * GESTION PATHS
  */
 
-t_path		*new_path(int path)
+t_path		*new_node(int path)
 {
 	t_path	*elem;
+
 	elem = (t_path*)ft_memalloc(sizeof(t_path));
-	elem->path = path;
+	elem->node = path;
 	elem->next = NULL;
 	return (elem);
 }
 
-void		add_elem_path(t_env *e, int to_add, int from)
+void		add_elem_node(t_env *e, int path)
 {
 	t_path	*tmp;
 
-	tmp = e->matrix[to_add].path;
-	if (!e->matrix[to_add].path)
-	{
-		e->matrix[to_add].path = new_path(from);
-		return ;
-	}
+	tmp = e->list_path->path;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->next = new_path(from);
+	tmp->next = new_node(path);
 }
+
+t_path_m	*new_elem_path(int size_path, int path)
+{
+	t_path_m	*new_path;
+
+	new_path = (t_path_m*)ft_memalloc(sizeof(t_path_m));
+	new_path->next_path = NULL;
+	new_path->path = new_node(path);
+	new_path->size_path = size_path;
+	return (new_path);
+}
+
+void		add_elem_path(int size_path, int path)
+{
+

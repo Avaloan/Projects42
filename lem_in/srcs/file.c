@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 01:24:15 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/04 04:11:05 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/13 04:42:17 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,6 @@ void		dequeue(t_env *e)
 		return ;
 	free(E_FILE);
 	E_FILE = tmp;
-	if (tmp)
-		tmp->next = NULL;
-}
-
-void		dequeue_tmp(t_env *e)
-{
-	t_file	*tmp;
-
-	tmp = E_FILE_TMP->prev;
-	if (!E_FILE_TMP)
-		return ;
-	free(E_FILE_TMP);
-	E_FILE_TMP = tmp;
 	if (tmp)
 		tmp->next = NULL;
 }
