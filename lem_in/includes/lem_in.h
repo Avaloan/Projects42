@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/13 04:50:54 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/15 05:04:22 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct		s_path_m
 	struct s_path	*path;
 	struct s_path_m	*next_path;
 	int				size_path;
+	int				selected;
 }					t_path_m;
 
 typedef struct		s_tab
@@ -79,6 +80,11 @@ typedef struct		s_tab
 	t_path			*path_tab;
 	int				parent;
 }					t_tab;
+
+typedef struct		s_tabpath
+{
+	t_path_m		*path;
+}					t_tabpath;
 
 typedef struct		s_env
 {
@@ -94,8 +100,12 @@ typedef struct		s_env
 	t_file			*e_file;
 	int				connection[2];
 	int				nb_path;
+	t_tabpath		*tab_way;
 	t_room			*e_room;
 	t_line			*e_line;
+	t_path_m		*current;
+	int				nb_path_selected;
+	int				average_turns;
 }					t_env;
 
 /*
@@ -107,6 +117,7 @@ void				add_elem_room(char *line, t_env *e);
 t_line				*new_line(char *line);
 void				add_elem_line(t_env *e, char *line);
 void				add_elem_path(t_env *e, int i, int stock);
+void				add_elem_node(t_env *e, int stock);
 
 /*
  * QUEUE FUNCTIONS

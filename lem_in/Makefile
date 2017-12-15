@@ -6,7 +6,7 @@
 #    By: snedir <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/07 01:53:42 by snedir            #+#    #+#              #
-#    Updated: 2017/11/24 04:35:33 by snedir           ###   ########.fr        #
+#    Updated: 2017/12/14 06:49:14 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJS = $(SRCS:.c=.o)
 
 SRCPATH = ./srcs/
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -O3 -Wall -Wextra -Werror
 
 all: $(NAME)
 

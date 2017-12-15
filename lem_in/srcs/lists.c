@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:52:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/13 06:33:09 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/14 04:55:28 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ t_path		*new_node(int path)
 	return (elem);
 }
 
-void		add_elem_node(t_env *e, int path, t_path *current)
+void		add_elem_node(t_env *e, int path)
 {
 	t_path	*tmp;
 
-	tmp = current;
+	tmp = e->current->path;
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new_node(path);
@@ -104,25 +104,27 @@ t_path_m	*new_elem_path(int size_path, int path)
 	new_path->next_path = NULL;
 	new_path->path = new_node(path);
 	new_path->size_path = size_path;
+	new_path->selected = -1;
 	return (new_path);
 }
 
-void		add_elem_path(t_env *e,int size_path, int path)
+void		add_elem_path(t_env *e, int size_path, int path)
 {
-	t_path_m	*tmp;
 	int			i;
 
 	i = 0;
 	if (!e->list_path)
 	{
 		e->list_path = new_elem_path(size_path, path);
+		e->current = e->list_path;
 		return ;
 	}
-	while (++i < e->nb_path && tmp->next_path)
-		tmp = tmp->next_path;
-	if (!tmp->next_path)
+	else
 	{
-		tmp->next_path = new_elem_path(size_path, path);
-		return ;
+		if (!e->current->next_path)
+		{
+			e->current->next_path = new_elem_path(size_path, path);
+			e->current = e->current->next_path;
+		}
 	}
-	add_elem_node(
+}

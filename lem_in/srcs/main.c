@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/13 04:51:04 by snedir           ###   ########.fr       */
+/*   Updated: 2017/12/14 06:50:29 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,15 +128,15 @@ void	print_name(t_env *e, int i)
 	}
 }
 
-int		save_path(t_env *e, int i)
+int		save_path(t_env *e, int i, int size_path)
 {
 	if (i == e->start)
 	{
-		print_name(e, i);
+		add_elem_path(e, size_path + 1, i);
 		return (32);
 	}
-	if (save_path(e, e->matrix[i].parent) == 32)
-		print_name(e, i);
+	if (save_path(e, e->matrix[i].parent, size_path + 1) == 32)
+ 		add_elem_node(e, i);
 	return (32);
 }
 
@@ -153,18 +153,45 @@ int			seek_end(t_env *e, int stock)
 	}
 	return (0);
 }
-/*
-void		print_path(t_env *e, int from)
-{
-	t_path	*tmp;
 
-	tmp = e->matrix[from].path;
+void		print_path(t_env *e)
+{
+	t_path_m	*tmp;
+	t_path		*tmp2;
+
+	tmp = e->list_path;
 	while (tmp)
 	{
-		printf("%d ", tmp->id);
-		tmp = tmp->next;
+		tmp2 = tmp->path;
+		while (tmp2)
+		{
+			print_name(e, tmp2->node);
+			tmp2 = tmp2->next;
+		}
+		printf("\n");
+		tmp = tmp->next_path;
 	}
-}*/
+}
+
+int			loop_cmp(t_path *src, t_path *target)
+{
+	while (src && target)
+	{
+		if (src->node == target->node)
+			return (0);
+		src = src->next;
+		target = target->next;
+	}
+	return (1);
+}
+/*
+void		compare_paths(t_env *e)
+{
+	int			next;
+	t_path_m	*tmp;
+*/
+
+
 
 int			bfs(t_env *e)
 {
@@ -177,8 +204,6 @@ int			bfs(t_env *e)
 	while (E_FILE)
 	{
 		stock = E_FILE->id;
-		print_name(e, stock);
-		printf("\n");
 		dequeue(e);
 		while (iter < e->count)
 		{
@@ -191,9 +216,8 @@ int			bfs(t_env *e)
 						add_queue_elem(e, iter);
 					else
 					{
+						save_path(e, e->end, 0);
 						e->nb_path++;
-						save_path(e, e->end);
-						printf("\n");
 					}
 				}
 			}
@@ -201,7 +225,7 @@ int			bfs(t_env *e)
 		}
 		iter = 0;
 	}
-	return (0);
+	return (e->nb_path);
 }
 
 int			path_finding(t_env *e)
@@ -209,7 +233,11 @@ int			path_finding(t_env *e)
 	if (!e->matrix)
 		exit_error(e);
 	if (bfs(e))
+	{
+		if (!e->tab_way)
+			e->tab_way = (t_tabpath*)ft_memalloc(sizeof(t_tabpath) * e->nb_path);
 		return (1);//	print_line(e);
+	}
 	return (0);
 }
 
@@ -226,8 +254,9 @@ int			main(void)
 	parser(e);
 	printf("start = %d | end = %d\n", e->start, e->end);
 	path_finding(e);
+	print_path(e);
 	//print_line(e);
 	//print_room(e);
 	
-	print_matrix(e);
+	//print_matrix(e);
 }
