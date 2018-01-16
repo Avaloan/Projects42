@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/14 06:50:29 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/16 05:54:34 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,14 +184,33 @@ int			loop_cmp(t_path *src, t_path *target)
 	}
 	return (1);
 }
+
 /*
 void		compare_paths(t_env *e)
 {
-	int			next;
+	t_path		*tmp2;
 	t_path_m	*tmp;
-*/
 
+	tmp = e->list_path;
+	while (tmp)
+	{
+	}
+}*/
 
+void		assign_path_to_tab(t_env *e)
+{
+	t_path_m	*tmp;
+	int			i;
+
+	tmp = e->list_path;
+	i = 0;
+	while (tmp)
+	{
+		e->tab_way[i].path_master = tmp;
+		i++;
+		tmp = tmp->next_path;
+	}
+}
 
 int			bfs(t_env *e)
 {
@@ -228,6 +247,72 @@ int			bfs(t_env *e)
 	return (e->nb_path);
 }
 
+void		read_path_tab(t_env *e)
+{
+	int i = -1;
+	while (++i < e->nb_path)
+		printf("%d\n", e->tab_way[i].path_master->size_path);
+}
+
+/*
+ * Penser test selon taille du chemin pour init
+ * tmp et tmp2 avant la boucle de compare_paths
+ */
+
+int			compare_paths(t_env *e, int src)
+{
+	t_path	*tmp;
+	t_path	*tmp2;
+	int		dst;
+	
+	dst = 0;
+	while (dst < e->nb_path)
+	{
+		tmp = e->tab_way[dst].path_master->path->next;
+		tmp2 = e->tab_way[src].path_master->path->next;
+		if (dst == src)
+		{
+			dst++;
+			continue ;
+		}
+		while (tmp->next && tmp2->next)
+		{
+			if (tmp->node == tmp2->node)
+			{
+				if (src > dst)
+					e->tab_way[src].path_master->selected = 2;
+				else
+					e->tab_way[dst].path_master->selected = 2;
+				return (0);
+			}
+			tmp = tmp->next;
+			tmp2 = tmp2->next;
+		}
+		dst++;
+	}
+	return (1);
+}
+
+
+void		select_path(t_env *e)
+{
+	int		path_to_check;
+	int		nb_failed;
+
+	path_to_check = 0;
+	nb_failed = 0;
+	while (++path_to_check < e->nb_path)
+		nb_failed += compare_paths(e, path_to_check);
+	if (nb_failed)
+	{
+		wash_matrix;
+		bfs again
+
+}
+
+
+
+
 int			path_finding(t_env *e)
 {
 	if (!e->matrix)
@@ -235,12 +320,16 @@ int			path_finding(t_env *e)
 	if (bfs(e))
 	{
 		if (!e->tab_way)
+		{
 			e->tab_way = (t_tabpath*)ft_memalloc(sizeof(t_tabpath) * e->nb_path);
+			assign_path_to_tab(e);
+			//read_path_tab(e);
+			select_path(e);
+		}
 		return (1);//	print_line(e);
 	}
 	return (0);
 }
-
 
 int			main(void)
 {

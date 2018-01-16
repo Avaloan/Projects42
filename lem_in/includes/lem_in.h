@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/15 05:04:22 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/16 05:38:57 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ typedef struct		s_path_m
 typedef struct		s_tab
 {
 	int				*tab;
-	t_path			*path_tab;
+	//t_path			*path_tab;
 	int				parent;
 }					t_tab;
 
 typedef struct		s_tabpath
 {
-	t_path_m		*path;
+	t_path_m		*path_master;
 }					t_tabpath;
 
 typedef struct		s_env
