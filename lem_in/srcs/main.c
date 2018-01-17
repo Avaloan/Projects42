@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/16 05:54:34 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/17 04:38:27 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,16 +283,26 @@ int			compare_paths(t_env *e, int src)
 					e->tab_way[src].path_master->selected = 2;
 				else
 					e->tab_way[dst].path_master->selected = 2;
-				return (0);
+				return (1);
 			}
 			tmp = tmp->next;
 			tmp2 = tmp2->next;
 		}
 		dst++;
 	}
-	return (1);
+	return (0);
 }
 
+void		wash_matrix(t_env *e)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	j = -1;
+	while (++i < e->count)
+		e->matrix[i].parent = -1;
+}
 
 void		select_path(t_env *e)
 {
@@ -303,15 +313,33 @@ void		select_path(t_env *e)
 	nb_failed = 0;
 	while (++path_to_check < e->nb_path)
 		nb_failed += compare_paths(e, path_to_check);
+	printf("nb_failed %d\n", nb_failed);
 	if (nb_failed)
 	{
-		wash_matrix;
-		bfs again
-
+		wash_matrix(e);
+	}
 }
 
+void		print_selected_path(t_env *e)
+{
+	int		i = -1;
+	t_path	*tmp;
 
-
+	while (++i < e->nb_path)
+	{
+		printf("e->nb_path = %d || i = %d || selected = %d\n", e->nb_path, i, e->tab_way[i].path_master->selected);
+		if (e->tab_way[i].path_master->selected == -1)
+		{
+			printf("euh?\n");
+			tmp = e->tab_way[i].path_master->path;
+			while (tmp)
+			{
+				e->matrix[tmp->node].parent = 654;
+				tmp = tmp->next;
+			}
+		}
+	}
+}
 
 int			path_finding(t_env *e)
 {
@@ -325,6 +353,8 @@ int			path_finding(t_env *e)
 			assign_path_to_tab(e);
 			//read_path_tab(e);
 			select_path(e);
+			print_selected_path(e);
+			bfs(e);
 		}
 		return (1);//	print_line(e);
 	}
@@ -346,6 +376,5 @@ int			main(void)
 	print_path(e);
 	//print_line(e);
 	//print_room(e);
-	
 	//print_matrix(e);
 }
