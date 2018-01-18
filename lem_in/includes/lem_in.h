@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/16 05:38:57 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/18 02:12:22 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,13 +130,21 @@ void				dequeue_tmp(t_env *e);
 
 int					check_hashtag(char *line, t_env *e);
 void				exit_error(t_env *e);
+int					get_infos(char *line, t_env *e);
+int					parser(t_env *e);
 
 int					get_nb_ants(char *line, t_env *e);
 int					get_room(char *line, t_env *e);
 void				print_room(t_env *e);
+int					get_pipe(char *line, t_env *e);
 
+/*
+ * Trash founction
+ */
 
-
+void				print_line(t_env *e);
+void				print_matrix(t_env *e);
+void				print_name(t_env *e, int i);
 
 
 

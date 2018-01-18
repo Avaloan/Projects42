@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:52:46 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/14 04:55:28 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/18 05:11:56 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,11 @@ void		add_elem_node(t_env *e, int path)
 
 	tmp = e->current->path;
 	while (tmp->next)
+	{
 		tmp = tmp->next;
+	}
 	tmp->next = new_node(path);
+	//printf("%p\n", tmp);
 }
 
 t_path_m	*new_elem_path(int size_path, int path)
@@ -123,6 +126,7 @@ void		add_elem_path(t_env *e, int size_path, int path)
 	{
 		if (!e->current->next_path)
 		{
+			//printf("hurr dhuuuros\n");
 			e->current->next_path = new_elem_path(size_path, path);
 			e->current = e->current->next_path;
 		}
