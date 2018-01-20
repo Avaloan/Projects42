@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/18 02:12:22 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/20 05:28:32 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct		s_env
 	t_path_m		*current;
 	int				nb_path_selected;
 	int				average_turns;
+	int				rustine;
 }					t_env;
 
 /*

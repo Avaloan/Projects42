@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/18 05:44:15 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/20 05:33:20 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
  * FONCTIONS PARSER
  */
 
+
+void		print_tab_path(t_env *e);
+void		block_selected_path(t_env *e);
 
 int		save_path(t_env *e, int i, int size_path)
 {
@@ -66,17 +69,13 @@ void		print_path(t_env *e)
 	}
 }
 
-int			loop_cmp(t_path *src, t_path *target)
-{
-	while (src && target)
-	{
-		if (src->node == target->node)
-			return (0);
-		src = src->next;
-		target = target->next;
-	}
-	return (1);
-}
+/*
+ * DANGER WHILE assign path to tab
+ * ne pas boucler sur la list_path
+ * boucler sur le nombre de chemins MAX
+ * Preparer un tmp nb_path - nb_failed
+ */
+
 
 void		assign_path_to_tab(t_env *e)
 {
@@ -85,13 +84,19 @@ void		assign_path_to_tab(t_env *e)
 
 	tmp = e->list_path;
 	i = 0;
-	while (tmp)
+	printf("nb_path %d\n", e->nb_path);
+	while (i < 3)
 	{
+		printf("add tmp %p\n", tmp);
 		e->tab_way[i].path_master = tmp;
+		printf("e->tab_way[%d] %p\n", i, e->tab_way[i].path_master);
 		i++;
-		tmp = tmp->next_path;
+		if (tmp && tmp->next_path)
+			tmp = tmp->next_path;
+		else
+			tmp = NULL;
 	}
-	printf("pelase\n");
+	printf("fin assign_path_to_tab\n");
 }
 
 int			bfs(t_env *e)
@@ -119,7 +124,6 @@ int			bfs(t_env *e)
 					{
 						//printf("what the flying fuck ?\n");
 						save_path(e, e->end, 0);
-						//printf("what the flying fuckening ?\n");
 						e->nb_path++;
 					}
 				}
@@ -128,7 +132,12 @@ int			bfs(t_env *e)
 		}
 		iter = 0;
 	}
-	printf("why ?\n");
+	print_path(e);
+	printf("end bfs ?\n");
+	if (e->tab_way)
+	{
+		e->rustine = 0;
+	}
 	return (e->nb_path);
 }
 
@@ -152,9 +161,10 @@ void		delete_path(t_env *e)
 	t_path_m	*good_shit;
 
 	tmp_master = e->list_path;
+	printf("b4 delete\n");
+	print_path(e);
 	while (tmp_master)
 	{
-		//printf("selected %d\n", tmp_master->selected);
 		tmp_path = tmp_master->path;
 		if (tmp_master->selected == 2)
 		{
@@ -177,6 +187,9 @@ void		delete_path(t_env *e)
 			tmp_master = tmp_master->next_path;
 		}
 	}
+	printf("after delete\n");
+	print_path(e);
+	printf("end delete path\n");
 	e->current = good_shit;
 }
 
@@ -190,10 +203,13 @@ int			compare_paths(t_env *e, int src)
 	t_path	*tmp;
 	t_path	*tmp2;
 	int		dst;
-	
+
 	dst = 0;
+	tmp = NULL;
+	tmp2 = NULL;
 	while (dst < e->nb_path)
 	{
+		printf("dst %d || src %d\n", dst, src);
 		tmp = e->tab_way[dst].path_master->path->next;
 		tmp2 = e->tab_way[src].path_master->path->next;
 		if (dst == src)
@@ -201,10 +217,9 @@ int			compare_paths(t_env *e, int src)
 			dst++;
 			continue ;
 		}
-		printf("dst %d || nb_path %d\n", dst, e->nb_path);
 		while (tmp->next && tmp2->next)
 		{
-			printf("done ?\n");
+			printf("boucle compare_paths ?\n");
 			if (tmp->node == tmp2->node)
 			{
 				if (src > dst)
@@ -239,15 +254,25 @@ int			select_path(t_env *e)
 
 	path_to_check = 0;
 	nb_failed = 0;
-	printf("inb path %d\n", e->nb_path);
+	if (e->rustine == 0)
+	{
+		assign_path_to_tab(e);
+		e->rustine = 1;
+	}
+	printf("in select_path nb path %d\n", e->nb_path);
 	while (++path_to_check < e->nb_path)
 		nb_failed += compare_paths(e, path_to_check);
-	printf("nb_failed %d\n", nb_failed);
-	printf("numero nodembre %d\n", e->nb_path);
+	printf("nb_failed resultat compare paths %d\n", nb_failed);
 	if (nb_failed)
 	{
 		e->nb_path -= nb_failed;
 		wash_matrix(e);
+		delete_path(e);
+		assign_path_to_tab(e);
+		printf("------------print tab_path-----------\n");
+		print_tab_path(e);
+		printf("------------E		N		D-----------\n");
+		block_selected_path(e);
 	}
 	return (nb_failed);
 }
@@ -273,22 +298,52 @@ void		block_selected_path(t_env *e)
 	}
 }
 
+void		print_path_for_tab(t_env *e, int i)
+{
+	t_path		*tmp2;
+
+	tmp2 = e->tab_way[i].path_master->path;
+	printf("yo\n");
+	while (tmp2)
+	{
+		print_name(e, tmp2->node);
+		tmp2 = tmp2->next;
+	}
+	printf("\n");
+}
+
+void		print_tab_path(t_env *e)
+{
+	int i = 0;
+	while (i < 3)
+	{
+		if (e->tab_way[i].path_master)
+			print_path_for_tab(e, i);
+		i++;
+	}
+}
+
 int			path_finding(t_env *e)
 {
+	int ret = 0;
 	int i = 0;
 	if (!e->matrix)
 		exit_error(e);
 	if (bfs(e))
 	{
 		if (!e->tab_way)
-			e->tab_way = (t_tabpath*)ft_memalloc(sizeof(t_tabpath) * e->nb_path);
-		assign_path_to_tab(e);
-		//read_path_tab(e);
-		if (select_path(e) != 0)
 		{
-			block_selected_path(e);
-			delete_path(e);
+			e->tab_way = (t_tabpath*)ft_memalloc(sizeof(t_tabpath) * e->nb_path);
+			assign_path_to_tab(e);
+			e->rustine = 1;
+			printf("------------print tab_path-----------\n");
+			print_tab_path(e);
+		}
+		ret = select_path(e);
+		while (ret != 0 && i < 3)
+		{
 			bfs(e);
+			ret = select_path(e);
 			i++;
 		}
 		return (1);//	print_line(e);
