@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/20 05:28:32 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/23 05:25:33 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct		s_env
 	int				nb_path_selected;
 	int				average_turns;
 	int				rustine;
+	int				nb_bfs;
 }					t_env;
 
 /*
@@ -130,7 +131,7 @@ void				dequeue(t_env *e);
 void				dequeue_tmp(t_env *e);
 
 int					check_hashtag(char *line, t_env *e);
-void				exit_error(t_env *e);
+void				exit_error(void);
 int					get_infos(char *line, t_env *e);
 int					parser(t_env *e);
 

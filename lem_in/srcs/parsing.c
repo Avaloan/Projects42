@@ -6,15 +6,11 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:56:53 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/20 04:20:10 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/23 05:26:10 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-/*
- * FONCTIONS VERIF
- */
 
 int			check_start_end(char *line, t_env *e)
 {
@@ -31,12 +27,6 @@ int			check_start_end(char *line, t_env *e)
 	return (0);
 }
 
-/*
- * Si return (2) -> line
- * Si return (1) -> comment
- * Si return (0) -> Commande valide "start / end"
- */
-
 int			check_hashtag(char *line, t_env *e)
 {
 	int		i;
@@ -52,7 +42,7 @@ int			check_hashtag(char *line, t_env *e)
 				return (ERROR_FLAG);
 			if (FLAG_ROOM)
 				return (STOP_FLAG);
-		return (0);
+			return (0);
 		}
 	}
 	return (1);

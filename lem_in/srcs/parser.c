@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 02:09:23 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/18 02:14:06 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/23 05:25:41 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int			get_infos(char *line, t_env *e)
 {
 	int		value_hash;
-	
+
 	value_hash = check_hashtag(line, e);
 	if (value_hash == 1)
 		return (1);
@@ -35,7 +35,7 @@ int			get_infos(char *line, t_env *e)
 	return (1);
 }
 
-void		exit_error()
+void		exit_error(void)
 {
 	printf("ERROR\n");
 	exit(0);
@@ -56,7 +56,7 @@ int			parser(t_env *e)
 		if (control == 1)
 			add_elem_line(e, line);
 		else if (control == ERROR_FLAG)
-			exit_error(e);
+			exit_error();
 		else if (control == STOP_FLAG)
 			return (0);
 		free(line);
@@ -64,51 +64,9 @@ int			parser(t_env *e)
 	return (0);
 }
 
-void		print_line(t_env *e)
+void		print_name(t_env *e, int i)
 {
-	while (E_LINE)
-	{
-		printf("%s\n", E_LINE->line);
-		E_LINE = E_LINE->next;
-	}
-}
-
-void		print_room(t_env *e)
-{
-	while (E_ROOM)
-	{
-		printf("ROOM %s ID %d\n", E_ROOM->room_name, E_ROOM->id);
-		E_ROOM = E_ROOM->next;
-	}
-}
-
-void		print_matrix(t_env *e)
-{
-	int		i;
-	int		j;
-	int		z;
-
-	i = -1;
-	j = -1;
-	z = -1;
-	printf(" ");
-	while (++z < e->count)
-		printf(" \033[34;01m%d\033[00m", z);
-	printf("\n");
-	z = -1;
-	while (++i < e->count)
-	{
-		printf("\033[35;01m%d\033[00m ", i);
-		while (++j < e->count)
-			printf("%d ", e->matrix[i].tab[j]);
-		printf("\n");
-		j = -1;
-	}
-}
-
-void	print_name(t_env *e, int i)
-{
-	t_room *tmp;
+	t_room	*tmp;
 
 	tmp = E_ROOM;
 	while (tmp)
@@ -121,5 +79,3 @@ void	print_name(t_env *e, int i)
 		tmp = tmp->next;
 	}
 }
-
-

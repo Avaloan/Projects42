@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:50:39 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/23 04:29:07 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/23 05:13:51 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,11 @@ int			get_room(char *line, t_env *e)
 	{
 		free(name);
 		return (ERROR_MALLOC);
-	}	// MALLOC ERROR
+	}
 	if (!room_exist(e, name))
 		return (ERROR_FLAG);
 	if (PENDING_START == 1 && PENDING_END == 1)
-		return (ERROR_FLAG); // ERREUR SORTIE ERROR ENTREE STANDARD
+		return (ERROR_FLAG);
 	else if (PENDING_START == 1 || PENDING_END == 1)
 		pending(e);
 	add_elem_room(name, e);
