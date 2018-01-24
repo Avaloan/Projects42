@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/23 05:22:21 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/24 02:49:09 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ int			main(void)
 	e->connection[0] = -5;
 	e->connection[1] = -5;
 	parser(e);
-	path_finding(e);
+	if (!path_finding(e))
+		exit_error();
+	print_line(e);
+	printf("\n\n");
 	print_path(e);
 }

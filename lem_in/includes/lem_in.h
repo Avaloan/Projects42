@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/23 05:25:33 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/24 02:45:18 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,15 @@ typedef struct		s_tabpath
 	t_path_m		*path_master;
 }					t_tabpath;
 
+typedef struct		s_norme
+{
+	t_path_m		*tmp_master;
+	t_path_m		*stock_free_master;
+	t_path			*tmp_path;
+	t_path			*stock_free;
+	t_path_m		*good_shit;
+}					t_norme;
+
 typedef struct		s_env
 {
 	int				nb_ants;
@@ -148,10 +157,16 @@ void				print_line(t_env *e);
 void				print_matrix(t_env *e);
 void				print_name(t_env *e, int i);
 
+/*
+ * path_finding
+ */
 
-
-
-
+int					path_finding(t_env *e);
+void				print_path(t_env *e);
+void				assign_path_to_tab(t_env *e);
+int					select_path(t_env *e);
+void				wash_matrix(t_env *e);
+int					nb_wrong_path(t_env *e);
 
 
 

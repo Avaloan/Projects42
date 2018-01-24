@@ -6,7 +6,7 @@
 #    By: snedir <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/07 01:53:42 by snedir            #+#    #+#              #
-#    Updated: 2018/01/23 01:44:12 by snedir           ###   ########.fr        #
+#    Updated: 2018/01/24 02:43:41 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,11 @@ SRCS = main.c \
 	   room.c \
 	   pipe.c \
 	   file.c \
-	   parser.c
+	   parser.c \
+	   path_finding.c \
+	   paths_list.c \
+	   print_function.c \
+	   paths_handlers.c
 
 OBJS = $(SRCS:.c=.o)
 

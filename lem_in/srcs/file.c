@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 01:24:15 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/23 05:16:32 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/24 01:57:14 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_file		*new_queue_elem(int id)
 {
 	t_file	*elem;
-	
+
 	elem = (t_file*)malloc(sizeof(t_file));
 	elem->id = id;
 	elem->prev = NULL;

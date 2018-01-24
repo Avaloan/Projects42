@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 01:59:15 by snedir            #+#    #+#             */
-/*   Updated: 2017/12/01 01:58:52 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/24 02:14:46 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ void		allocate_matrix(t_env *e)
 	while (++i < e->count)
 		e->matrix[i].tab = (int*)ft_memalloc(sizeof(int) * e->count);
 }
-
-/*void		free_matrix(t_env *e)
-{
-	int		i;
-
-	i = -1;
-	if (!e->matrix)
-		return ;
-	while (e->matrix[++i])
-		free(e->matrix[i]);
-	free(e->matrix);
-}*/
 
 void		free_map(char **pipe)
 {
@@ -102,10 +90,11 @@ void		assign_pipe(t_env *e)
 	e->connection[0] = -5;
 	e->connection[1] = -5;
 }
+
 int			get_pipe(char *line, t_env *e)
 {
 	char	**pipe;
-	
+
 	if (!e->matrix)
 		allocate_matrix(e);
 	if (verif_nb_pipe(line) == STOP_FLAG)

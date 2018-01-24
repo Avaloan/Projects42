@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:50:39 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/23 05:13:51 by snedir           ###   ########.fr       */
+/*   Updated: 2018/01/24 02:15:37 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ int			check_valid_pipe(t_env *e)
 		FLAG_ROOM = 1000;
 		return (FLAG_ROOM);
 	}
-	exit_error(e);
+	exit_error();
 	return (0);
 }
-
 
 int			check_valid_room(char *line, t_env *e)
 {
 	int		i;
 	int		spaceballs;
-	
+
 	spaceballs = 0;
 	i = 0;
 	if (line[0] == ' ' || line[0] == 'L' || line[0] == '-')
