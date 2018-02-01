@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/24 02:45:18 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/01 04:04:24 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ int					get_pipe(char *line, t_env *e);
 void				print_line(t_env *e);
 void				print_matrix(t_env *e);
 void				print_name(t_env *e, int i);
-
+void				print_tab_path(t_env *e);
 /*
  * path_finding
  */
@@ -167,7 +167,8 @@ void				assign_path_to_tab(t_env *e);
 int					select_path(t_env *e);
 void				wash_matrix(t_env *e);
 int					nb_wrong_path(t_env *e);
-
+void				ft_trabul(t_env *e);
+void				ants_walk(t_env *e);
 
 
 

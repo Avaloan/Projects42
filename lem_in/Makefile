@@ -6,7 +6,7 @@
 #    By: snedir <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/07 01:53:42 by snedir            #+#    #+#              #
-#    Updated: 2018/01/24 02:43:41 by snedir           ###   ########.fr        #
+#    Updated: 2018/02/01 03:01:50 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS = main.c \
 	   path_finding.c \
 	   paths_list.c \
 	   print_function.c \
-	   paths_handlers.c
+	   paths_handlers.c \
+	   ants.c
 
 OBJS = $(SRCS:.c=.o)
 

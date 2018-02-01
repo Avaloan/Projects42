@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/24 02:49:09 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/01 04:20:33 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ int			main(void)
 		exit_error();
 	print_line(e);
 	printf("\n\n");
-	print_path(e);
+	ft_trabul(e);
+	ants_walk(e);
+	print_tab_path(e);
 }
