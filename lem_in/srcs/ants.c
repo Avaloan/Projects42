@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 02:32:55 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/01 04:28:30 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/06 04:20:32 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/lem_in.h"
@@ -52,8 +52,7 @@ void    ants_walk(t_env *e)
 	{
 		tot_size_p += e->tab_way[path_travel].path_master->size_path;
 		path_travel++;
-		ants_per_path = (e->nb_ants + tot_size_p);
-		path_travel;
+		ants_per_path = (e->nb_ants + tot_size_p) / path_travel;
 		if (ants_per_path < papp)
 		{
 			papp = ants_per_path;
@@ -64,9 +63,20 @@ void    ants_walk(t_env *e)
     printf("pathtravel = %d\n", path_travel);
 	printf("nb_path = %d\n", e->nb_path);
 	}
-	while (e->nb_ants - ants_counter > 0)
+	int ants = 0, ants_walking = 0;
+	while (papp > 0)
 	{
-		
+		ants += path_needed;
+		ants_walking += path_needed;
+		int current_path = 0;
+		for (int i = 1; i <= ants_walking; i++)
+		{
+			add_fourmi(i, current_path, ants_walking, ants);
+			current_path++;
+			if (current_path % e->nb_path == 0)
+				current_path = 0;
+		}
+		papp--;
 	}
 //    printf("chemin 1 = %d\n", e->tab_way->path_master[0].path[0].node);
 
@@ -79,7 +89,7 @@ void    ants_walk(t_env *e)
     the number of path we want = 666;
     Total_sx = Tsx = s(0+.+.....+.+x);
 
-    AP = ANTS / PATH = (X + Tsx) / Y
+    AP = ANTS / PATH = (X + Tsx) / x
 
     x = 0;
     AP = 0;
@@ -100,3 +110,5 @@ lle)
 /*********************************************************/
 /******************DO THE MATH***************************/
 }
+
+void	do()
