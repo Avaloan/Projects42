@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 04:20:49 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/06 05:39:16 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/07 01:17:14 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ void	send_ants(t_env *e)
 
 void	send_ants()
 {
+
 }
 
-void	move_ants(int id_tab_way)
+void	move_ants(t_env *e, int id_tab_way)
 {
 	t_kyuuh *tmp;
 	
@@ -56,7 +57,7 @@ void	move_ants(int id_tab_way)
 		while (tmp)
 		{
 			tmp->current_room = tmp->current_room->next;
-			tmp = tmp->prev
+			tmp = tmp->prev;
 		}
 	}
 }

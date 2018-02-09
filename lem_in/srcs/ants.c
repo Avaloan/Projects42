@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 02:32:55 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/06 04:20:32 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/09 05:53:06 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/lem_in.h"
@@ -62,7 +62,7 @@ void    ants_walk(t_env *e)
     printf("papp = %d\n", papp);
     printf("pathtravel = %d\n", path_travel);
 	printf("nb_path = %d\n", e->nb_path);
-	}
+	}/*
 	int ants = 0, ants_walking = 0;
 	while (papp > 0)
 	{
@@ -77,6 +77,51 @@ void    ants_walk(t_env *e)
 				current_path = 0;
 		}
 		papp--;
+	}
+	 */
+	int turn;
+	int	ants;
+	int	i;
+	int	turn_path;
+	int	room;
+	int deep_level;
+	int	actual_start;
+	int ants_smoking;
+
+	turn = 1;
+	actual_start = 0;
+	ants = 0;
+	ants_smoking = 0;
+	while (turn < papp)
+	{
+		turn_path = actual_start;
+		ants += path_needed;
+		i = ants;
+		while (i >= 0)
+		{
+			
+			deep_level = (turn_path > 0 ? (i + (actual_start * (e->tab_way[turn_path].path_master->size_path - e->tab_way[turn_path - 1].path_master->size_path) - 1) / path_needed) : (i - 1) / path_needed);
+			
+			room = ghettouroom(turn_path, deep_level, e);
+			//printf("Turn = %d, ants = %d, i = %d, turn_path = %d, room = %d, deep_level = %d, actual_start = %d, ants_smoking = %d\n", turn, ants, i, turn_path, room, deep_level, actual_start, ants_smoking);
+			if(i == 0)
+				printfourmi(e, ants - i + ants_smoking + 1, room, 666);
+			else
+				printfourmi(e, ants - i + ants_smoking + 1, room, 665);
+			if (room == e->end)
+			{
+				actual_start++;
+				ants_smoking++;
+				if (actual_start == path_needed)
+					actual_start = 0;
+			}
+			if (turn > papp - e->tab_way[turn_path].path_master->size_path + 1)
+				path_needed--;
+			turn_path++;
+			turn_path = turn_path == path_needed ? 0 : turn_path;
+			i--;
+		}
+		turn++;
 	}
 //    printf("chemin 1 = %d\n", e->tab_way->path_master[0].path[0].node);
 
@@ -110,5 +155,3 @@ lle)
 /*********************************************************/
 /******************DO THE MATH***************************/
 }
-
-void	do()

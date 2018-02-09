@@ -7,10 +7,12 @@ end 5 5
 dead0 4 9
 ##end
 dead1 1 7
-mid0 3 10
-mid1 10 3
-mid2 5 5
-room 2 2
+1 1 2
+mid0    3 10
+mid1    10 3
+mid2    5 5
+room    2 2
+dead0-dead1
 start-dead0
 start-mid0
 mid0-dead0
@@ -21,3 +23,4 @@ mid2-end
 mid2-dead1
 room-end
 room-dead1
+1-dead1

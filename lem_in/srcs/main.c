@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/01 04:20:33 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/09 05:50:46 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,42 @@ int			nb_wrong_path(t_env *e)
 	return (i);
 }
 
+void		room_mapping(t_env *e)
+{
+	int		i;
+	t_room	*tmp;
+	
+	i = 0;
+	if (!(e->room_tab))
+		e->room_tab = (char**)ft_memalloc(sizeof(char*) * e->count);
+	tmp = e->e_room;
+	while (tmp && i < e->count)
+	{
+		e->room_tab[i] = tmp->room_name;
+		tmp = tmp->next;
+		i++;
+	}
+}
+
+int			ghettouroom(int turn_path, int deep_level, t_env *e)
+{
+	t_path	*tmp;
+	int		i;
+
+	i = -1;
+	tmp = e->tab_way[turn_path].path_master->path->next;
+	while (tmp && ++i < deep_level)
+		tmp = tmp->next;
+	return (tmp->node);
+}
+
+void		printfourmi(t_env *e, int ants, int room, int da)
+{
+	printf("%s\n", e->room_tab[0]);
+	da == DA666BEASTXBAMBOULA ? printf("L%d-%s\n", ants, e->room_tab[room])
+		: printf("L%d-%s ", ants, e->room_tab[room]);
+}
+
 int			main(void)
 {
 	t_env	*e;
@@ -61,6 +97,11 @@ int			main(void)
 	print_line(e);
 	printf("\n\n");
 	ft_trabul(e);
-	ants_walk(e);
 	print_tab_path(e);
+	int i = -1;
+	room_mapping(e);
+	while (++i < e->count)
+		printf("%s\n", e->room_tab[i]);
+	ants_walk(e);
+	printf("%d\n", e->tab_way[0].path_master->size_path);
 }

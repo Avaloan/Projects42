@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/06 04:47:51 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/09 05:23:22 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ERROR_FLAG -2
 # define STOP_FLAG -3
 # define ERROR_MALLOC -4
+# define DA666BEASTXBAMBOULA 666
 
 /*
  * GESTION LISTE
@@ -39,6 +40,10 @@
  */
 
 # define E_FILE e->e_file
+
+/*
+ * GESTION TAB
+ */
 
 typedef struct		s_line
 {
@@ -77,7 +82,6 @@ typedef struct		s_path_m
 typedef struct		s_tab
 {
 	int				*tab;
-	//t_path			*path_tab;
 	int				parent;
 }					t_tab;
 
@@ -128,6 +132,7 @@ typedef struct		s_env
 	int				average_turns;
 	int				rustine;
 	int				nb_bfs;
+	char			**room_tab;
 }					t_env;
 
 /*
@@ -164,6 +169,8 @@ int					get_pipe(char *line, t_env *e);
  * Trash founction
  */
 
+void				printfourmi(t_env *e, int ants, int room, int da);
+int					ghettouroom(int turnpath, int deep_level, t_env *e);
 void				print_line(t_env *e);
 void				print_matrix(t_env *e);
 void				print_name(t_env *e, int i);
