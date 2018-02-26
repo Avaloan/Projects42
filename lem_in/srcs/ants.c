@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 02:32:55 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/16 05:25:52 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/27 00:43:29 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/lem_in.h"
@@ -44,12 +44,13 @@ void    ants_walk(t_env *e)
 	int		path_needed;
 	int		papp;
 
-	papp = e->nb_ants + e->tab_way[0].path_master->size_path + 1;
+	papp = e->nb_ants + e->tab_way[0].path_master->size_path - 1;
 	path_travel = 0;
 	ants_per_path = 0;
 	tot_size_p = 0;
 	while (path_travel < e->nb_path && e->nb_ants > e->tab_way[path_travel].path_master->size_path)
 	{
+		printf("niaue ta mere\n");
 		tot_size_p += e->tab_way[path_travel].path_master->size_path;
 		path_travel++;
 		ants_per_path = (e->nb_ants + tot_size_p) / path_travel;
@@ -69,10 +70,13 @@ void    ants_walk(t_env *e)
 	int		new_ants;
 	int		i;
 	int		room;
-
 	i = 0;
 	while (i < e->nb_ants)
 		tab_ants[i++].deep_level = -1;
+	if (path_needed == 0)
+	{
+		path_needed++;
+	}
 	new_ants = path_needed;
 	turn = 0;
 	ants = 0;
@@ -92,7 +96,7 @@ void    ants_walk(t_env *e)
 			{
 				tab_ants[i].deep_level += 1;
 				room = ghettouroom(tab_ants[i].path, tab_ants[i].deep_level, e);
-				if(i == ants - 1)
+				if (i == ants - 1)
 					printfourmi(e, i + 1, room, 666);
 				else
 					printfourmi(e, i + 1, room, 665);
@@ -101,15 +105,16 @@ void    ants_walk(t_env *e)
 			}
 			i++;
 		}
-		turn++;
 		i = 0;
-		while (i < path_needed)
+		tot_size_p += e->tab_way[path_travel].path_master->size_path;
+		while (i < new_ants)
 		{
 //		printf("turn = %d, size = %d\n", turn, e->tab_way[i].path_master->size_path);
 			if (turn >= papp - e->tab_way[i].path_master->size_path)
 				new_ants--;
 			i++;
 		}
+		turn++;
 	}
 /************************************************ESSAI
 	int turn;
@@ -137,7 +142,7 @@ void    ants_walk(t_env *e)
 			i = e->nb_ants - ants_smoking;
 //			printf("Turn = %d, ants = %d, i = %d, turn_path = %d, room = %d, deep_level = %d, actual_start = %d, ants_smoking = %d\n", turn, ants, i, turn_path, room, deep_level, actual_start, ants_smoking);
 		while (i > ants_smoking)
-		{
+	7	{
 			if (turn_path < actual_start)
 				deep_level = (i - 1 - ants_smoking) / path_needed;
 			else

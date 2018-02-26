@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/16 05:47:27 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/27 00:39:36 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int			main(void)
 	parser(e);
 	if (!path_finding(e))
 		exit_error();
-	print_line(e);
+	//print_line(e);
 	printf("\n\n");
 	ft_trabul(e);
 	print_tab_path(e);
