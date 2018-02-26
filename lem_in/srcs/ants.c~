@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 02:32:55 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/09 05:47:20 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/09 05:53:06 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/lem_in.h"
@@ -99,12 +99,11 @@ void    ants_walk(t_env *e)
 		i = ants;
 		while (i >= 0)
 		{
-			printf("un truc conventionnel\n");
+			
 			deep_level = (turn_path > 0 ? (i + (actual_start * (e->tab_way[turn_path].path_master->size_path - e->tab_way[turn_path - 1].path_master->size_path) - 1) / path_needed) : (i - 1) / path_needed);
-			printf("un truc conventionnel\n");
+			
 			room = ghettouroom(turn_path, deep_level, e);
-			printf("un truc conventionnel\n");
-			printf("Turn = %d, ants = %d, i = %d, turn_path = %d, room = %d, deep_level = %d, actual_start = %d, ants_smoking = %d\n", turn, ants, i, turn_path, room, deep_level, actual_start, ants_smoking);
+			//printf("Turn = %d, ants = %d, i = %d, turn_path = %d, room = %d, deep_level = %d, actual_start = %d, ants_smoking = %d\n", turn, ants, i, turn_path, room, deep_level, actual_start, ants_smoking);
 			if(i == 0)
 				printfourmi(e, ants - i + ants_smoking + 1, room, 666);
 			else

@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/16 04:32:18 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/09 05:23:22 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,6 @@ typedef struct		s_norme
 	t_path			*stock_free;
 	t_path_m		*good_shit;
 }					t_norme;
-
-typedef struct		s_ants
-{
-	int				path;
-	int				deep_level;
-}					t_ants;
 
 typedef struct		s_env
 {
