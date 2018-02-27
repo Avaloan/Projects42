@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 02:32:55 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/27 01:32:25 by abassibe         ###   ########.fr       */
+/*   Updated: 2018/02/27 01:34:47 by abassibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/lem_in.h"
@@ -70,7 +70,7 @@ void    ants_walk(t_env *e)
 	int		new_ants;
 	int		i;
 	int		room;
-	int		total = 0;
+	int		total = 2;
 	i = 0;
 	while (i < e->nb_ants)
 		tab_ants[i++].deep_level = -1;
@@ -81,7 +81,6 @@ void    ants_walk(t_env *e)
 	new_ants = path_needed;
 	turn = 0;
 	ants = 0;
-	total = new_ants;
 	while (turn < papp)
 	{
 		i = 0;
