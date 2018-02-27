@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 02:32:55 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/27 01:27:08 by abassibe         ###   ########.fr       */
+/*   Updated: 2018/02/27 01:32:25 by abassibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/lem_in.h"
@@ -81,7 +81,7 @@ void    ants_walk(t_env *e)
 	new_ants = path_needed;
 	turn = 0;
 	ants = 0;
-	total += new_ants;
+	total = new_ants;
 	while (turn < papp)
 	{
 		i = 0;
@@ -117,11 +117,11 @@ void    ants_walk(t_env *e)
 			i++;
 		}
 		total += new_ants;
-		printf("total = %d\n", total);
-		printf("new_ants = %d\n", new_ants);
-		if (total - new_ants >= e->nb_ants)
+//		printf("total = %d\n", total);
+//		printf("new_ants = %d\n", new_ants);
+		if (total + new_ants >= e->nb_ants)
 			new_ants = e->nb_ants - total;
-		printf("new_ants2 = %d\n", new_ants);
+//		printf("new_ants2 = %d\n", new_ants);
 		turn++;
 	}
 /************************************************ESSAI
