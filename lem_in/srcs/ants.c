@@ -24,7 +24,8 @@ void	ft_trabul(t_env *e)
 		x = 0;
 		while (x < y - 1)
 		{
-			if (e->tab_way[x].path_master->size_path > e->tab_way[x + 1].path_master->size_path)
+			if (e->tab_way[x].path_master->size_path >
+				e->tab_way[x + 1].path_master->size_path)
 			{
 				tmp = e->tab_way[x].path_master;
 				e->tab_way[x].path_master = e->tab_way[x + 1].path_master;
@@ -36,7 +37,7 @@ void	ft_trabul(t_env *e)
 	}
 }
 
-void    ants_walk(t_env *e)
+void		casa_del_pope(t_env *e, t_pope *pope)
 {
 	int		path_travel;
 	int		ants_per_path;
@@ -50,7 +51,6 @@ void    ants_walk(t_env *e)
 	tot_size_p = 0;
 	while (path_travel < e->nb_path && e->nb_ants > e->tab_way[path_travel].path_master->size_path)
 	{
-		printf("niaue ta mere\n");
 		tot_size_p += e->tab_way[path_travel].path_master->size_path;
 		path_travel++;
 		ants_per_path = (e->nb_ants + tot_size_p) / path_travel;
@@ -60,11 +60,39 @@ void    ants_walk(t_env *e)
 			path_needed = path_travel;
 		}
 	}
-    printf("nb_ants = %d\n", e->nb_ants);
-    printf("papp = %d\n", papp);
-    printf("pathneeded = %d\n", path_needed);
-	printf("nb_path = %d\n\n", e->nb_path);
-	t_ants	tab_ants[e->nb_ants];
+	pope->papp = papp;
+	pope->path_needed;
+}
+
+void	init_culaire(t_culaire *norme)
+{
+	norme->ants = 0;
+	norme->turn = 0;
+	norme->total = 0;
+	norme->i = 0;
+}
+
+void	culaimor(t_env *e)
+{
+	t_pope	pope;
+	t_ants	*tab_ants;
+	t_culaire	norme;
+	int		i;
+
+	tab_ants = (t_ants *)ft_memalloc(sizeof(t_ants) * e->nb_ants);
+	i = 0;
+	casa_del_pope(e, &pope);
+	init_culaire(&norme);
+	while (i < e->nb_ants)
+		tab_ants[i++].deep_level = -1;
+}
+
+void	culaire()
+{
+
+}
+
+
 	int		ants;
 	int		turn;
 	int		new_ants;
@@ -109,108 +137,12 @@ void    ants_walk(t_env *e)
 			i++;
 		}
 		i = 0;
-		tot_size_p += e->tab_way[path_travel].path_master->size_path;
 		while (i < new_ants)
 		{
-//		printf("turn = %d, size = %d\n", turn, e->tab_way[i].path_master->size_path);
 			if (turn >= papp - e->tab_way[i].path_master->size_path)
 				new_ants--;
 			i++;
 		}
 		turn++;
 	}
-/************************************************ESSAI
-	int turn;
-	int	ants;
-	int	i;
-	int	turn_path;
-	int	room;
-	int deep_level;
-	int	actual_start;
-	int ants_smoking;
-	int	end_count;
-
-	turn = 1;
-	actual_start = 0;
-	ants = 0;
-	ants_smoking = 0;
-	end_count = 0;
-	printf("papp = %d, ants = %d\n", papp, e->nb_ants);
-	while (turn < papp)
-	{
-		turn_path = actual_start;
-		ants += path_travel;
-		i = ants;
-		if (i > e->nb_ants)
-			i = e->nb_ants - ants_smoking;
-//			printf("Turn = %d, ants = %d, i = %d, turn_path = %d, room = %d, deep_level = %d, actual_start = %d, ants_smoking = %d\n", turn, ants, i, turn_path, room, deep_level, actual_start, ants_smoking);
-		while (i > ants_smoking)
-	7	{
-			if (turn_path < actual_start)
-				deep_level = (i - 1 - ants_smoking) / path_needed;
-			else
-				deep_level = (i - 1) / path_needed;
-//			printf("Path_needed = %d, Turn = %d, ants = %d, i = %d, turn_path = %d, room = %d, deep_level = %d, actual_start = %d, ants_smoking = %d\n", path_needed, turn, ants, i, turn_path, room, deep_level, actual_start, ants_smoking);
-//			printf("size path = %d\n", e->tab_way[actual_start].path_master->size_path);
-//			printf("size path = %d\n", e->tab_way[actual_start - 1].path_master->size_path);
-//			deep_level = (actual_start > 0 ? (i + (actual_start * (e->tab_way[actual_start].path_master->size_path - e->tab_way[actual_start - 1].path_master->size_path) - 1) / path_needed) : (i - 1) / path_needed);
-//			printf("i = %d\n", i);
-//			printf("deeplevel = %d\n", deep_level);
-//			printf("Pathneeded = %d\n", path_needed);
-			room = ghettouroom(turn_path, deep_level, e);
-			if(i == ants_smoking + 1)
-				printfourmi(e, ants - i + ants_smoking + 1, room, 666);
-			else
-				printfourmi(e, ants - i + ants_smoking + 1, room, 665);
-			if (room == e->end)
-			{
-				end_count++;
-			}
-			turn_path++;
-			turn_path = turn_path == path_needed ? 0 : turn_path;
-			i--;
-		}
-		if (turn > papp - e->tab_way[path_needed - 1].path_master->size_path)
-			path_travel--;
-		while (end_count > 0)
-		{
-			actual_start++;
-			ants_smoking++;
-			if (actual_start == path_needed)
-				actual_start = 0;
-			end_count--;
-		}
-		turn++;
-	}
-//    printf("chemin 1 = %d\n", e->tab_way->path_master[0].path[0].node);
-*********************************/
-/*********************************************************/
-/******************DO THE MATH***************************/
-/*  fourmi = X;
-    nb_path = Y;
-    size_path = sx;
-    path = x;
-    the number of path we want = 666;
-    Total_sx = Tsx = s(0+.+.....+.+x);
-
-    AP = ANTS / PATH = (X + Tsx) / x
-
-    x = 0;
-    AP = 0;
-    Tsx = 0;
-    while (x < Y && X > sx) (si sx > forcement le dernier chemin a prendre)
-      Tsx += sx;
-      do the AP;
-      if (NAP > AP)
-        666 = x;
-      x++;
-
-    for each path
-    while (ya des fourmi)
-        balancer fourmi inda pampa (afficher fourmi num (max fourmi - fourmi actuel) + sa\
-lle)
-
-*/
-/*********************************************************/
-/******************DO THE MATH***************************/
 }
