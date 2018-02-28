@@ -116,6 +116,12 @@ typedef struct		s_ants
 	int				deep_level;
 }					t_ants;
 
+typedef struct		s_pope
+{
+	int				papp;
+	int				path_needed;
+}					t_pope;
+
 typedef struct		s_env
 {
 	int				nb_ants;
