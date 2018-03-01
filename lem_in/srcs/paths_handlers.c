@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:05:53 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/24 02:52:45 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/27 03:34:26 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void		delete_path(t_env *e)
 				norme_delete_path(&st_l);
 			st_l.stock_free_master = st_l.tmp_master->next_path;
 			free(st_l.tmp_master);
-			st_l.tmp_master->next_path = st_l.stock_free_master;
-			st_l.tmp_master = st_l.tmp_master->next_path;
-			st_l.good_shit->next_path = st_l.stock_free_master;
+			st_l.tmp_master = st_l.stock_free_master;
+			st_l.stock_free_master = st_l.tmp_master->next_path;
+//			st_l.good_shit->next_path = st_l.stock_free_master;
 		}
 		else
 		{

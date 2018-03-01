@@ -6,12 +6,13 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/16 04:32:18 by snedir           ###   ########.fr       */
+/*   Updated: 2018/02/27 05:40:53 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # include "../gnl/libft/get_next_line.h"
+# include "ft_printf.h"
 # include <stdlib.h>
 # define LEM_IN_H
 
@@ -85,20 +86,9 @@ typedef struct		s_tab
 	int				parent;
 }					t_tab;
 
-typedef struct		s_kyuuh
-{
-	int				id_room;
-	int				current_ant;
-	t_path			*current_room;
-	struct s_kyuuh	*next;
-	struct s_kyuuh	*prev;
-}					t_kyuuh;
-
 typedef struct		s_tabpath
 {
 	t_path_m		*path_master;
-	int				ants_per_path;
-	t_kyuuh			*ants_in_path;
 }					t_tabpath;
 
 typedef struct		s_norme

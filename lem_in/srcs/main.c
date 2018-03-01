@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/27 01:08:01 by abassibe         ###   ########.fr       */
+/*   Updated: 2018/02/27 02:55:33 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int			ghettouroom(int turn_path, int deep_level, t_env *e)
 
 void		printfourmi(t_env *e, int ants, int room, int da)
 {
-//	printf("%s\n", e->room_tab[0]);
-	da == DA666BEASTXBAMBOULA ? printf("L%d-%s\n", ants, e->room_tab[room])
-		: printf("L%d-%s ", ants, e->room_tab[room]);
+//	ft_printf("%s\n", e->room_tab[0]);
+	da == DA666BEASTXBAMBOULA ? ft_printf("L%d-%s\n", ants, e->room_tab[room])
+		: ft_printf("L%d-%s ", ants, e->room_tab[room]);
 }
 
 int			main(void)
@@ -95,10 +95,10 @@ int			main(void)
 	if (!path_finding(e))
 		exit_error();
 	//print_line(e);
-	printf("\n\n");
+	ft_printf("\n\n");
 	ft_trabul(e);
 	print_tab_path(e);
 	room_mapping(e);
 	ants_walk(e);
-	printf("%d\n", e->tab_way[0].path_master->size_path);
+	ft_printf("%d\n", e->tab_way[0].path_master->size_path);
 }
