@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:05:53 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/27 03:34:26 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/02 02:32:15 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ int			select_path(t_env *e)
 		delete_path(e);
 		assign_path_to_tab(e);
 		block_selected_path(e);
+		write(1, "hAm\n", 4);
 	}
 	return (nb_failed);
 }

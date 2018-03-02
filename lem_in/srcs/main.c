@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/27 02:55:33 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/02 02:30:26 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		room_mapping(t_env *e)
 	}
 }
 
-int			ghettouroom(int turn_path, int deep_level, t_env *e)
+int			g_room(int turn_path, int deep_level, t_env *e)
 {
 	t_path	*tmp;
 	int		i;
@@ -94,11 +94,12 @@ int			main(void)
 	parser(e);
 	if (!path_finding(e))
 		exit_error();
+	write(1, "hum\n", 4);
 	//print_line(e);
 	ft_printf("\n\n");
 	ft_trabul(e);
 	print_tab_path(e);
 	room_mapping(e);
-	ants_walk(e);
+	menu_ants(e);
 	ft_printf("%d\n", e->tab_way[0].path_master->size_path);
 }

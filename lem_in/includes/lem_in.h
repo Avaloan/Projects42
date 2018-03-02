@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/27 05:40:53 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/02 02:26:18 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define STOP_FLAG -3
 # define ERROR_MALLOC -4
 # define DA666BEASTXBAMBOULA 666
+# define I send_ants->i
+# define I2 send_ants->i2
+# define ROOM send_ants->room
 
 /*
  * GESTION LISTE
@@ -58,6 +61,19 @@ typedef struct		s_room
 	int				id;
 	struct s_room	*next;
 }					t_room;
+
+typedef struct		s_send_ants
+{
+	int				ants;
+	int				turn;
+	int				total;
+	int				i;
+	int				i2;
+	int				new_ants;
+	int				room;
+	int				papp;
+	int				path_needed;
+}					t_send_ants;
 
 typedef struct		s_file
 {
@@ -166,7 +182,7 @@ int					get_pipe(char *line, t_env *e);
  */
 
 void				printfourmi(t_env *e, int ants, int room, int da);
-int					ghettouroom(int turnpath, int deep_level, t_env *e);
+int					g_room(int turnpath, int deep_level, t_env *e);
 void				print_line(t_env *e);
 void				print_matrix(t_env *e);
 void				print_name(t_env *e, int i);
@@ -182,8 +198,8 @@ int					select_path(t_env *e);
 void				wash_matrix(t_env *e);
 int					nb_wrong_path(t_env *e);
 void				ft_trabul(t_env *e);
-void				ants_walk(t_env *e);
-
+void				s_ants(t_env *e, t_send_ants *s_ants,t_ants *tb_ants);
+void				menu_ants(t_env *e);
 
 
 
