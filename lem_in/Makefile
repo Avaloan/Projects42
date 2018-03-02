@@ -6,7 +6,7 @@
 #    By: snedir <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/07 01:53:42 by snedir            #+#    #+#              #
-#    Updated: 2018/02/27 03:01:25 by snedir           ###   ########.fr        #
+#    Updated: 2018/03/02 05:25:37 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C gnl/libft
-	@gcc $(FLAGS) $(OBJS) libft.a -o $(NAME)
+	@gcc $(FLAGS) $(OBJS) gnl/libft/libft.a -o $(NAME)
 
 %.o: $(SRCPATH)%.c
 	@gcc $(FLAGS) -c $< -I includes/

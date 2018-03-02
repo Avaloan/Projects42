@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 02:09:23 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/02 02:30:12 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/02 02:43:20 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			get_infos(char *line, t_env *e)
 
 void		exit_error(void)
 {
-	ft_printf("ERROR\n");
+	printf("ERROR\n");
 	exit(0);
 }
 
@@ -61,7 +61,6 @@ int			parser(t_env *e)
 			return (0);
 		free(line);
 	}
-	write(1, "hum\n", 4);
 	return (0);
 }
 
@@ -74,7 +73,7 @@ void		print_name(t_env *e, int i)
 	{
 		if (tmp->id == i)
 		{
-			ft_printf("%s ", tmp->room_name);
+			printf("%s ", tmp->room_name);
 			return ;
 		}
 		tmp = tmp->next;

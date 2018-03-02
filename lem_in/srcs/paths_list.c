@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:18:43 by snedir            #+#    #+#             */
-/*   Updated: 2018/02/27 05:21:30 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/02 03:00:23 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@ void		add_elem_path(t_env *e, int size_path, int path)
 		e->current = e->list_path;
 		return ;
 	}
-	else if (!e->current->next_path)
+	else
 	{
-		e->current->next_path = new_elem_path(size_path, path);
-		e->current = e->current->next_path;
+		if (!e->current->next_path)
+		{
+			e->current->next_path = new_elem_path(size_path, path);
+			e->current = e->current->next_path;
+		}
 	}
 }

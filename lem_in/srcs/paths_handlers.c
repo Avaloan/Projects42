@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:05:53 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/02 02:32:15 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/02 03:07:49 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void		delete_path(t_env *e)
 				norme_delete_path(&st_l);
 			st_l.stock_free_master = st_l.tmp_master->next_path;
 			free(st_l.tmp_master);
-			st_l.tmp_master = st_l.stock_free_master;
-			st_l.stock_free_master = st_l.tmp_master->next_path;
-//			st_l.good_shit->next_path = st_l.stock_free_master;
+			st_l.tmp_master->next_path = st_l.stock_free_master;
+			st_l.tmp_master = st_l.tmp_master->next_path;
+			st_l.good_shit->next_path = st_l.stock_free_master;
 		}
 		else
 		{
@@ -118,7 +118,6 @@ int			select_path(t_env *e)
 		delete_path(e);
 		assign_path_to_tab(e);
 		block_selected_path(e);
-		write(1, "hAm\n", 4);
 	}
 	return (nb_failed);
 }
