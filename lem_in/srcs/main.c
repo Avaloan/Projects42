@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/03 05:08:21 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 05:17:46 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		room_mapping(t_env *e)
 {
 	int		i;
 	t_room	*tmp;
-	
+
 	i = 0;
 	if (!(e->room_tab))
 		e->room_tab = (char**)ft_memalloc(sizeof(char*) * e->count);
@@ -75,32 +75,21 @@ int			g_room(int turn_path, int deep_level, t_env *e)
 	return (tmp->node);
 }
 
-void		printfourmi(t_env *e, int ants, int room, int da)
-{
-	da == DA666BEASTXBAMBOULA ? ft_printf("L%d-%s\n", ants, e->room_tab[room])
-		: ft_printf("L%d-%s ", ants, e->room_tab[room]);
-}
-
 int			main(void)
 {
 	t_env	*e;
 
-	//e = (t_env*)ft_memalloc(sizeof(t_env));
 	fmalloc((void**)&e, sizeof(t_env));
 	e->start = -5;
 	e->end = -5;
 	e->connection[0] = -5;
 	e->connection[1] = -5;
 	parser(e);
-	//write(1, "hum\n", 4);
 	if (!path_finding(e))
 		exit_error();
-	//print_line(e);
-	//ft_printf("\n\n");
+	print_line(e);
+	ft_printf("\n\n");
 	ft_trabul(e);
-	//print_tab_path(e);
 	room_mapping(e);
 	menu_ants(e);
-	//ft_printf("%d\n", e->tab_way[0].path_master->size_path);
-	while (1);
 }

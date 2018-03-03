@@ -6,62 +6,11 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:50:39 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/02 02:44:35 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 05:44:09 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-int			check_valid_pipe(t_env *e)
-{
-	if (e->start != -5 && e->end != -5)
-	{
-		FLAG_ROOM = 1000;
-		return (FLAG_ROOM);
-	}
-	exit_error();
-	return (0);
-}
-
-int			check_valid_room(char *line, t_env *e)
-{
-	int		i;
-	int		spaceballs;
-
-	spaceballs = 0;
-	i = 0;
-	if (line[0] == ' ' || line[0] == 'L' || line[0] == '-')
-		return (0);
-	while (line[++i])
-	{
-		if (line[i] == '-')
-			return (check_valid_pipe(e));
-		else if (line[i] < 32 || line[i] > 126)
-			return (0);
-		if (line[i] == ' ')
-		{
-			while (line[i] == ' ')
-				i++;
-			if (!(line[i]) || !(ft_isdigit(line[i])))
-				return (spaceballs);
-			spaceballs++;
-		}
-	}
-	return (spaceballs);
-}
-
-int			get_room_name(char **name, char *line)
-{
-	size_t	i;
-
-	i = -1;
-	while (line[++i] != ' ')
-		;
-	if (!(*name = ft_strnew(i)))
-		return (0);
-	*name = ft_strncpy(*name, line, i);
-	return (1);
-}
 
 int			room_exist(t_env *e, char *to_compare)
 {

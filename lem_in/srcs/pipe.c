@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 01:59:15 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/24 02:14:46 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 05:43:51 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,6 @@ int			verif_nb_pipe(char *line)
 	return (1);
 }
 
-int			verif_pipe(char **pipe)
-{
-	int		i;
-
-	i = 0;
-	while (pipe[i])
-		i++;
-	if (i != 2)
-		return (STOP_FLAG);
-	return (1);
-}
-
 int			pipe_exist(t_env *e, char **pipe)
 {
 	t_room	*tmp;
@@ -81,14 +69,6 @@ int			pipe_exist(t_env *e, char **pipe)
 			return (1);
 	}
 	return (STOP_FLAG);
-}
-
-void		assign_pipe(t_env *e)
-{
-	e->matrix[e->connection[1]].tab[e->connection[0]] = 1;
-	e->matrix[e->connection[0]].tab[e->connection[1]] = 1;
-	e->connection[0] = -5;
-	e->connection[1] = -5;
 }
 
 int			get_pipe(char *line, t_env *e)

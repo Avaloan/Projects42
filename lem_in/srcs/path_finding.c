@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:09:48 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/03 04:02:59 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 05:15:11 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int			path_finding(t_env *e)
 	{
 		if (!e->tab_way)
 		{
-			e->tab_way = (t_tabpath*)ft_memalloc(sizeof(t_tabpath) * e->nb_path);
+			fmalloc((void **)&e->tab_way, sizeof(t_tabpath) * e->nb_path);
 			assign_path_to_tab(e);
 			e->rustine = 1;
 		}

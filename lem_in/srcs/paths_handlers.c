@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:05:53 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/03 04:07:39 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 05:24:06 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,11 @@ void		delete_path(t_env *e)
 		st_l.tmp_path = st_l.tmp_master->path;
 		if (st_l.tmp_master->selected == 2)
 		{
-		/*	while (st_l.tmp_path)
-				norme_delete_path(&st_l);*/
 			st_l.stock_free_master = st_l.tmp_master->next_path;
 			tmp = st_l.tmp_master;
 			st_l.tmp_master->next_path = st_l.stock_free_master;
 			st_l.tmp_master = st_l.tmp_master->next_path;
 			st_l.good_shit->next_path = st_l.stock_free_master;
-			//free(tmp);
 		}
 		else
 		{
@@ -115,7 +112,6 @@ int			select_path(t_env *e)
 	nb_failed = nb_wrong_path(e);
 	if (nb_failed)
 	{
-		//printf("nb_failed %d\n", nb_failed);
 		e->nb_path -= nb_failed;
 		wash_matrix(e);
 		delete_path(e);

@@ -6,77 +6,68 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:02:05 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/02 02:44:27 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 05:42:09 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void		print_path(t_env *e)
-{
-	t_path_m	*tmp;
-	t_path		*tmp2;
-
-	tmp = e->list_path;
-	while (tmp)
-	{
-		tmp2 = tmp->path;
-		while (tmp2)
-		{
-			print_name(e, tmp2->node);
-			tmp2 = tmp2->next;
-		}
-		printf("\n");
-		tmp = tmp->next_path;
-	}
-}
-
-void		read_path_tab(t_env *e)
-{
-	int i;
-
-	i = -1;
-	while (++i < e->nb_path)
-		printf("%d\n", e->tab_way[i].path_master->size_path);
-}
-
-void		print_path_for_tab(t_env *e, int i)
-{
-	t_path		*tmp2;
-
-	tmp2 = e->tab_way[i].path_master->path;
-	while (tmp2)
-	{
-		print_name(e, tmp2->node);
-		tmp2 = tmp2->next;
-	}
-	printf("\n");
-}
-
-void		print_tab_path(t_env *e)
-{
-	int i;
-
-	i = -1;
-	while (++i < e->nb_path)
-		if (e->tab_way[i].path_master)
-			print_path_for_tab(e, i);
-}
-
 void		print_line(t_env *e)
 {
 	while (E_LINE)
 	{
-		printf("%s\n", E_LINE->line);
+		ft_printf("%s\n", E_LINE->line);
 		E_LINE = E_LINE->next;
 	}
 }
 
-void		print_room(t_env *e)
+int			check_valid_pipe(t_env *e)
 {
-	while (E_ROOM)
+	if (e->start != -5 && e->end != -5)
 	{
-		printf("ROOM %s ID %d\n", E_ROOM->room_name, E_ROOM->id);
-		E_ROOM = E_ROOM->next;
+		FLAG_ROOM = 1000;
+		return (FLAG_ROOM);
 	}
+	exit_error();
+	return (0);
+}
+
+int			check_valid_room(char *line, t_env *e)
+{
+	int		i;
+	int		spaceballs;
+
+	spaceballs = 0;
+	i = 0;
+	if (line[0] == ' ' || line[0] == 'L' || line[0] == '-')
+		return (0);
+	while (line[++i])
+	{
+		if (line[i] == '-')
+			return (check_valid_pipe(e));
+		else if (line[i] < 32 || line[i] > 126)
+			return (0);
+		if (line[i] == ' ')
+		{
+			while (line[i] == ' ')
+				i++;
+			if (!(line[i]) || !(ft_isdigit(line[i])))
+				return (spaceballs);
+			spaceballs++;
+		}
+	}
+	return (spaceballs);
+}
+
+int			get_room_name(char **name, char *line)
+{
+	size_t	i;
+
+	i = -1;
+	while (line[++i] != ' ')
+		;
+	if (!(*name = ft_strnew(i)))
+		return (0);
+	*name = ft_strncpy(*name, line, i);
+	return (1);
 }
