@@ -6,13 +6,14 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:30:19 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/02 02:50:41 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 01:06:01 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # include "../gnl/libft/get_next_line.h"
 # include "ft_printf.h"
+# include <stdio.h>
 # include <stdlib.h>
 # define LEM_IN_H
 

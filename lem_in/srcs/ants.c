@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 02:32:55 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/02 05:29:57 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 04:10:49 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/lem_in.h"
@@ -94,6 +94,7 @@ void	menu_ants(t_env *e)
 		tab_ants[i++].deep_level = -1;
 	send_ants.new_ants = send_ants.path_needed;
 	s_ants(e, &send_ants, tab_ants);
+	free(tab_ants);
 
 }
 
@@ -127,11 +128,11 @@ void	s_ants(t_env *e, t_send_ants *send_ants, t_ants *tab_ants)
 			{
 				tab_ants[send_ants->i].deep_level += 1;
 				ROOM = g_room(tab_ants[I].path, tab_ants[I].deep_level, e);
-				if (send_ants->i == send_ants->ants - 1)
+				/*if (send_ants->i == send_ants->ants - 1)
 					printfourmi(e, send_ants->i + 1, send_ants->room, 666);
 				else
 					printfourmi(e, send_ants->i + 1, send_ants->room, 665);
-				if (send_ants->room == e->end)
+				*/if (send_ants->room == e->end)
 					tab_ants[send_ants->i].path = -1;
 			}
 			send_ants->i++;

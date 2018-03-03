@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/12 14:29:40 by snedir            #+#    #+#             */
-/*   Updated: 2017/11/07 03:07:55 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 04:37:56 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_buf				*new(int fd)
 {
 	t_buf			*control;
 
-	MALLNULL((control = (t_buf*)malloc(sizeof(t_buf))));
+	fmalloc((void**)&control, sizeof(t_buf));
 	NEXT = NULL;
 	PREV = NULL;
 	STOCK = NULL;
@@ -111,6 +111,7 @@ int					get_next_line(int const fd, char **line)
 	char			buf[BUFF_SIZE + 1];
 	int				ret;
 
+	ft_bzero(buf, BUFF_SIZE + 1);
 	if (!line)
 		return (-1);
 	if (control && fd != FD)

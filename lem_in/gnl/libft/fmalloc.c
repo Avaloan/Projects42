@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   fmalloc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fdidelot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 17:34:14 by fdidelot          #+#    #+#             */
-/*   Updated: 2018/03/03 02:37:57 by snedir           ###   ########.fr       */
+/*   Created: 2018/03/03 00:59:01 by snedir            #+#    #+#             */
+/*   Updated: 2018/03/03 01:21:08 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft/libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	fmalloc(void **src, size_t size)
 {
-	char	*tmp;
-
-	if (!s)
-		return (NULL);
-	tmp = (char *)s;
-	while (*tmp && (*tmp != c))
-		tmp++;
-	if (*tmp != c)
-		return (NULL);
-	return (tmp);
+	*src = ft_memalloc(size);
+	if (!src)
+		perror("");
 }

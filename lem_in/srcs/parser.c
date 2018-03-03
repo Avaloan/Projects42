@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 02:09:23 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/02 02:43:20 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/03 05:09:18 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,10 @@ void		print_name(t_env *e, int i)
 		}
 		tmp = tmp->next;
 	}
+}
+
+void		printfourmi(t_env *e, int ants, int room, int da)
+{
+	da == DA666BEASTXBAMBOULA ? ft_printf("L%d-%s\n", ants, e->room_tab[room])
+		: ft_printf("L%d-%s ", ants, e->room_tab[room]);
 }

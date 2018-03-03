@@ -6,7 +6,7 @@
 #    By: snedir <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/04 15:41:11 by snedir            #+#    #+#              #
-#    Updated: 2017/09/28 04:25:12 by snedir           ###   ########.fr        #
+#    Updated: 2018/03/03 01:26:46 by snedir           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,7 +18,8 @@ PATH_SRC = ./
 PATH_OBJ = ./
 PATH_INC = ./
 
-SRCC =	get_next_line2.c \
+SRCC =	fmalloc.c \
+		get_next_line2.c \
 		get_next_line.c \
 		ft_strjoinf.c \
 		ft_strwdup.c \
