@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:18:43 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/02 03:00:23 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/06 00:13:32 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_path		*new_node(int path)
 {
 	t_path	*elem;
 
-	elem = (t_path*)ft_memalloc(sizeof(t_path));
+	fmalloc((void**)&elem, sizeof(t_path));
 	elem->node = path;
 	elem->next = NULL;
 	return (elem);
@@ -38,7 +38,7 @@ t_path_m	*new_elem_path(int size_path, int path)
 {
 	t_path_m	*new_path;
 
-	new_path = (t_path_m*)ft_memalloc(sizeof(t_path_m));
+	fmalloc((void**)&new_path, sizeof(t_path_m));
 	new_path->next_path = NULL;
 	new_path->path = new_node(path);
 	new_path->size_path = size_path;

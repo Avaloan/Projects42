@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 03:52:46 by snedir            #+#    #+#             */
-/*   Updated: 2018/01/23 05:21:53 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/06 00:17:07 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_room		*new_room(char *line, t_env *e)
 {
 	t_room	*elem;
 
-	elem = (t_room*)ft_memalloc(sizeof(t_room));
+	fmalloc((void**)&elem, sizeof(t_room));
 	elem->id = e->count;
 	elem->next = NULL;
 	elem->room_name = ft_strdup(line);
@@ -42,7 +42,7 @@ t_line		*new_line(char *line)
 {
 	t_line	*elem;
 
-	elem = (t_line*)ft_memalloc(sizeof(t_line));
+	fmalloc((void**)&elem, sizeof(t_line));
 	elem->line = ft_strdup(line);
 	elem->next = NULL;
 	return (elem);

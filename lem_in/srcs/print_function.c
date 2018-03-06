@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 05:02:05 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/03 05:42:09 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/06 00:24:10 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void		print_line(t_env *e)
 {
 	while (E_LINE)
 	{
-		ft_printf("%s\n", E_LINE->line);
+		ft_putstr(E_LINE->line);
+		write(1, "\n", 1);
 		E_LINE = E_LINE->next;
 	}
 }

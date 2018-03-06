@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 02:32:55 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/03 05:42:35 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/06 00:10:48 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,11 @@ void		menu_ants(t_env *e)
 	t_send_ants	send_ants;
 	int			i;
 
-	fmalloc((void **)tab_ants, sizeof(t_ants) * e->nb_ants);
+	if (!(tab_ants = (t_ants*)ft_memalloc(sizeof(t_ants) * e->nb_ants)))
+	{
+		perror("");
+		exit(0);
+	}
 	i = 0;
 	ft_trabul(e);
 	init_send_ants(&send_ants);

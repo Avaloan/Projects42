@@ -6,9 +6,11 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 05:37:01 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/03 05:43:41 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/06 00:20:57 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/lem_in.h"
 
 void		modif_new_ants(t_send_ants *send_ants, t_env *e)
 {
@@ -38,14 +40,6 @@ void		assign_pipe(t_env *e)
 	e->matrix[e->connection[0]].tab[e->connection[1]] = 1;
 	e->connection[0] = -5;
 	e->connection[1] = -5;
-}
-
-void		norme_delete_path(t_norme *st_l)
-{
-	st_l->stock_free = st_l->tmp_path->next;
-	free(st_l->tmp_path);
-	st_l->tmp_path->next = st_l->stock_free;
-	st_l->tmp_path = st_l->tmp_path->next;
 }
 
 int			verif_pipe(char **pipe)

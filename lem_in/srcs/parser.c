@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 02:09:23 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/03 05:10:57 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/06 00:31:38 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			get_infos(char *line, t_env *e)
 
 void		exit_error(void)
 {
-	printf("ERROR\n");
+	write(1, "ERROR\n", 6);
 	exit(0);
 }
 
@@ -64,24 +64,22 @@ int			parser(t_env *e)
 	return (0);
 }
 
-void		print_name(t_env *e, int i)
-{
-	t_room	*tmp;
-
-	tmp = E_ROOM;
-	while (tmp)
-	{
-		if (tmp->id == i)
-		{
-			printf("%s ", tmp->room_name);
-			return ;
-		}
-		tmp = tmp->next;
-	}
-}
-
 void		printfourmi(t_env *e, int ants, int room, int da)
 {
-	da == DA666BEASTXBAMBOULA ? ft_printf("L%d-%s\n", ants, e->room_tab[room])
-		: ft_printf("L%d-%s ", ants, e->room_tab[room]);
+	if (da == DA666BEASTXBAMBOULA)
+	{
+		write(1, "L", 1);
+		ft_putnbr(ants);
+		write(1, "-", 1);
+		ft_putstr(e->room_tab[room]);
+		write(1, "\n", 1);
+	}
+	else
+	{
+		write(1, "L", 1);
+		ft_putnbr(ants);
+		write(1, "-", 1);
+		ft_putstr(e->room_tab[room]);
+		write(1, " ", 1);
+	}
 }

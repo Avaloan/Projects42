@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 00:32:44 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/03 05:17:46 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/06 00:33:44 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		room_mapping(t_env *e)
 
 	i = 0;
 	if (!(e->room_tab))
-		e->room_tab = (char**)ft_memalloc(sizeof(char*) * e->count);
+		fmalloc((void**)&e->room_tab, sizeof(char*) * e->count);
 	tmp = e->e_room;
 	while (tmp && i < e->count)
 	{
@@ -88,7 +88,7 @@ int			main(void)
 	if (!path_finding(e))
 		exit_error();
 	print_line(e);
-	ft_printf("\n\n");
+	write(1, "\n\n", 2);
 	ft_trabul(e);
 	room_mapping(e);
 	menu_ants(e);

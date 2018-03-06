@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 01:59:15 by snedir            #+#    #+#             */
-/*   Updated: 2018/03/03 05:43:51 by snedir           ###   ########.fr       */
+/*   Updated: 2018/03/06 00:30:31 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ void		allocate_matrix(t_env *e)
 
 	i = -1;
 	j = -1;
-	e->matrix = (t_tab*)ft_memalloc(sizeof(t_tab) * e->count);
+	fmalloc((void**)&e->matrix, sizeof(t_tab) * e->count);
 	while (++j < e->count)
 		e->matrix[j].parent = -1;
 	while (++i < e->count)
-		e->matrix[i].tab = (int*)ft_memalloc(sizeof(int) * e->count);
+		if (!(e->matrix[i].tab = (int*)ft_memalloc(sizeof(int) * e->count)))
+		{
+			perror("Allocation Error");
+			exit(0);
+		}
 }
 
 void		free_map(char **pipe)
