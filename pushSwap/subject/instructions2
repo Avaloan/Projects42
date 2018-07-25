@@ -1,0 +1,16 @@
+Vous devez écrire un programme nommé checker qui prend en paramètre la pile
+a sous la forme d’une liste d’entiers. Le premier paramètre est au sommet de la
+pile (attention donc à l’ordre).
+
+• Checker doit ensuite attendre de lire des instructions sur l’entrée standard, chaque
+instruction suivie par un ’\n’. Une fois toutes les instructions lues, le checker va
+exécuter ces instructions sur la pile d’entiers passée en paramètres.
+
+• Si après exécution la pile a est bien triée et la pile b est vide, alors checker doit
+afficher "OK" suivi par un ’\n’ sur la sortie standard. Dans tous les autres cas,
+checker doit afficher "KO" suivi par un ’\n’ sur la sortie standard.
+
+• En cas d’erreur, vous devez afficher Error suivi d’un ’\n’ sur la sortie d’erreur.
+Par exemple si certains paramètres ne sont pas des nombres, certains paramètres
+ne tiennent pas dans un int, s’il y a des doublons ou une commande 
+mal formatee.
