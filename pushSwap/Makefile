@@ -6,11 +6,11 @@
 #    By: gquerre <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/24 05:47:01 by gquerre           #+#    #+#              #
-#    Updated: 2018/07/09 14:15:33 by snedir           ###   ########.fr        #
+#    Updated: 2018/08/05 03:10:19 by snedir           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =		test
+NAME =		checker
 
 SRC =		./testmain.c \
 			./checker.c

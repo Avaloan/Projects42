@@ -6,7 +6,7 @@
 /*   By: snedir <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 17:11:22 by snedir            #+#    #+#             */
-/*   Updated: 2018/07/10 15:47:40 by snedir           ###   ########.fr       */
+/*   Updated: 2018/07/28 03:53:45 by snedir           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct		s_env
 	t_control		st_pointers_2;
 	t_stack			*stack1;
 	t_stack			*stack2;
+	t_stack			*stack_instructions;
+	t_stack			*start_instructions;
 	struct s_funct	*op_tab;
 }					t_env;
 
@@ -57,6 +59,7 @@ typedef struct		s_funct
 t_funct				*init_func_array();
 void				print_stacks_from_control(t_env *e);
 void				print_stacks_from_stacks(t_env *e);
+void				op_tab_fill(t_env *e);
 
 /*
 ** STACK HANDLERS
